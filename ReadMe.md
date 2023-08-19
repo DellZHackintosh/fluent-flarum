@@ -1,4 +1,4 @@
-### Fluent-Flarum
+# Fluent-Flarum
 
 使用这款主题为你的 Flarum 换新颜。
 
