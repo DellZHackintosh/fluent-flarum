@@ -1,0 +1,324 @@
+:root when (@config-dark-mode = false) {
+	--noice-asset: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256' viewBox='0 0 256 256' style='background:transparent;filter:grayscale(1) contrast(2.5);opacity:10%25'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='100' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' /%3E%3C/svg%3E");
+}
+
+:root when (@config-dark-mode = true) {
+	--noice-asset: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256' viewBox='0 0 256 256' style='background:transparent;filter:grayscale(1) contrast(2.5);opacity:5%25'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='100' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' /%3E%3C/svg%3E");
+}
+
+.shadow2 {
+	& when (@config-dark-mode = false) {
+		--low-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 14%),
+		0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0 fade(#000, 14%);
+		--high-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 24%),
+		0px 0px 8px 0px fade(#000, 20%);
+	}
+
+	& when (@config-dark-mode = true) {
+		--low-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 28%),
+		0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 14%);
+		--high-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 28%),
+		0px 0px 2px 0px fade(#000, 20%);
+	}
+	@elevation-height: 2px;
+	box-shadow: var(--low-elevation-ramp);
+}
+
+.shadow4 {
+	& when (@config-dark-mode = false) {
+		--low-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 14%),
+		0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0 fade(#000, 14%);
+		--high-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 24%),
+		0px 0px 8px 0px fade(#000, 20%);
+	}
+
+	& when (@config-dark-mode = true) {
+		--low-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 28%),
+		0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 14%);
+		--high-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 28%),
+		0px 0px 2px 0px fade(#000, 20%);
+	}
+	@elevation-height: 4px;
+	box-shadow: var(--low-elevation-ramp);
+}
+
+.shadow8 {
+	& when (@config-dark-mode = false) {
+		--low-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 14%),
+		0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0 fade(#000, 14%);
+		--high-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 24%),
+		0px 0px 8px 0px fade(#000, 20%);
+	}
+
+	& when (@config-dark-mode = true) {
+		--low-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 28%),
+		0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 14%);
+		--high-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 28%),
+		0px 0px 2px 0px fade(#000, 20%);
+	}
+	@elevation-height: 8px;
+	box-shadow: var(--low-elevation-ramp);
+}
+
+.shadow16 {
+	& when (@config-dark-mode = false) {
+		--low-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 14%),
+		0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0 fade(#000, 14%);
+		--high-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 24%),
+		0px 0px 8px 0px fade(#000, 20%);
+	}
+
+	& when (@config-dark-mode = true) {
+		--low-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 28%),
+		0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 14%);
+		--high-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 28%),
+		0px 0px 2px 0px fade(#000, 20%);
+	}
+	@elevation-height: 16px;
+	box-shadow: var(--low-elevation-ramp);
+}
+
+.shadow28 {
+	& when (@config-dark-mode = false) {
+		--low-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 14%),
+		0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0 fade(#000, 14%);
+		--high-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 24%),
+		0px 0px 8px 0px fade(#000, 20%);
+	}
+
+	& when (@config-dark-mode = true) {
+		--low-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 28%),
+		0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 14%);
+		--high-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 28%),
+		0px 0px 2px 0px fade(#000, 20%);
+	}
+	@elevation-height: 28px;
+	box-shadow: var(--high-elevation-ramp);
+}
+
+.shadow64 {
+	& when (@config-dark-mode = false) {
+		--low-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 14%),
+		0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0 fade(#000, 14%);
+		--high-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 24%),
+		0px 0px 8px 0px fade(#000, 20%);
+	}
+
+	& when (@config-dark-mode = true) {
+		--low-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 28%),
+		0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 14%);
+		--high-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 28%),
+		0px 0px 2px 0px fade(#000, 20%);
+	}
+	@elevation-height: 64px;
+	box-shadow: var(--high-elevation-ramp);
+}
+
+:root {
+	accent-color: var(--primary-color);
+}
+
+.Button:not(.Button--flat, .App-header .Button, .App-header .Button:hover, .UserCard .Button, .UserCard .Button:hover) {
+	background: padding-box linear-gradient(var(--button-bg), var(--button-bg)), border-box linear-gradient(fade(#fff, 25%) 90%, fade(#000, 25%) 100%), border-box var(--button-bg);
+	border: 1px solid transparent;
+}
+
+.Button:not(.Button--flat, .App-header .Button, .App-header .Button:hover, .UserCard .Button, .UserCard .Button:hover):active {
+	background: var(--button-bg);
+	border: 1px solid fade(#fff, 13%);
+}
+
+.Select>.Select-input {
+	background: padding-box linear-gradient(var(--control-bg), var(--control-bg)), border-box linear-gradient(fade(#fff, 25%) 90%, fade(#000, 25%) 100%), border-box var(--control-bg);
+	border: 1px solid transparent;
+}
+
+.Select>.Select-input:focus {
+	background: padding-box linear-gradient(var(--primary-color), var(--primary-color)), border-box linear-gradient(fade(#fff, 25%) 90%, fade(#000, 25%) 100%), border-box var(--primary-color);
+}
+
+div.PostUser-bar--empty {
+	background: url("data:image/svg+xml,%3Csvg viewBox='0 0 0.26458335 0.79375005' version='1.1' id='svg5' xmlns='http://www.w3.org/2000/svg' xmlns:svg='http://www.w3.org/2000/svg'%3E%3Cdefs id='defs2'/%3E%3Cg id='layer1'%3E%3Crect style='fill:%238d8d8d;fill-opacity:1;stroke:none;stroke-width:0;stroke-miterlimit:10' id='rect31' width='0.26458335' height='0.26458335' x='0' y='0.26458335'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.PostUser-bar {
+	height: 3px;
+}
+
+.Dropdown-menu {
+	.shadow8();
+	padding: 0;
+}
+
+.Dropdown-menu>li {
+	margin: 8px;
+}
+
+.Dropdown-menu>li>a,
+.Dropdown-menu>li>button {
+	border-radius: 4px;
+}
+
+.Dropdown-menu:not(.sideNav .Dropdown-menu, .item-scrubber .Dropdown-menu) {
+	background-color: var(--body-bg);
+	background-image: var(--noice-asset);
+}
+
+.Button:active,
+.Button.active,
+.open>.Button.Dropdown-toggle {
+	box-shadow: unset;
+}
+
+.item-nav>div>ul>li {
+	margin: 8px 0;
+	padding: 0 8px;
+	border-radius: 4px;
+}
+
+.item-nav>div>ul>li:hover,
+.item-nav>div>ul>li.active {
+	background-color: fade(#999, 13%);
+}
+
+.item-nav>div>ul>li.active::before {
+	content: '';
+	width: 4px;
+	height: 17px;
+	background: var(--primary-color);
+	border-radius: 2px;
+	float: left;
+	margin: 9px -28px 0 -8px;
+}
+
+.item-nav>div>ul>li:active {
+	background-color: fade(#999, 20%);
+}
+
+.item-nav>div>ul>li.active~li.active::before {
+	margin: 9px -28px 0 0;
+}
+
+.item-nav>div>ul>li.active:has(~ li.active) {
+	background-color: transparent;
+}
+
+.item-nav>div>ul>li.active:has(~ li.active)::before {
+	display: none;
+}
+
+.Hero {
+	margin: 12px;
+	border-radius: 8px;
+	.shadow8();
+}
+
+.darkenBackground {
+	border-radius: 8px;
+}
+
+.Modal {
+	border-radius: 8px;
+	.shadow64();
+}
+
+.Modal-content {
+	border-radius: 8px;
+}
+
+.IndexPage>.container {
+	margin-top: 16px;
+}
+
+.LoadingIndicator {
+	animation: none;
+	border: none;
+	border-radius: 0;
+	background-color: currentColor;
+	--animation-image: url("data:image/svg+xml,%3Csvg viewBox='5.963 5.963 21.940666 21.940666' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:svg='http://www.w3.org/2000/svg'%3E%3Cg id='layer1'%3E%3Ccircle cx='16.933332' cy='16.933332' r='9.4701843' stroke='%23000' stroke-width='3' fill='none' stroke-dashoffset='' stroke-linecap='round' id='circlebar' stroke-dasharray='1 100'%3E %3CanimateTransform attributeName='transform' attributeType='AUTO' type='rotate' values='0 16.933332 16.933332;450 16.933332 16.933332;1080 16.933332 16.933332' dur='2s' repeatCount='indefinite' /%3E %3Canimate attributeName='stroke-dasharray' attributeType='AUTO' type='rotate' values='0.01 100;30 100;0.01 100' dur='2s' repeatCount='indefinite' /%3E%3C/circle%3E%3C/g%3E%3C/svg%3E");
+	-webkit-mask: var(--animation-image);
+	mask: var(--animation-image);
+	transform: rotate(-95deg);
+}
+
+.Form--centered .FormControl[type=text],
+.Form--centered .FormControl[type=email],
+.Form--centered .FormControl[type=password] {
+	border-radius: 4px;
+	border: 2px solid transparent;
+	background: padding-box linear-gradient(var(--body-bg), var(--body-bg)), border-box linear-gradient(fade(#999, 20%) calc(100% - 2px), #999 calc(100% - 1px), #999);
+}
+
+.FormControl:not(input[type~=search]):focus {
+	background: padding-box linear-gradient(var(--body-bg), var(--body-bg)), border-box linear-gradient(fade(#999, 20%) calc(100% - 2px), var(--primary-color) calc(100% - 1px), var(--primary-color)) !important;
+}
+
+.Checkbox--switch .Checkbox-display {
+	width: 40px;
+	height: 20px;
+	border-radius: 20px;
+	margin-top: 0px;
+}
+
+.Checkbox--switch .Checkbox-display:before {
+	background: padding-box linear-gradient(white, white);
+	width: 20px;
+	height: 20px;
+	border: 5px solid transparent;
+	box-shadow: none;
+	transition: border .2s;
+	top: 0px;
+	left: 0px;
+}
+
+.on.Checkbox--switch .Checkbox-display {
+	background: var(--primary-color);
+}
+
+.on.Checkbox--switch .Checkbox-display:before {
+	left: 20px;
+}
+
+.AfruxWidgets-Widget-content {
+	.shadow2();
+}
+
+.AlertManager .Alert {
+	.shadow28();
+}
+
+.Composer {
+	.shadow64();
+	border-radius: 8px 8px 0 0;
+}
+
+.ComposerBody-loading {
+	border-radius: 8px;
+}
+
+@media (min-width:768px) {
+	.Composer.active:not(.fullScreen) {
+		.shadow64();
+	}
+
+	li.TagTile {
+		margin: 6px;
+		border-radius: 8px !important;
+		width: calc(33.333% - 12px);
+		.shadow4();
+	}
+
+	nav.IndexPage-nav.sideNav {
+		margin-right: 16px;
+	}
+
+	.IndexPage-results.sideNavOffset {
+		padding-left: 16px;
+		border-left: 1px solid fade(#999, 30%);
+	}
+
+	.DiscussionListItem {
+		margin: 12px 0;
+		.shadow2();
+	}
+}
