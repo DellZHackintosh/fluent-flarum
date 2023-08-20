@@ -8,7 +8,7 @@
 
 按钮、切换开关、选项菜单、标签、边栏、模态窗口、信息栏、输入控件和复选框。
 
-
+另外也部分改变了 Forum Widgets 和 Level Ranks 的外观。
 
 不确定是否与 Flarum Categories 兼容。
 

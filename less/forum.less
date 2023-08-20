@@ -1,115 +1,123 @@
-:root when (@config-dark-mode = false) {
-	--noice-asset: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256' viewBox='0 0 256 256' style='background:transparent;filter:grayscale(1) contrast(2.5);opacity:10%25'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='100' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' /%3E%3C/svg%3E");
+:root when (@config-dark-mode =false) {
+	--Switch-border-color: #858585;
+	--layer-1-color: #f3f3f3;
 }
 
-:root when (@config-dark-mode = true) {
-	--noice-asset: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256' viewBox='0 0 256 256' style='background:transparent;filter:grayscale(1) contrast(2.5);opacity:5%25'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='100' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' /%3E%3C/svg%3E");
+:root when (@config-dark-mode =true) {
+	--Switch-border-color: #a1a1a1;
+	--layer-1-color: #202020;
 }
 
 .shadow2 {
-	& when (@config-dark-mode = false) {
+	& when (@config-dark-mode =false) {
 		--low-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 14%),
-		0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0 fade(#000, 14%);
+			0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0 fade(#000, 14%);
 		--high-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 24%),
-		0px 0px 8px 0px fade(#000, 20%);
+			0px 0px 8px 0px fade(#000, 20%);
 	}
 
-	& when (@config-dark-mode = true) {
+	& when (@config-dark-mode =true) {
 		--low-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 28%),
-		0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 14%);
+			0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 14%);
 		--high-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 28%),
-		0px 0px 2px 0px fade(#000, 20%);
+			0px 0px 2px 0px fade(#000, 20%);
 	}
+
 	@elevation-height: 2px;
 	box-shadow: var(--low-elevation-ramp);
 }
 
 .shadow4 {
-	& when (@config-dark-mode = false) {
+	& when (@config-dark-mode =false) {
 		--low-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 14%),
-		0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0 fade(#000, 14%);
+			0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0 fade(#000, 14%);
 		--high-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 24%),
-		0px 0px 8px 0px fade(#000, 20%);
+			0px 0px 8px 0px fade(#000, 20%);
 	}
 
-	& when (@config-dark-mode = true) {
+	& when (@config-dark-mode =true) {
 		--low-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 28%),
-		0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 14%);
+			0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 14%);
 		--high-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 28%),
-		0px 0px 2px 0px fade(#000, 20%);
+			0px 0px 2px 0px fade(#000, 20%);
 	}
+
 	@elevation-height: 4px;
 	box-shadow: var(--low-elevation-ramp);
 }
 
 .shadow8 {
-	& when (@config-dark-mode = false) {
+	& when (@config-dark-mode =false) {
 		--low-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 14%),
-		0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0 fade(#000, 14%);
+			0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0 fade(#000, 14%);
 		--high-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 24%),
-		0px 0px 8px 0px fade(#000, 20%);
+			0px 0px 8px 0px fade(#000, 20%);
 	}
 
-	& when (@config-dark-mode = true) {
+	& when (@config-dark-mode =true) {
 		--low-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 28%),
-		0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 14%);
+			0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 14%);
 		--high-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 28%),
-		0px 0px 2px 0px fade(#000, 20%);
+			0px 0px 2px 0px fade(#000, 20%);
 	}
+
 	@elevation-height: 8px;
 	box-shadow: var(--low-elevation-ramp);
 }
 
 .shadow16 {
-	& when (@config-dark-mode = false) {
+	& when (@config-dark-mode =false) {
 		--low-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 14%),
-		0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0 fade(#000, 14%);
+			0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0 fade(#000, 14%);
 		--high-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 24%),
-		0px 0px 8px 0px fade(#000, 20%);
+			0px 0px 8px 0px fade(#000, 20%);
 	}
 
-	& when (@config-dark-mode = true) {
+	& when (@config-dark-mode =true) {
 		--low-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 28%),
-		0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 14%);
+			0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 14%);
 		--high-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 28%),
-		0px 0px 2px 0px fade(#000, 20%);
+			0px 0px 2px 0px fade(#000, 20%);
 	}
+
 	@elevation-height: 16px;
 	box-shadow: var(--low-elevation-ramp);
 }
 
 .shadow28 {
-	& when (@config-dark-mode = false) {
+	& when (@config-dark-mode =false) {
 		--low-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 14%),
-		0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0 fade(#000, 14%);
+			0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0 fade(#000, 14%);
 		--high-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 24%),
-		0px 0px 8px 0px fade(#000, 20%);
+			0px 0px 8px 0px fade(#000, 20%);
 	}
 
-	& when (@config-dark-mode = true) {
+	& when (@config-dark-mode =true) {
 		--low-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 28%),
-		0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 14%);
+			0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 14%);
 		--high-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 28%),
-		0px 0px 2px 0px fade(#000, 20%);
+			0px 0px 2px 0px fade(#000, 20%);
 	}
+
 	@elevation-height: 28px;
 	box-shadow: var(--high-elevation-ramp);
 }
 
 .shadow64 {
-	& when (@config-dark-mode = false) {
+	& when (@config-dark-mode =false) {
 		--low-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 14%),
-		0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0 fade(#000, 14%);
+			0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0 fade(#000, 14%);
 		--high-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 24%),
-		0px 0px 8px 0px fade(#000, 20%);
+			0px 0px 8px 0px fade(#000, 20%);
 	}
 
-	& when (@config-dark-mode = true) {
+	& when (@config-dark-mode =true) {
 		--low-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 28%),
-		0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 14%);
+			0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 14%);
 		--high-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 28%),
-		0px 0px 2px 0px fade(#000, 20%);
+			0px 0px 2px 0px fade(#000, 20%);
 	}
+
 	@elevation-height: 64px;
 	box-shadow: var(--high-elevation-ramp);
 }
@@ -119,7 +127,13 @@
 }
 
 .Button:not(.Button--flat, .App-header .Button, .App-header .Button:hover, .UserCard .Button, .UserCard .Button:hover) {
-	background: padding-box linear-gradient(var(--button-bg), var(--button-bg)), border-box linear-gradient(fade(#fff, 25%) 90%, fade(#000, 25%) 100%), border-box var(--button-bg);
+	& when (@config-dark-mode =false) {
+		background: padding-box linear-gradient(var(--button-bg), var(--button-bg)), border-box linear-gradient(fade(#fff, 25%) 90%, fade(#000, 25%) 100%), border-box var(--button-bg);
+	}
+
+	& when (@config-dark-mode =true) {
+		background: padding-box linear-gradient(var(--button-bg), var(--button-bg)), border-box linear-gradient(fade(#fff, 10%) 90%, fade(#000, 10%) 100%), border-box var(--button-bg);
+	}
 	border: 1px solid transparent;
 }
 
@@ -129,7 +143,13 @@
 }
 
 .Select>.Select-input {
-	background: padding-box linear-gradient(var(--control-bg), var(--control-bg)), border-box linear-gradient(fade(#fff, 25%) 90%, fade(#000, 25%) 100%), border-box var(--control-bg);
+	& when (@config-dark-mode =false) {
+		background: padding-box linear-gradient(var(--control-bg), var(--control-bg)), border-box linear-gradient(fade(#fff, 25%) 90%, fade(#000, 25%) 100%), border-box var(--control-bg);
+	}
+
+	& when (@config-dark-mode =true) {
+		background: padding-box linear-gradient(var(--control-bg), var(--control-bg)), border-box linear-gradient(fade(#fff, 10%) 90%, fade(#000, 10%) 100%), border-box var(--control-bg);
+	}
 	border: 1px solid transparent;
 }
 
@@ -159,52 +179,10 @@ div.PostUser-bar--empty {
 	border-radius: 4px;
 }
 
-.Dropdown-menu:not(.sideNav .Dropdown-menu, .item-scrubber .Dropdown-menu) {
-	background-color: var(--body-bg);
-	background-image: var(--noice-asset);
-}
-
 .Button:active,
 .Button.active,
 .open>.Button.Dropdown-toggle {
 	box-shadow: unset;
-}
-
-.item-nav>div>ul>li {
-	margin: 8px 0;
-	padding: 0 8px;
-	border-radius: 4px;
-}
-
-.item-nav>div>ul>li:hover,
-.item-nav>div>ul>li.active {
-	background-color: fade(#999, 13%);
-}
-
-.item-nav>div>ul>li.active::before {
-	content: '';
-	width: 4px;
-	height: 17px;
-	background: var(--primary-color);
-	border-radius: 2px;
-	float: left;
-	margin: 9px -28px 0 -8px;
-}
-
-.item-nav>div>ul>li:active {
-	background-color: fade(#999, 20%);
-}
-
-.item-nav>div>ul>li.active~li.active::before {
-	margin: 9px -28px 0 0;
-}
-
-.item-nav>div>ul>li.active:has(~ li.active) {
-	background-color: transparent;
-}
-
-.item-nav>div>ul>li.active:has(~ li.active)::before {
-	display: none;
 }
 
 .Hero {
@@ -256,6 +234,7 @@ div.PostUser-bar--empty {
 .Checkbox--switch .Checkbox-display {
 	width: 40px;
 	height: 20px;
+	border: var(--Switch-border-color) 1px solid;
 	border-radius: 20px;
 	margin-top: 0px;
 }
@@ -266,13 +245,15 @@ div.PostUser-bar--empty {
 	height: 20px;
 	border: 5px solid transparent;
 	box-shadow: none;
-	transition: border .2s;
 	top: 0px;
 	left: 0px;
+	margin: -1px;
+	transition-property: background-color, border;
 }
 
 .on.Checkbox--switch .Checkbox-display {
 	background: var(--primary-color);
+	border: var(--primary-color) 1px solid;
 }
 
 .on.Checkbox--switch .Checkbox-display:before {
@@ -296,6 +277,72 @@ div.PostUser-bar--empty {
 	border-radius: 8px;
 }
 
+.tooltip.top {
+	& when (@config-dark-mode =false) {
+		--low-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) fade(#000, 14%);
+	}
+
+	& when (@config-dark-mode =true) {
+		--low-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) fade(#000, 28%);
+	}
+
+	@elevation-height: 4px;
+	filter: drop-shadow(var(--low-elevation-ramp));
+}
+
+.tooltip.top .tooltip-arrow {
+	& when (@config-dark-mode = false) {
+		border-top-color: var(--layer-1-color);
+		color: black;
+	}
+	& when (@config-dark-mode = true) {
+		border-top-color: var(--layer-1-color);
+	}
+}
+
+.tooltip > .tooltip-inner {
+	& when (@config-dark-mode = false) {
+		background-color: var(--layer-1-color);
+		color: black;
+	}
+	& when (@config-dark-mode = true) {
+		background-color: var(--layer-1-color);
+	}
+}
+
+.Badge {
+	.shadow4();
+}
+
+.disabled .Scrubber-bar {
+	filter: grayscale(1);
+}
+
+.Scrubber-bar {
+	& when (@config-dark-mode = false) {
+		border: 5px solid #bbb;
+	}
+	& when (@config-dark-mode = true) {
+		border: 5px solid #454545;
+	}
+	width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-left: -9px;
+	transition: border-width 0.1s;
+}
+
+.Scrubber-handle {
+	display: flex;
+    align-items: center;
+	&:hover > .Scrubber-bar:not(.disabled .Scrubber-bar) {
+		border-width: 4px;
+	}
+	&:active > .Scrubber-bar:not(.disabled .Scrubber-bar) {
+		border-width: 6px;
+	}
+}
+
 @media (min-width:768px) {
 	.Composer.active:not(.fullScreen) {
 		.shadow64();
@@ -312,13 +359,66 @@ div.PostUser-bar--empty {
 		margin-right: 16px;
 	}
 
-	.IndexPage-results.sideNavOffset {
-		padding-left: 16px;
-		border-left: 1px solid fade(#999, 30%);
-	}
-
 	.DiscussionListItem {
 		margin: 12px 0;
 		.shadow2();
+	}
+
+	@media (max-width: 991.98px) {
+		nav.IndexPage-nav.sideNav {
+			padding: 16px;
+			border-radius: 8px;
+			border: 1px solid var(--control-bg);
+			margin-right: 0;
+			.shadow16();
+		}
+
+		.sideNav:after {
+			display: none;
+		}
+	}
+
+	.item-nav>div>ul>li {
+		margin: 8px 0;
+		padding: 0 8px;
+		border-radius: 4px;
+	}
+
+	.item-nav>div>ul>li:hover,
+	.item-nav>div>ul>li.active {
+		background-color: fade(#999, 13%);
+	}
+
+	.item-nav>div>ul>li.active::before {
+		content: '';
+		width: 4px;
+		height: 17px;
+		background: var(--primary-color);
+		border-radius: 2px;
+		float: left;
+		margin: 9px -28px 0 -8px;
+	}
+
+	.item-nav>div>ul>li:active {
+		background-color: fade(#999, 20%);
+	}
+
+	.item-nav>div>ul>li.active~li.active::before {
+		margin: 9px -28px 0 0;
+	}
+
+	.item-nav>div>ul>li.active:has(~ li.active) {
+		background-color: transparent;
+	}
+
+	.item-nav>div>ul>li.active:has(~ li.active)::before {
+		display: none;
+	}
+}
+
+@media (min-width: 992px) {
+	.IndexPage-results.sideNavOffset {
+		padding-left: 16px;
+		border-left: 1px solid var(--control-bg);
 	}
 }
