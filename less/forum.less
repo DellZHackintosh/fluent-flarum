@@ -1,26 +1,30 @@
 :root when (@config-dark-mode =false) {
-	--Switch-border-color: #858585;
+	--Switch-border-color: var(--Fluent-border);
 	--layer-1-color: #f3f3f3;
+	--layer-2-color: #f9f9f9;
+	--layer-3-color: #fdfdfd;
+	--obj-color: #fbfbfb;
+	--Fluent-border: #e5e5e5;
 }
 
 :root when (@config-dark-mode =true) {
-	--Switch-border-color: #a1a1a1;
+	--Switch-border-color: var(--Fluent-border);
 	--layer-1-color: #202020;
+	--layer-2-color: #272727;
+	--layer-3-color: #323232;
+	--obj-color: #2b2b2b;
+	--Fluent-border: #1d1d1d;
 }
 
 .shadow2 {
 	& when (@config-dark-mode =false) {
-		--low-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 14%),
-			0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0 fade(#000, 14%);
-		--high-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 24%),
-			0px 0px 8px 0px fade(#000, 20%);
+		--low-elevation-ramp: 0px 0.5 * @elevation-height 1 * @elevation-height 0px fade(#000, 14%),
+			0px 0.5 * @elevation-height 1 * @elevation-height 0 fade(#000, 14%);
 	}
 
 	& when (@config-dark-mode =true) {
-		--low-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 28%),
-			0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 14%);
-		--high-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 28%),
-			0px 0px 2px 0px fade(#000, 20%);
+		--low-elevation-ramp: 0px 0.5 * @elevation-height 1 * @elevation-height 0px fade(#000, 28%),
+			0px 0.5 * @elevation-height 1 * @elevation-height 0px fade(#000, 14%);
 	}
 
 	@elevation-height: 2px;
@@ -29,17 +33,13 @@
 
 .shadow4 {
 	& when (@config-dark-mode =false) {
-		--low-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 14%),
-			0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0 fade(#000, 14%);
-		--high-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 24%),
-			0px 0px 8px 0px fade(#000, 20%);
+		--low-elevation-ramp: 0px 0.5 * @elevation-height 1 * @elevation-height 0px fade(#000, 14%),
+			0px 0.5 * @elevation-height 1 * @elevation-height 0 fade(#000, 14%);
 	}
 
 	& when (@config-dark-mode =true) {
-		--low-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 28%),
-			0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 14%);
-		--high-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 28%),
-			0px 0px 2px 0px fade(#000, 20%);
+		--low-elevation-ramp: 0px 0.5 * @elevation-height 1 * @elevation-height 0px fade(#000, 28%),
+			0px 0.5 * @elevation-height 1 * @elevation-height 0px fade(#000, 14%);
 	}
 
 	@elevation-height: 4px;
@@ -48,17 +48,13 @@
 
 .shadow8 {
 	& when (@config-dark-mode =false) {
-		--low-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 14%),
-			0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0 fade(#000, 14%);
-		--high-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 24%),
-			0px 0px 8px 0px fade(#000, 20%);
+		--low-elevation-ramp: 0px 0.5 * @elevation-height 1 * @elevation-height 0px fade(#000, 14%),
+			0px 0.5 * @elevation-height 1 * @elevation-height 0 fade(#000, 14%);
 	}
 
 	& when (@config-dark-mode =true) {
-		--low-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 28%),
-			0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 14%);
-		--high-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 28%),
-			0px 0px 2px 0px fade(#000, 20%);
+		--low-elevation-ramp: 0px 0.5 * @elevation-height 1 * @elevation-height 0px fade(#000, 28%),
+			0px 0.5 * @elevation-height 1 * @elevation-height 0px fade(#000, 14%);
 	}
 
 	@elevation-height: 8px;
@@ -67,17 +63,13 @@
 
 .shadow16 {
 	& when (@config-dark-mode =false) {
-		--low-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 14%),
-			0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0 fade(#000, 14%);
-		--high-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 24%),
-			0px 0px 8px 0px fade(#000, 20%);
+		--low-elevation-ramp: 0px 0.5 * @elevation-height 1 * @elevation-height 0px fade(#000, 14%),
+			0px 0.5 * @elevation-height 1 * @elevation-height 0 fade(#000, 14%);
 	}
 
 	& when (@config-dark-mode =true) {
-		--low-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 28%),
-			0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 14%);
-		--high-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 28%),
-			0px 0px 2px 0px fade(#000, 20%);
+		--low-elevation-ramp: 0px 0.5 * @elevation-height 1 * @elevation-height 0px fade(#000, 28%),
+			0px 0.5 * @elevation-height 1 * @elevation-height 0px fade(#000, 14%);
 	}
 
 	@elevation-height: 16px;
@@ -86,16 +78,12 @@
 
 .shadow28 {
 	& when (@config-dark-mode =false) {
-		--low-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 14%),
-			0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0 fade(#000, 14%);
-		--high-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 24%),
+		--high-elevation-ramp: 0px 0.5 * @elevation-height 1 * @elevation-height 0px fade(#000, 24%),
 			0px 0px 8px 0px fade(#000, 20%);
 	}
 
 	& when (@config-dark-mode =true) {
-		--low-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 28%),
-			0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 14%);
-		--high-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 28%),
+		--high-elevation-ramp: 0px 0.5 * @elevation-height 1 * @elevation-height 0px fade(#000, 28%),
 			0px 0px 2px 0px fade(#000, 20%);
 	}
 
@@ -105,16 +93,12 @@
 
 .shadow64 {
 	& when (@config-dark-mode =false) {
-		--low-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 14%),
-			0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0 fade(#000, 14%);
-		--high-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 24%),
+		--high-elevation-ramp: 0px 0.5 * @elevation-height 1 * @elevation-height 0px fade(#000, 24%),
 			0px 0px 8px 0px fade(#000, 20%);
 	}
 
 	& when (@config-dark-mode =true) {
-		--low-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 28%),
-			0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 14%);
-		--high-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) 0px fade(#000, 28%),
+		--high-elevation-ramp: 0px 0.5 * @elevation-height 1 * @elevation-height 0px fade(#000, 28%),
 			0px 0px 2px 0px fade(#000, 20%);
 	}
 
@@ -126,6 +110,14 @@
 	accent-color: var(--primary-color);
 }
 
+body {
+	background: var(--layer-2-color);
+}
+
+.App-content {
+    border-top: 1px solid var(--Fluent-border);
+}
+
 .Button:not(.Button--flat, .App-header .Button, .App-header .Button:hover, .UserCard .Button, .UserCard .Button:hover) {
 	& when (@config-dark-mode =false) {
 		background: padding-box linear-gradient(var(--button-bg), var(--button-bg)), border-box linear-gradient(fade(#fff, 25%) 90%, fade(#000, 25%) 100%), border-box var(--button-bg);
@@ -134,6 +126,7 @@
 	& when (@config-dark-mode =true) {
 		background: padding-box linear-gradient(var(--button-bg), var(--button-bg)), border-box linear-gradient(fade(#fff, 10%) 90%, fade(#000, 10%) 100%), border-box var(--button-bg);
 	}
+
 	border: 1px solid transparent;
 }
 
@@ -150,6 +143,7 @@
 	& when (@config-dark-mode =true) {
 		background: padding-box linear-gradient(var(--control-bg), var(--control-bg)), border-box linear-gradient(fade(#fff, 10%) 90%, fade(#000, 10%) 100%), border-box var(--control-bg);
 	}
+
 	border: 1px solid transparent;
 }
 
@@ -166,8 +160,10 @@ div.PostUser-bar--empty {
 }
 
 .Dropdown-menu {
-	.shadow8();
+	.shadow28();
 	padding: 0;
+	border: 1px solid var(--Fluent-border);
+	border-radius: 8px;
 }
 
 .Dropdown-menu>li {
@@ -196,12 +192,17 @@ div.PostUser-bar--empty {
 }
 
 .Modal {
+	border: 1px solid var(--Fluent-border);
 	border-radius: 8px;
 	.shadow64();
 }
 
 .Modal-content {
 	border-radius: 8px;
+}
+
+.backdrop {
+	background-color: fade(#000, 30%);
 }
 
 .IndexPage>.container {
@@ -219,16 +220,37 @@ div.PostUser-bar--empty {
 	transform: rotate(-95deg);
 }
 
+.FormControl:not(textarea, .Form--centered, .FormControl[type=text], .Form--centered .FormControl[type=email], .Form--centered .FormControl[type=password]) {
+	border: 1px solid transparent;
+	& when (@config-dark-mode =false) {
+		background: padding-box linear-gradient(var(--control-bg), var(--control-bg)), border-box linear-gradient(#ddd ~"calc(100% - 1px)", #9a9a9a ~"calc(100% - 1px)", #9a9a9a);
+	}
+	& when (@config-dark-mode =true) {
+		background: padding-box linear-gradient(var(--control-bg), var(--control-bg)), border-box linear-gradient(#303030 ~"calc(100% - 1px)", #9a9a9a ~"calc(100% - 1px)", #9a9a9a);
+	}
+}
+
+.FormControl:not(textarea, .Form--centered, .FormControl[type=text], .Form--centered .FormControl[type=email], .Form--centered .FormControl[type=password]):focus {
+	& when (@config-dark-mode =false) {
+		background: padding-box linear-gradient(var(--body-bg), var(--body-bg)), border-box linear-gradient(#ddd ~"calc(100% - 1px)", var(--primary-color) ~"calc(100% - 1px)", var(--primary-color))
+	}
+	& when (@config-dark-mode =true) {
+		background: padding-box linear-gradient(var(--body-bg), var(--body-bg)), border-box linear-gradient(#303030 ~"calc(100% - 1px)", var(--primary-color) ~"calc(100% - 1px)", var(--primary-color))
+	}
+}
+
 .Form--centered .FormControl[type=text],
 .Form--centered .FormControl[type=email],
 .Form--centered .FormControl[type=password] {
 	border-radius: 4px;
 	border: 2px solid transparent;
-	background: padding-box linear-gradient(var(--body-bg), var(--body-bg)), border-box linear-gradient(fade(#999, 20%) calc(100% - 2px), #999 calc(100% - 1px), #999);
+	background: padding-box linear-gradient(var(--body-bg), var(--body-bg)), border-box linear-gradient(fade(#999, 20%) ~"calc(100% - 2px)", #999 ~"calc(100% - 2px)", #999);
 }
 
-.FormControl:not(input[type~=search]):focus {
-	background: padding-box linear-gradient(var(--body-bg), var(--body-bg)), border-box linear-gradient(fade(#999, 20%) calc(100% - 2px), var(--primary-color) calc(100% - 1px), var(--primary-color)) !important;
+.Form--centered .FormControl[type=text]:focus,
+.Form--centered .FormControl[type=email]:focus,
+.Form--centered .FormControl[type=password]:focus {
+	background: padding-box linear-gradient(var(--body-bg), var(--body-bg)), border-box linear-gradient(fade(#999, 20%) ~"calc(100% - 2px)", var(--primary-color) ~"calc(100% - 2px)", var(--primary-color)) !important;
 }
 
 .Checkbox--switch .Checkbox-display {
@@ -291,21 +313,23 @@ div.PostUser-bar--empty {
 }
 
 .tooltip.top .tooltip-arrow {
-	& when (@config-dark-mode = false) {
+	& when (@config-dark-mode =false) {
 		border-top-color: var(--layer-1-color);
 		color: black;
 	}
-	& when (@config-dark-mode = true) {
+
+	& when (@config-dark-mode =true) {
 		border-top-color: var(--layer-1-color);
 	}
 }
 
-.tooltip > .tooltip-inner {
-	& when (@config-dark-mode = false) {
+.tooltip>.tooltip-inner {
+	& when (@config-dark-mode =false) {
 		background-color: var(--layer-1-color);
 		color: black;
 	}
-	& when (@config-dark-mode = true) {
+
+	& when (@config-dark-mode =true) {
 		background-color: var(--layer-1-color);
 	}
 }
@@ -319,26 +343,34 @@ div.PostUser-bar--empty {
 }
 
 .Scrubber-bar {
-	& when (@config-dark-mode = false) {
-		border: 5px solid #bbb;
+	& when (@config-dark-mode =false) {
+		border: 5px solid #fff;
 	}
-	& when (@config-dark-mode = true) {
+
+	& when (@config-dark-mode =true) {
 		border: 5px solid #454545;
 	}
+
 	width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    margin-left: -9px;
+	height: 20px;
+	border-radius: 50%;
+	margin-left: -9px;
 	transition: border-width 0.1s;
+	box-shadow: 0 0 0 1px var(--Fluent-border);
+	&:not(.disabled .Scrubber-bar){
+		.shadow4();
+	}
 }
 
 .Scrubber-handle {
 	display: flex;
-    align-items: center;
-	&:hover > .Scrubber-bar:not(.disabled .Scrubber-bar) {
+	align-items: center;
+
+	&:hover>.Scrubber-bar:not(.disabled .Scrubber-bar) {
 		border-width: 4px;
 	}
-	&:active > .Scrubber-bar:not(.disabled .Scrubber-bar) {
+
+	&:active>.Scrubber-bar:not(.disabled .Scrubber-bar) {
 		border-width: 6px;
 	}
 }
@@ -351,16 +383,18 @@ div.PostUser-bar--empty {
 	li.TagTile {
 		margin: 6px;
 		border-radius: 8px !important;
-		width: calc(33.333% - 12px);
+		width: ~"calc(33.333% - 12px)";
 		.shadow4();
 	}
 
-	nav.IndexPage-nav.sideNav {
+	nav.IndexPage-nav.sideNav, nav.UserPage-nav.sideNav {
 		margin-right: 16px;
 	}
 
 	.DiscussionListItem {
 		margin: 12px 0;
+		border: 1px solid var(--Fluent-border);
+		background-color: var(--obj-color);
 		.shadow2();
 	}
 
@@ -417,8 +451,8 @@ div.PostUser-bar--empty {
 }
 
 @media (min-width: 992px) {
-	.IndexPage-results.sideNavOffset {
+	.IndexPage-results.sideNavOffset, .UserPage-content.sideNavOffset {
 		padding-left: 16px;
-		border-left: 1px solid var(--control-bg);
+		border-left: 1px solid var(--Fluent-border);
 	}
 }
