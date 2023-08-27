@@ -1,19 +1,36 @@
-:root when (@config-dark-mode =false) {
-	--Switch-border-color: var(--Fluent-border);
-	--layer-1-color: #f3f3f3;
-	--layer-2-color: #f9f9f9;
-	--layer-3-color: #fdfdfd;
-	--obj-color: #fbfbfb;
-	--Fluent-border: #e5e5e5;
+@header-bg-light: average(average(average(@config-primary-color, @layer-1-color), @layer-1-color), @layer-1-color);
+@header-bg-dark: darken(average(average(@config-primary-color, @layer-1-color), @layer-1-color), 10%);
+.define-colors(@config-dark-mode);
+.define-colors(false) {
+	@body-bg: average(average(average(average(average(@config-primary-color, @layer-2-color), @layer-2-color), @layer-2-color), @layer-2-color), @layer-2-color);
+	@Switch-border-color: @Fluent-border;
+	@layer-1-color: #f3f3f3;
+	@layer-2-color: #f9f9f9;
+	@layer-3-color: #fdfdfd;
+	@obj-color: average(average(average(average(average(average(#fbfbfb, @config-primary-color), #fbfbfb), #fbfbfb), #fbfbfb), #fbfbfb), #fbfbfb);
+	@obj-title-color: #191a1a;
+	@Fluent-border: #e5e5e5;
+	@details-second-font-color: #5e5e5e;
+	@titlebar-bg: @header-bg-light;
+	@Switch-button-color: #ffffff;
+	@button-border: linear-gradient(#e5e5e5 90%, #ccc 100%);
 }
-
-:root when (@config-dark-mode =true) {
-	--Switch-border-color: var(--Fluent-border);
-	--layer-1-color: #202020;
-	--layer-2-color: #272727;
-	--layer-3-color: #323232;
-	--obj-color: #2b2b2b;
-	--Fluent-border: #1d1d1d;
+.define-colors(true) {
+	@body-bg: average(average(average(average(@config-primary-color, @layer-2-color), @layer-2-color), @layer-2-color), @layer-2-color);
+	@layer-1-color: #202020;
+	@layer-2-color: #272727;
+	@layer-3-color: #323232;
+	@obj-color: lighten(average(average(average(average(#2b2b2b, @config-primary-color), #2b2b2b), #2b2b2b), #2b2b2b), 5%);
+	@obj-title-color: white;
+	@Fluent-border: #1d1d1d;
+	@details-second-font-color: #cfcfcf;
+	@titlebar-bg: @header-bg-dark;
+	@Switch-button-color: #2d2d2d;
+	@button-border: linear-gradient(#303030, #303030);
+}
+.define-header(@config-colored-header);
+.define-header(false) {
+	@header-bg: @titlebar-bg;
 }
 
 .shadow2 {
@@ -107,18 +124,36 @@
 }
 
 :root {
-	accent-color: var(--primary-color);
+	--accent-color: var(--primary-color);
+	--button-bg: @obj-color;
+	--button-bg-hover: fade(#999, 10%);
+	& when (@config-dark-mode = false) {
+		--discussion-list-item-bg-hover: lighten(@obj-color, 1%);
+	}
+	& when (@config-dark-mode = true) {
+		--discussion-list-item-bg-hover: lighten(@obj-color, 2%);
+	}
 }
 
 body {
-	background: var(--layer-2-color);
+	overflow-y: auto;
+}
+
+.scrolled .App-header, .scrolled .App-navigation {
+	box-shadow: none;
 }
 
 .App-content {
-    border-top: 1px solid var(--Fluent-border);
+	border-top: 1px solid @Fluent-border;
 }
 
-.Button:not(.Button--flat, .App-header .Button, .App-header .Button:hover, .UserCard .Button, .UserCard .Button:hover) {
+.Button:not(.Button--flat, .App-header .Button, .App-header .Button:hover, .UserCard .Button, .UserCard .Button:hover, .Button--primary, .Button--link) {
+	border: 1px solid transparent;
+	box-shadow: 0px 0.3px ~"rgb(111 111 111 / 60%)";
+	background: padding-box linear-gradient(@Switch-button-color, @Switch-button-color), border-box @button-border, border-box @Switch-button-color;
+}
+
+button.Button.Button--primary {
 	& when (@config-dark-mode =false) {
 		background: padding-box linear-gradient(var(--button-bg), var(--button-bg)), border-box linear-gradient(fade(#fff, 25%) 90%, fade(#000, 25%) 100%), border-box var(--button-bg);
 	}
@@ -126,7 +161,6 @@ body {
 	& when (@config-dark-mode =true) {
 		background: padding-box linear-gradient(var(--button-bg), var(--button-bg)), border-box linear-gradient(fade(#fff, 10%) 90%, fade(#000, 10%) 100%), border-box var(--button-bg);
 	}
-
 	border: 1px solid transparent;
 }
 
@@ -143,7 +177,6 @@ body {
 	& when (@config-dark-mode =true) {
 		background: padding-box linear-gradient(var(--control-bg), var(--control-bg)), border-box linear-gradient(fade(#fff, 10%) 90%, fade(#000, 10%) 100%), border-box var(--control-bg);
 	}
-
 	border: 1px solid transparent;
 }
 
@@ -162,7 +195,7 @@ div.PostUser-bar--empty {
 .Dropdown-menu {
 	.shadow28();
 	padding: 0;
-	border: 1px solid var(--Fluent-border);
+	border: 1px solid @Fluent-border;
 	border-radius: 8px;
 }
 
@@ -170,9 +203,39 @@ div.PostUser-bar--empty {
 	margin: 8px;
 }
 
-.Dropdown-menu>li>a,
-.Dropdown-menu>li>button {
+.Dropdown-menu>li>a, .Dropdown-menu>li>button {
 	border-radius: 4px;
+}
+
+.Dropdown-menu>li>a:hover, .Dropdown-menu>li>button:hover {
+	background: var(--button-bg-hover);
+}
+
+button.Button, select.FormControl, fieldset.Settings-notifications td, #header a.Button {
+	font-size: 14px;
+}
+
+fieldset>legend, .SettingsPage label {
+	& when (@config-dark-mode = false) {
+		color: black;
+	}
+	& when (@config-dark-mode = true) {
+		color: white;
+	}
+	font-size: 14px;
+	font-weight: normal;
+}
+
+p.description, p.Settings-theme--selection_description {
+	color: @details-second-font-color;
+}
+
+.SettingsPage>ul>li {
+	border: 1px solid @Fluent-border;
+	border-radius: 4px;
+	background-color: @obj-color;
+	margin-bottom: 12px;
+	padding: 16px;
 }
 
 .Button:active,
@@ -192,9 +255,13 @@ div.PostUser-bar--empty {
 }
 
 .Modal {
-	border: 1px solid var(--Fluent-border);
+	border: 1px solid @Fluent-border;
 	border-radius: 8px;
 	.shadow64();
+}
+
+.Modal-header h3 {
+	font-weight: bold;
 }
 
 .Modal-content {
@@ -220,20 +287,61 @@ div.PostUser-bar--empty {
 	transform: rotate(-95deg);
 }
 
-.FormControl:not(textarea, .Form--centered, .FormControl[type=text], .Form--centered .FormControl[type=email], .Form--centered .FormControl[type=password]) {
+#header input[type=search] {
+	font-size: 14px;
+	border-color: transparent;
+	& when (@config-colored-header = false) {
+		& when (@config-dark-mode = false) {
+			background: padding-box linear-gradient(var(--control-bg), var(--control-bg)), border-box linear-gradient(#ddd ~"calc(100% - 2px)", #9a9a9a ~"calc(100% - 2px)", #9a9a9a);
+			&:focus {
+				background: padding-box linear-gradient(var(--control-bg), var(--control-bg)), border-box linear-gradient(#ddd ~"calc(100% - 2px)", @primary-color ~"calc(100% - 2px)", @primary-color);
+			}
+		}
+		& when (@config-dark-mode =true) {
+			background: padding-box linear-gradient(var(--control-bg), var(--control-bg)), border-box linear-gradient(#303030 ~"calc(100% - 2px)", #9a9a9a ~"calc(100% - 2px)", #9a9a9a);
+			&:focus {
+				background: padding-box linear-gradient(var(--control-bg), var(--control-bg)), border-box linear-gradient(#303030 ~"calc(100% - 2px)", @primary-color ~"calc(100% - 2px)", @primary-color);
+			}
+		}
+	}
+	& when (@config-colored-header = true) {
+		box-shadow: 0px 0.3px ~"rgb(111 111 111 / 60%)";
+		@media (min-width: 768px) and (max-width: 991.98px) {
+			& {
+				background: var(--header-colored-control-bg, rgba(0,0,0,0.1));
+			}
+		}
+	}
+}
+
+#header .Search-input::before, .FormControl::-webkit-input-placeholder, .FormControl::placeholder {
+	& when (@config-colored-header = false) {
+		& when (@config-dark-mode = false) {
+			color: rgb(117, 117, 117) !important;
+		}
+		& when (@config-dark-mode = true) {
+			color: #cfd1d2 !important;
+		}
+	}
+}
+
+.FormControl:not(textarea, .Form--centered, .FormControl[type=text], .Form--centered .FormControl[type=email], .Form--centered .FormControl[type=password], .ComposerBody-header h3 input, #header input[type=search]) {
 	border: 1px solid transparent;
+
 	& when (@config-dark-mode =false) {
 		background: padding-box linear-gradient(var(--control-bg), var(--control-bg)), border-box linear-gradient(#ddd ~"calc(100% - 1px)", #9a9a9a ~"calc(100% - 1px)", #9a9a9a);
 	}
+
 	& when (@config-dark-mode =true) {
 		background: padding-box linear-gradient(var(--control-bg), var(--control-bg)), border-box linear-gradient(#303030 ~"calc(100% - 1px)", #9a9a9a ~"calc(100% - 1px)", #9a9a9a);
 	}
 }
 
-.FormControl:not(textarea, .Form--centered, .FormControl[type=text], .Form--centered .FormControl[type=email], .Form--centered .FormControl[type=password]):focus {
+.FormControl:not(textarea, .Form--centered, .FormControl[type=text], .Form--centered .FormControl[type=email], .Form--centered .FormControl[type=password], .ComposerBody-header h3 input, #header input[type=search]):focus {
 	& when (@config-dark-mode =false) {
 		background: padding-box linear-gradient(var(--body-bg), var(--body-bg)), border-box linear-gradient(#ddd ~"calc(100% - 1px)", var(--primary-color) ~"calc(100% - 1px)", var(--primary-color))
 	}
+
 	& when (@config-dark-mode =true) {
 		background: padding-box linear-gradient(var(--body-bg), var(--body-bg)), border-box linear-gradient(#303030 ~"calc(100% - 1px)", var(--primary-color) ~"calc(100% - 1px)", var(--primary-color))
 	}
@@ -256,7 +364,7 @@ div.PostUser-bar--empty {
 .Checkbox--switch .Checkbox-display {
 	width: 40px;
 	height: 20px;
-	border: var(--Switch-border-color) 1px solid;
+	border: @Fluent-border 1px solid;
 	border-radius: 20px;
 	margin-top: 0px;
 }
@@ -269,7 +377,7 @@ div.PostUser-bar--empty {
 	box-shadow: none;
 	top: 0px;
 	left: 0px;
-	margin: -1px;
+	margin: -0.5px;
 	transition-property: background-color, border;
 }
 
@@ -292,9 +400,6 @@ div.PostUser-bar--empty {
 
 .Composer {
 	.shadow64();
-	border-width: 1px 1px 0 1px;
-    border-color: var(--Fluent-border);
-    border-style: solid;
 	border-radius: 8px 8px 0 0;
 }
 
@@ -302,7 +407,25 @@ div.PostUser-bar--empty {
 	border-radius: 8px;
 }
 
-.tooltip.top {
+.DiscussionListItem {
+	margin: 12px 8px;
+    border: 1px solid @Fluent-border;
+    border-radius: 4px;
+    background-color: @obj-color;
+	.DiscussionList:not(.DiscussionList--searchResults) & .read .DiscussionListItem-title {
+		color: @obj-title-color;
+	}
+	& .DiscussionListItem-info, & .DiscussionListItem-count {
+		color: @details-second-font-color;
+	}
+}
+
+aside.DiscussionPage-list .DiscussionListItem {
+	margin: 12px 8px;
+	border-radius: 4px;
+}
+
+.tooltip {
 	& when (@config-dark-mode =false) {
 		--low-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) fade(#000, 14%);
 	}
@@ -315,29 +438,36 @@ div.PostUser-bar--empty {
 	filter: drop-shadow(var(--low-elevation-ramp));
 }
 
-.tooltip.top .tooltip-arrow {
-	& when (@config-dark-mode =false) {
-		border-top-color: var(--layer-1-color);
-		color: black;
+.tooltip .tooltip-arrow {
+	& when (@config-dark-mode = false) {
+		color: black !important;
 	}
+}
 
-	& when (@config-dark-mode =true) {
-		border-top-color: var(--layer-1-color);
-	}
+.tooltip.top .tooltip-arrow {
+	border-top-color: @layer-2-color !important;
+}
+
+.tooltip.bottom .tooltip-arrow {
+	border-bottom-color: @layer-2-color !important;
+}
+
+.tooltip.left .tooltip-arrow {
+	border-left-color: @layer-2-color !important;
+}
+
+.tooltip.right .tooltip-arrow {
+	border-right-color: @layer-2-color !important;
 }
 
 .tooltip>.tooltip-inner {
-	& when (@config-dark-mode =false) {
-		background-color: var(--layer-1-color);
-		color: black;
+	& when (@config-dark-mode = false) {
+		color: black !important;
 	}
-
-	& when (@config-dark-mode =true) {
-		background-color: var(--layer-1-color);
-	}
+	background-color: @layer-2-color !important;
 }
 
-.Badge {
+.Badge:not(.Badge--social) {
 	.shadow4();
 }
 
@@ -359,8 +489,9 @@ div.PostUser-bar--empty {
 	border-radius: 50%;
 	margin-left: -9px;
 	transition: border-width 0.1s;
-	box-shadow: 0 0 0 1px var(--Fluent-border);
-	&:not(.disabled .Scrubber-bar){
+	box-shadow: 0 0 0 1px @Fluent-border;
+
+	&:not(.disabled .Scrubber-bar) {
 		.shadow4();
 	}
 }
@@ -378,6 +509,48 @@ div.PostUser-bar--empty {
 	}
 }
 
+@media (max-width: 767.98px) {
+	.DiscussionListItem.Slidable .Slidable-underneath {
+		border-radius: 0 4px 4px 0;
+		background: @layer-2-color !important;
+	}
+
+	.dropdown-backdrop, .drawer-backdrop {
+		background-color: fade(#000, 30%);
+	}
+
+	.Dropdown .Dropdown-menu {
+		.shadow28();
+	}
+	@media (display-mode: window-controls-overlay) {
+		.App, .Composer:not(.minimized) {
+			padding-top: ~"max(env(titlebar-area-height), var(--header-height-phone))";
+		}
+
+		.App-navigation, .App-primaryControl>.Button, .App-titleControl>.Button, .App-backControl>.Button, .Composer:not(.minimized):before {
+			height: ~"max(env(titlebar-area-height), var(--header-height-phone))";
+		}
+
+		.App-titleControl {
+			left: 0;
+		}
+
+		.Composer:not(.minimized) .Composer-controls .item-minimize, .App.affix .App-backControl {
+			margin-left: ~"env(titlebar-area-x)";
+		}
+
+		.normal .ComposerBody-header>li:first-child, .App.affix .App-titleControl {
+			margin-left: ~"calc(46px + env(titlebar-area-x))";
+    		width: ~"calc(env(titlebar-area-width) - (46px * 2))";
+			margin-right: ~"calc(100% - env(titlebar-area-x) - env(titlebar-area-width) + 46px)";
+		}
+
+		.ComposerBody-editor .TextEditor-controls .item-submit, .App.affix .App-primaryControl {
+			margin-right: ~"calc(100% - env(titlebar-area-x) - env(titlebar-area-width))" !important;
+		}
+	}
+}
+
 @media (min-width:768px) {
 	.Composer.active:not(.fullScreen) {
 		.shadow64();
@@ -390,15 +563,21 @@ div.PostUser-bar--empty {
 		.shadow4();
 	}
 
-	nav.IndexPage-nav.sideNav, nav.UserPage-nav.sideNav {
+	nav.IndexPage-nav.sideNav,
+	nav.UserPage-nav.sideNav {
 		margin-right: 16px;
+	}
+
+	.sideNav .Dropdown--select .Dropdown-menu>li>a {
+		color: --obj-title-color;
 	}
 
 	.DiscussionListItem {
 		margin: 12px 0;
-		border: 1px solid var(--Fluent-border);
-		background-color: var(--obj-color);
-		.shadow2();
+	}
+
+	.Dropdown-menu span.Button-label {
+		font-size: 14px;
 	}
 
 	@media (max-width: 991.98px) {
@@ -451,11 +630,57 @@ div.PostUser-bar--empty {
 	.item-nav>div>ul>li.active:has(~ li.active)::before {
 		display: none;
 	}
+
+	@media (display-mode: window-controls-overlay) {
+		#header {
+			app-region: drag;
+			& a, & button, & input {
+				app-region: no-drag;
+			}
+		}
+
+		.App, .App-header {
+			--header-height: ~"calc(60px + env(titlebar-area-height))";
+			& .Header-title {
+				margin-bottom: 4px;
+			}
+		}
+		
+		#header-primary {
+			clear: left;
+		}
+
+		#header-secondary .item-search {
+			position: fixed;
+			top: 8px;
+			left: 33.33%;
+			width: 33.33%;
+			z-index: 10;
+			& input.FormControl {
+				width: 100%;
+			}
+			&>.Search-results {
+				left: 0;
+				right: 0;
+			}
+		}
+
+		.Search.focused {
+			margin-left: 0;
+		}
+	}
 }
 
 @media (min-width: 992px) {
-	.IndexPage-results.sideNavOffset, .UserPage-content.sideNavOffset {
+	.IndexPage-results.sideNavOffset,
+	.UserPage-content.sideNavOffset {
 		padding-left: 16px;
-		border-left: 1px solid var(--Fluent-border);
+		border-left: 1px solid @Fluent-border;
+	}
+
+	.Composer {
+		border-width: 1px 1px 0 1px;
+		border-color: @Fluent-border;
+		border-style: solid;
 	}
 }
