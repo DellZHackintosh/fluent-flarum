@@ -133,6 +133,12 @@
 	& when (@config-dark-mode = true) {
 		--discussion-list-item-bg-hover: lighten(@obj-color, 2%);
 	}
+	& when (@config-colored-header = false) {
+		--colored-titlebar: false;
+	}
+	& when (@config-colored-header = true) {
+		--colored-titlebar: true;
+	}
 }
 
 body {
@@ -394,6 +400,10 @@ p.description, p.Settings-theme--selection_description {
 	.shadow2();
 }
 
+.Alert {
+	font-size: 14px;
+}
+
 .AlertManager .Alert {
 	.shadow28();
 }
@@ -523,11 +533,23 @@ aside.DiscussionPage-list .DiscussionListItem {
 		.shadow28();
 	}
 	@media (display-mode: window-controls-overlay) {
+		#app-navigation, .Modal .App-titleControl, .Composer:not(.minimized):before, .ModalManager:before {
+			app-region: drag;
+
+			& button, & a {
+				app-region: no-drag;
+			}
+		}
+
+		.App-titleControl>.Button>*, .App-primaryControl>.Button, #home-link, .App-backControl>.Button, .normal .ComposerBody-header>li:first-child h3 {
+				app-region: no-drag;
+		}
+
 		.App, .Composer:not(.minimized) {
 			padding-top: ~"max(env(titlebar-area-height), var(--header-height-phone))";
 		}
 
-		.App-navigation, .App-primaryControl>.Button, .App-titleControl>.Button, .App-backControl>.Button, .Composer:not(.minimized):before {
+		.App-navigation, .App-primaryControl>.Button, .App-titleControl>.Button, .App-backControl>.Button, .Composer:not(.minimized):before, .ModalManager:before {
 			height: ~"max(env(titlebar-area-height), var(--header-height-phone))";
 		}
 
@@ -539,7 +561,11 @@ aside.DiscussionPage-list .DiscussionListItem {
 			margin-left: ~"env(titlebar-area-x)";
 		}
 
-		.normal .ComposerBody-header>li:first-child, .App.affix .App-titleControl {
+		.Modal .App-backControl {
+			margin-left: ~"env(titlebar-area-x)" !important;
+		}
+
+		.normal .ComposerBody-header>li:first-child, .App.affix .App-titleControl, .Modal .App-titleControl {
 			margin-left: ~"calc(46px + env(titlebar-area-x))";
     		width: ~"calc(env(titlebar-area-width) - (46px * 2))";
 			margin-right: ~"calc(100% - env(titlebar-area-x) - env(titlebar-area-width) + 46px)";
