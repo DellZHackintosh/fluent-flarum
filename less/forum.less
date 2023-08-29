@@ -1,13 +1,13 @@
-@header-bg-light: average(average(average(@config-primary-color, @layer-1-color), @layer-1-color), @layer-1-color);
-@header-bg-dark: darken(average(average(@config-primary-color, @layer-1-color), @layer-1-color), 10%);
+@header-bg-light: saturate(average(average(fade(@config-primary-color, 30%), white), @layer-1-color), 30%);
+@header-bg-dark: saturate(average(average(fade(@config-primary-color, 30%), black), @layer-1-color), 30%);
 .define-colors(@config-dark-mode);
 .define-colors(false) {
-	@body-bg: average(average(average(average(average(@config-primary-color, @layer-2-color), @layer-2-color), @layer-2-color), @layer-2-color), @layer-2-color);
+	@body-bg: lighten(average(average(fade(@config-primary-color, 30%), white), @layer-2-color), 1%);
 	@Switch-border-color: @Fluent-border;
-	@layer-1-color: #f3f3f3;
+	@layer-1-color: #e8e8e8;
 	@layer-2-color: #f9f9f9;
 	@layer-3-color: #fdfdfd;
-	@obj-color: average(average(average(average(average(average(#fbfbfb, @config-primary-color), #fbfbfb), #fbfbfb), #fbfbfb), #fbfbfb), #fbfbfb);
+	@obj-color: lighten(saturate(average(fade(@config-primary-color, 2%), #fbfbfb), 30%), 1%);
 	@obj-title-color: #191a1a;
 	@Fluent-border: #e5e5e5;
 	@details-second-font-color: #5e5e5e;
@@ -16,11 +16,11 @@
 	@button-border: linear-gradient(#e5e5e5 90%, #ccc 100%);
 }
 .define-colors(true) {
-	@body-bg: average(average(average(average(@config-primary-color, @layer-2-color), @layer-2-color), @layer-2-color), @layer-2-color);
+	@body-bg: lighten(average(average(fade(@config-primary-color, 30%), black), @layer-2-color), 2%);
 	@layer-1-color: #202020;
 	@layer-2-color: #272727;
 	@layer-3-color: #323232;
-	@obj-color: lighten(average(average(average(average(#2b2b2b, @config-primary-color), #2b2b2b), #2b2b2b), #2b2b2b), 5%);
+	@obj-color: lighten(saturate(average(fade(@config-primary-color, 2%), #2b2b2b), 15%), 1%);
 	@obj-title-color: white;
 	@Fluent-border: #1d1d1d;
 	@details-second-font-color: #cfcfcf;
@@ -153,13 +153,13 @@ body {
 	border-top: 1px solid @Fluent-border;
 }
 
-.Button:not(.Button--flat, .App-header .Button, .App-header .Button:hover, .UserCard .Button, .UserCard .Button:hover, .Button--primary, .Button--link) {
+.Button:not(.Button--flat, .App-header .Button, .App-header .Button:hover, .UserCard .Button, .UserCard .Button:hover, .Button--primary, .Button--link, .FoFLogInButton, .SubscriptionMenu-button--follow) {
 	border: 1px solid transparent;
 	box-shadow: 0px 0.3px ~"rgb(111 111 111 / 60%)";
 	background: padding-box linear-gradient(@Switch-button-color, @Switch-button-color), border-box @button-border, border-box @Switch-button-color;
 }
 
-button.Button.Button--primary {
+button.Button.Button--primary, .FoFLogInButton, .SubscriptionMenu-button--follow {
 	& when (@config-dark-mode =false) {
 		background: padding-box linear-gradient(var(--button-bg), var(--button-bg)), border-box linear-gradient(fade(#fff, 25%) 90%, fade(#000, 25%) 100%), border-box var(--button-bg);
 	}
@@ -173,6 +173,7 @@ button.Button.Button--primary {
 .Button:not(.Button--flat, .App-header .Button, .App-header .Button:hover, .UserCard .Button, .UserCard .Button:hover):active {
 	background: var(--button-bg);
 	border: 1px solid fade(#fff, 13%);
+	box-shadow: none;
 }
 
 .Select>.Select-input {
@@ -298,15 +299,15 @@ p.description, p.Settings-theme--selection_description {
 	border-color: transparent;
 	& when (@config-colored-header = false) {
 		& when (@config-dark-mode = false) {
-			background: padding-box linear-gradient(var(--control-bg), var(--control-bg)), border-box linear-gradient(#ddd ~"calc(100% - 2px)", #9a9a9a ~"calc(100% - 2px)", #9a9a9a);
+			background: padding-box linear-gradient(@obj-color, @obj-color), border-box linear-gradient(#ddd ~"calc(100% - 2px)", #9a9a9a ~"calc(100% - 2px)", #9a9a9a);
 			&:focus {
-				background: padding-box linear-gradient(var(--control-bg), var(--control-bg)), border-box linear-gradient(#ddd ~"calc(100% - 2px)", @primary-color ~"calc(100% - 2px)", @primary-color);
+				background: padding-box linear-gradient(@obj-color, @obj-color), border-box linear-gradient(#ddd ~"calc(100% - 2px)", @primary-color ~"calc(100% - 2px)", @primary-color);
 			}
 		}
 		& when (@config-dark-mode =true) {
-			background: padding-box linear-gradient(var(--control-bg), var(--control-bg)), border-box linear-gradient(#303030 ~"calc(100% - 2px)", #9a9a9a ~"calc(100% - 2px)", #9a9a9a);
+			background: padding-box linear-gradient(@obj-color, @obj-color), border-box linear-gradient(#303030 ~"calc(100% - 2px)", #9a9a9a ~"calc(100% - 2px)", #9a9a9a);
 			&:focus {
-				background: padding-box linear-gradient(var(--control-bg), var(--control-bg)), border-box linear-gradient(#303030 ~"calc(100% - 2px)", @primary-color ~"calc(100% - 2px)", @primary-color);
+				background: padding-box linear-gradient(@obj-color, @obj-color), border-box linear-gradient(#303030 ~"calc(100% - 2px)", @primary-color ~"calc(100% - 2px)", @primary-color);
 			}
 		}
 	}
@@ -422,12 +423,20 @@ p.description, p.Settings-theme--selection_description {
     border: 1px solid @Fluent-border;
     border-radius: 4px;
     background-color: @obj-color;
-	.DiscussionList:not(.DiscussionList--searchResults) & .read .DiscussionListItem-title {
+	.DiscussionList:not(.DiscussionList--searchResults) & .read .DiscussionListItem-title, .DiscussionList:not(.DiscussionList--searchResults) & .unread .DiscussionListItem-title {
 		color: @obj-title-color;
 	}
-	& .DiscussionListItem-info, & .DiscussionListItem-count {
+	& .DiscussionListItem-info, & .DiscussionListItem-count, & .DiscussionListItem-info .item-excerpt {
 		color: @details-second-font-color;
 	}
+}
+
+.Post-body blockquote {
+	--body-bg: @obj-color;
+}
+
+.ReplyPlaceholder {
+	border: none;
 }
 
 aside.DiscussionPage-list .DiscussionListItem {
@@ -435,12 +444,21 @@ aside.DiscussionPage-list .DiscussionListItem {
 	border-radius: 4px;
 }
 
+.PostQuoteButton {
+	& when (@config-dark-mode = false) {
+		--button-color: black;
+		&:active {
+			--button-bg: white;
+		}
+	}
+}
+
 .tooltip {
-	& when (@config-dark-mode =false) {
+	& when (@config-dark-mode = false) {
 		--low-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) fade(#000, 14%);
 	}
 
-	& when (@config-dark-mode =true) {
+	& when (@config-dark-mode = true) {
 		--low-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) fade(#000, 28%);
 	}
 
@@ -506,6 +524,10 @@ aside.DiscussionPage-list .DiscussionListItem {
 	}
 }
 
+.Scrubber-before, .Scrubber-after {
+    border-left: 1px solid @Fluent-border;
+}
+
 .Scrubber-handle {
 	display: flex;
 	align-items: center;
@@ -525,7 +547,18 @@ aside.DiscussionPage-list .DiscussionListItem {
 		background: @layer-2-color !important;
 	}
 
-	.dropdown-backdrop, .drawer-backdrop {
+	.DiscussionPage-discussion > .container, .UserPage > .container {
+		border-top: 1px solid @Fluent-border;
+		border-bottom: 1px solid @Fluent-border;
+		background-color: @obj-color;
+		padding: 0 16px 16px;
+	}
+	
+	.unread .DiscussionListItem-count {
+		color: white;
+	}
+
+	.dropdown-backdrop, .drawer-backdrop, .composer-backdrop {
 		background-color: fade(#000, 30%);
 	}
 
@@ -602,7 +635,18 @@ aside.DiscussionPage-list .DiscussionListItem {
 		margin: 12px 0;
 	}
 
-	.Dropdown-menu span.Button-label {
+	.DiscussionPage-stream, .PostsUserPage {
+		padding: 0 16px 16px;
+		border: 1px solid @Fluent-border;
+		background-color: @obj-color;
+		border-radius: 8px;
+	}
+	
+	.PostsUserPage {
+		padding: 16px;
+	}
+	
+		.Dropdown-menu span.Button-label {
 		font-size: 14px;
 	}
 
@@ -611,6 +655,7 @@ aside.DiscussionPage-list .DiscussionListItem {
 			padding: 16px;
 			border-radius: 8px;
 			border: 1px solid var(--control-bg);
+			background-color: @obj-color;
 			margin-right: 0;
 			.shadow16();
 		}
