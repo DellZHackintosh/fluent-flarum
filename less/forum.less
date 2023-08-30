@@ -586,6 +586,15 @@ aside.DiscussionPage-list .DiscussionListItem {
 		&:hover {
 			background-color: var(--button-bg-hover);
 		}
+		& > svg {
+			--carousel-button-svg-filter: none;
+			& when (@config-dark-mode = false) {
+				stroke: black;
+			}
+			& when (@config-dark-mode = true) {
+				stroke: white;
+			}
+		}
 	}
 }
 
@@ -646,7 +655,7 @@ aside.DiscussionPage-list .DiscussionListItem {
 		}
 
 		.App-titleControl>.Button>*, .App-primaryControl>.Button, #home-link, .App-backControl>.Button, .normal .ComposerBody-header>li:first-child h3 {
-				app-region: no-drag;
+			app-region: no-drag;
 		}
 
 		.App, .Composer:not(.minimized) {
