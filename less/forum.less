@@ -1,5 +1,6 @@
 @header-bg-light: saturate(average(average(fade(@config-primary-color, 30%), white), @layer-1-color), 30%);
 @header-bg-dark: saturate(average(average(fade(@config-primary-color, 30%), black), @layer-1-color), 30%);
+@backdrop: fade(#000, 30%);
 .define-colors(@config-dark-mode);
 .define-colors(false) {
 	@body-bg: lighten(average(average(fade(@config-primary-color, 30%), white), @layer-2-color), 1%);
@@ -127,6 +128,7 @@
 	--accent-color: var(--primary-color);
 	--button-bg: @obj-color;
 	--button-bg-hover: fade(#999, 10%);
+	--fancybox-bg: @backdrop;
 	& when (@config-dark-mode = false) {
 		--discussion-list-item-bg-hover: lighten(@obj-color, 1%);
 	}
@@ -157,6 +159,10 @@ body {
 	border: 1px solid transparent;
 	box-shadow: 0px 0.3px ~"rgb(111 111 111 / 60%)";
 	background: padding-box linear-gradient(@Switch-button-color, @Switch-button-color), border-box @button-border, border-box @Switch-button-color;
+}
+
+button.Button.Button--primary {
+	--button-color: white;
 }
 
 button.Button.Button--primary, .FoFLogInButton, .SubscriptionMenu-button--follow {
@@ -214,7 +220,7 @@ div.PostUser-bar--empty {
 	border-radius: 4px;
 }
 
-.Dropdown-menu>li>a:hover, .Dropdown-menu>li>button:hover {
+.Dropdown .Dropdown-menu>li>a:hover, .Dropdown .Dropdown-menu>li>button:hover {
 	background: var(--button-bg-hover);
 }
 
@@ -276,7 +282,7 @@ p.description, p.Settings-theme--selection_description {
 }
 
 .backdrop {
-	background-color: fade(#000, 30%);
+	background-color: @backdrop;
 }
 
 .IndexPage>.container {
@@ -332,40 +338,24 @@ p.description, p.Settings-theme--selection_description {
 	}
 }
 
-.FormControl:not(textarea, .Form--centered, .FormControl[type=text], .Form--centered .FormControl[type=email], .Form--centered .FormControl[type=password], .ComposerBody-header h3 input, #header input[type=search]) {
+.FormControl[type=text],
+.FormControl[type=email],
+.FormControl[type=password] {
+	border-radius: 4px;
 	border: 1px solid transparent;
-
-	& when (@config-dark-mode =false) {
-		background: padding-box linear-gradient(var(--control-bg), var(--control-bg)), border-box linear-gradient(#ddd ~"calc(100% - 1px)", #9a9a9a ~"calc(100% - 1px)", #9a9a9a);
-	}
-
-	& when (@config-dark-mode =true) {
-		background: padding-box linear-gradient(var(--control-bg), var(--control-bg)), border-box linear-gradient(#303030 ~"calc(100% - 1px)", #9a9a9a ~"calc(100% - 1px)", #9a9a9a);
-	}
+	background: padding-box linear-gradient(@obj-color, @obj-color), border-box linear-gradient(fade(#999, 20%) ~"calc(100% - 2px)", #999 ~"calc(100% - 2px)", #999);
 }
 
-.FormControl:not(textarea, .Form--centered, .FormControl[type=text], .Form--centered .FormControl[type=email], .Form--centered .FormControl[type=password], .ComposerBody-header h3 input, #header input[type=search]):focus {
-	& when (@config-dark-mode =false) {
-		background: padding-box linear-gradient(var(--body-bg), var(--body-bg)), border-box linear-gradient(#ddd ~"calc(100% - 1px)", var(--primary-color) ~"calc(100% - 1px)", var(--primary-color))
-	}
-
-	& when (@config-dark-mode =true) {
-		background: padding-box linear-gradient(var(--body-bg), var(--body-bg)), border-box linear-gradient(#303030 ~"calc(100% - 1px)", var(--primary-color) ~"calc(100% - 1px)", var(--primary-color))
-	}
+.FormControl[type=text]:focus,
+.FormControl[type=email]:focus,
+.FormControl[type=password]:focus {
+	background: padding-box linear-gradient(@obj-color, @obj-color), border-box linear-gradient(fade(#999, 20%) ~"calc(100% - 2px)", var(--primary-color) ~"calc(100% - 2px)", var(--primary-color)) !important;
 }
 
 .Form--centered .FormControl[type=text],
 .Form--centered .FormControl[type=email],
 .Form--centered .FormControl[type=password] {
-	border-radius: 4px;
 	border: 2px solid transparent;
-	background: padding-box linear-gradient(var(--body-bg), var(--body-bg)), border-box linear-gradient(fade(#999, 20%) ~"calc(100% - 2px)", #999 ~"calc(100% - 2px)", #999);
-}
-
-.Form--centered .FormControl[type=text]:focus,
-.Form--centered .FormControl[type=email]:focus,
-.Form--centered .FormControl[type=password]:focus {
-	background: padding-box linear-gradient(var(--body-bg), var(--body-bg)), border-box linear-gradient(fade(#999, 20%) ~"calc(100% - 2px)", var(--primary-color) ~"calc(100% - 2px)", var(--primary-color)) !important;
 }
 
 .Checkbox--switch .Checkbox-display {
@@ -428,6 +418,26 @@ p.description, p.Settings-theme--selection_description {
 	}
 	& .DiscussionListItem-info, & .DiscussionListItem-count, & .DiscussionListItem-info .item-excerpt {
 		color: @details-second-font-color;
+	}
+}
+
+.NotificationList-content {
+	padding-bottom: 12px;
+}
+
+ul.NotificationGroup-content {
+	display: flex;
+    flex-direction: column;
+    row-gap: 12px;
+	& > li {
+		margin: 0 8px;
+		border: 1px solid @Fluent-border;
+		border-radius: 4px;
+		background-color: @obj-color;
+		--muted-color: @details-second-font-color;
+		& .Notification-excerpt {
+			color: @details-second-font-color;
+		}
 	}
 }
 
@@ -541,17 +551,78 @@ aside.DiscussionPage-list .DiscussionListItem {
 	}
 }
 
+.fancybox__toolbar {
+	app-region: drag;
+}
+
+.fancybox__toolbar__items--left {
+	margin-left: ~"env(titlebar-area-x, 0)";
+	margin-right: -100px;
+}
+
+.fancybox__toolbar__items {
+	height: 48px;
+}
+
+.carousel__viewport {
+	border-top: 1px solid @Fluent-border;
+	border-radius: 8px;
+	background-color: @layer-3-color;
+	margin-bottom: 4px;
+}
+
+.fancybox__toolbar__items--right {
+	margin-right: ~"calc(100% - env(titlebar-area-width, 100%) - env(titlebar-area-x, 0px) + 16px)";
+	border: 1px solid @Fluent-border;
+	border-radius: 8px;
+	background-color: @layer-1-color;
+	padding: 8px 12px;
+	column-gap: 12px;
+	& > .carousel__button {
+		--carousel-button-width: 32px;
+		--carousel-button-height: 32px;
+		app-region: no-drag;
+		border-radius: 4px;
+		&:hover {
+			background-color: var(--button-bg-hover);
+		}
+	}
+}
+
 @media (max-width: 767.98px) {
 	.DiscussionListItem.Slidable .Slidable-underneath {
 		border-radius: 0 4px 4px 0;
 		background: @layer-2-color !important;
 	}
 
-	.DiscussionPage-discussion > .container, .UserPage > .container {
+	& when (@config-dark-mode = false) {
+		.Slidable .Slidable-underneath .fa-ellipsis-v {
+			color: black;
+		}
+	}
+
+	.UserPage > .container {
+		padding: 0;
+		& .PostsUserPage .Placeholder {
+			margin: 40px 0;
+		}
+		& .DiscussionList {
+			margin: 0;
+		}
+	}
+
+	.DiscussionPage-discussion > .container {
+		padding: 0 16px 16px;
+	}
+
+	.PostsUserPage {
+		padding: 16px;
+	}
+
+	.DiscussionPage-discussion > .container, .PostsUserPage {
 		border-top: 1px solid @Fluent-border;
 		border-bottom: 1px solid @Fluent-border;
 		background-color: @obj-color;
-		padding: 0 16px 16px;
 	}
 	
 	.unread .DiscussionListItem-count {
@@ -559,7 +630,7 @@ aside.DiscussionPage-list .DiscussionListItem {
 	}
 
 	.dropdown-backdrop, .drawer-backdrop, .composer-backdrop {
-		background-color: fade(#000, 30%);
+		background-color: @backdrop;
 	}
 
 	.Dropdown .Dropdown-menu {
@@ -646,7 +717,7 @@ aside.DiscussionPage-list .DiscussionListItem {
 		padding: 16px;
 	}
 	
-		.Dropdown-menu span.Button-label {
+	.Dropdown-menu span.Button-label {
 		font-size: 14px;
 	}
 
