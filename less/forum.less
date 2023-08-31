@@ -205,8 +205,13 @@ div.PostUser-bar--empty {
 	height: 3px;
 }
 
-.Dropdown-menu {
+.PostUser .UserCard {
+	--border-radius: 8px;
 	.shadow28();
+}
+
+.Dropdown-menu {
+	.shadow16();
 	padding: 0;
 	border: 1px solid @Fluent-border;
 	border-radius: 8px;
@@ -220,7 +225,7 @@ div.PostUser-bar--empty {
 	border-radius: 4px;
 }
 
-.Dropdown .Dropdown-menu>li>a:hover, .Dropdown .Dropdown-menu>li>button:hover {
+.Dropdown-menu>li>a:hover, .Dropdown-menu>li>button:hover {
 	background: var(--button-bg-hover);
 }
 
@@ -433,8 +438,14 @@ ul.NotificationGroup-content {
 		margin: 0 8px;
 		border: 1px solid @Fluent-border;
 		border-radius: 4px;
-		background-color: @obj-color;
+		overflow: hidden;
 		--muted-color: @details-second-font-color;
+		& > a {
+			background-color: @control-bg;
+			&.Notification:hover, &.Notification:focus, &.Notification:focus-within, &.unread {
+				background-color: @obj-color;
+			}
+		}
 		& .Notification-excerpt {
 			color: @details-second-font-color;
 		}
@@ -449,9 +460,14 @@ ul.NotificationGroup-content {
 	border: none;
 }
 
-aside.DiscussionPage-list .DiscussionListItem {
-	margin: 12px 8px;
-	border-radius: 4px;
+aside.DiscussionPage-list {
+	border: 1px solid @Fluent-border;
+	border-radius: 8px;
+	.shadow16();
+	& .DiscussionListItem {
+		margin: 12px 8px;
+		border-radius: 4px;
+	}
 }
 
 .PostQuoteButton {
@@ -572,6 +588,7 @@ aside.DiscussionPage-list .DiscussionListItem {
 }
 
 .fancybox__toolbar__items--right {
+	margin-left: -500px;
 	margin-right: ~"calc(100% - env(titlebar-area-width, 100%) - env(titlebar-area-x, 0px) + 16px)";
 	border: 1px solid @Fluent-border;
 	border-radius: 8px;
@@ -599,6 +616,11 @@ aside.DiscussionPage-list .DiscussionListItem {
 }
 
 @media (max-width: 767.98px) {
+	.IndexPage-toolbar {
+		margin-left: -6px;
+    	margin-right: -6px;
+	}
+
 	.DiscussionListItem.Slidable .Slidable-underneath {
 		border-radius: 0 4px 4px 0;
 		background: @layer-2-color !important;
@@ -611,7 +633,6 @@ aside.DiscussionPage-list .DiscussionListItem {
 	}
 
 	.UserPage > .container {
-		padding: 0;
 		& .PostsUserPage .Placeholder {
 			margin: 40px 0;
 		}
@@ -624,7 +645,12 @@ aside.DiscussionPage-list .DiscussionListItem {
 		padding: 0 16px 16px;
 	}
 
+	.UserPage .DiscussionsUserPage {
+		margin: 0 -15px;
+	}
+
 	.PostsUserPage {
+		margin: 0 -15px;
 		padding: 16px;
 	}
 

@@ -9,17 +9,17 @@ return [
     (new Extend\Frontend('forum'))
         ->content(function (Document $document) {
             $document->head[] = '<script>(function () {
+                var r = getComputedStyle(document.querySelector(":root"));
+
                 function changeTitleColor() {
-                    var r = document.querySelector(":root");
-                    var rs = getComputedStyle(r);
-                    if (rs.getPropertyValue("--colored-titlebar") === "false") {
+                    if (r.getPropertyValue("--colored-titlebar") === "false") {
                         var m = document.querySelector(`meta[name="theme-color"]`);
-                        m.content = rs.getPropertyValue("--header-bg");
+                        m.content = r.getPropertyValue("--header-bg");
                     };
                 }
             
                 changeTitleColor();
-                new Promise(function (resolve) {
+                if (r.getPropertyValue("--colored-titlebar") === "false") new Promise(function (resolve) {
                     var id = setInterval(function () {
                         if (flarum) {
                             if (flarum.extensions) {
