@@ -38,7 +38,7 @@
 	@header-bg: @titlebar-bg;
 }
 
-.shadow2 {
+.shadow2() {
 	& when (@config-dark-mode =false) {
 		--low-elevation-ramp: 0px 0.5 * @elevation-height 1 * @elevation-height 0px fade(#000, 14%),
 			0px 0.5 * @elevation-height 1 * @elevation-height 0 fade(#000, 14%);
@@ -53,7 +53,7 @@
 	box-shadow: var(--low-elevation-ramp);
 }
 
-.shadow4 {
+.shadow4() {
 	& when (@config-dark-mode =false) {
 		--low-elevation-ramp: 0px 0.5 * @elevation-height 1 * @elevation-height 0px fade(#000, 14%),
 			0px 0.5 * @elevation-height 1 * @elevation-height 0 fade(#000, 14%);
@@ -68,7 +68,7 @@
 	box-shadow: var(--low-elevation-ramp);
 }
 
-.shadow8 {
+.shadow8() {
 	& when (@config-dark-mode =false) {
 		--low-elevation-ramp: 0px 0.5 * @elevation-height 1 * @elevation-height 0px fade(#000, 14%),
 			0px 0.5 * @elevation-height 1 * @elevation-height 0 fade(#000, 14%);
@@ -83,7 +83,7 @@
 	box-shadow: var(--low-elevation-ramp);
 }
 
-.shadow16 {
+.shadow16() {
 	& when (@config-dark-mode =false) {
 		--low-elevation-ramp: 0px 0.5 * @elevation-height 1 * @elevation-height 0px fade(#000, 14%),
 			0px 0.5 * @elevation-height 1 * @elevation-height 0 fade(#000, 14%);
@@ -98,7 +98,7 @@
 	box-shadow: var(--low-elevation-ramp);
 }
 
-.shadow28 {
+.shadow28() {
 	& when (@config-dark-mode =false) {
 		--high-elevation-ramp: 0px 0.5 * @elevation-height 1 * @elevation-height 0px fade(#000, 24%),
 			0px 0px 8px 0px fade(#000, 20%);
@@ -113,7 +113,7 @@
 	box-shadow: var(--high-elevation-ramp);
 }
 
-.shadow64 {
+.shadow64() {
 	& when (@config-dark-mode =false) {
 		--high-elevation-ramp: 0px 0.5 * @elevation-height 1 * @elevation-height 0px fade(#000, 24%),
 			0px 0px 8px 0px fade(#000, 20%);
@@ -162,16 +162,22 @@ body {
 	border-top: 1px solid @Fluent-border;
 }
 
-.Button:not(.Button--flat, .App-header .Button, .App-header .Button:hover, .UserCard .Button, .UserCard .Button:hover, .Button--primary, .Button--link, .FoFLogInButton, .SubscriptionMenu-button--follow) {
+.Button:not(.Button--flat, .App-header .Button, .App-header .Button:hover, .UserCard .Button, .UserCard .Button:hover, .Button--primary, .Button--link, .FoFLogInButton, .SubscriptionMenu-button--follow), .Select>.Select-input {
 	border: 1px solid transparent;
 	background: padding-box linear-gradient(@Switch-button-color, @Switch-button-color), border-box @button-border, border-box @Switch-button-color;
+}
+
+.Post-flagged .Button {
+	& when (@config-dark-mode =false) {
+		color: black;
+	}
 }
 
 .Button.Button--primary {
 	--button-color: white;
 }
 
-.Button.Button--primary, .FoFLogInButton, .SubscriptionMenu-button--follow {
+.Button.Button--primary, .FoFLogInButton, .SubscriptionMenu-button--follow, .Post-flagged .Button {
 	& when (@config-dark-mode =false) {
 		background: ~"padding-box linear-gradient(var(--button-bg), var(--button-bg)), border-box linear-gradient(#ffffff14 90%, #00000066 100%), border-box var(--button-bg)";
 	}
@@ -182,25 +188,10 @@ body {
 	border: 1px solid transparent;
 }
 
-.Button:not(.Button--flat, .App-header .Button, .App-header .Button:hover, .UserCard .Button, .UserCard .Button:hover):active {
+.Button:not(.Button--flat, .App-header .Button, .App-header .Button:hover, .UserCard .Button, .UserCard .Button:hover):active, .Select>.Select-input:focus {
 	background: var(--button-bg);
 	border: 1px solid fade(#fff, 13%);
 	box-shadow: none;
-}
-
-.Select>.Select-input {
-	& when (@config-dark-mode =false) {
-		background: padding-box linear-gradient(var(--control-bg), var(--control-bg)), border-box linear-gradient(fade(#fff, 25%) 90%, fade(#000, 25%) 100%), border-box var(--control-bg);
-	}
-
-	& when (@config-dark-mode =true) {
-		background: padding-box linear-gradient(var(--control-bg), var(--control-bg)), border-box linear-gradient(fade(#fff, 10%) 90%, fade(#000, 10%) 100%), border-box var(--control-bg);
-	}
-	border: 1px solid transparent;
-}
-
-.Select>.Select-input:focus {
-	background: padding-box linear-gradient(var(--primary-color), var(--primary-color)), border-box linear-gradient(fade(#fff, 25%) 90%, fade(#000, 25%) 100%), border-box var(--primary-color);
 }
 
 div.PostUser-bar--empty {
@@ -292,7 +283,9 @@ p.description, p.Settings-theme--selection_description {
 .Modal-content {
 	border-radius: 8px;
 	outline: 1px solid @Fluent-border;
-	background-color: var(--header-bg);
+	& when (@config-colored-header = false) {
+		background-color: var(--header-bg);
+	}
 }
 
 .backdrop {
