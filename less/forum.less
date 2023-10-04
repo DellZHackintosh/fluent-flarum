@@ -17,6 +17,7 @@
 	@titlebar-bg: @header-bg-light;
 	@Switch-button-color: #ffffff;
 	@button-border: linear-gradient(#e5e5e5 90%, #ccc 100%);
+	@ControlFillColorDefault: ~"#FFFFFFB3";
 }
 .define-colors(true) {
 	@body-bg: lighten(average(average(fade(@config-primary-color, 30%), black), @layer-2-color), 2%);
@@ -32,6 +33,7 @@
 	@titlebar-bg: @header-bg-dark;
 	@Switch-button-color: #2d2d2d;
 	@button-border: linear-gradient(#303030, #303030);
+	@ControlFillColorDefault: ~"#FFFFFF0F";
 }
 .define-header(@config-colored-header);
 .define-header(false) {
@@ -167,7 +169,7 @@ body {
 	background: padding-box linear-gradient(@Switch-button-color, @Switch-button-color), border-box @button-border, border-box @Switch-button-color;
 }
 
-.Post-flagged .Button {
+.Post-flagged .Button, .Post-flagged .Button:hover, .Post-flagged .Button:active, .Post-flagged .Button:focus, .Post-flagged .Button.focus {
 	& when (@config-dark-mode =false) {
 		color: black;
 	}
@@ -177,7 +179,7 @@ body {
 	--button-color: white;
 }
 
-.Button.Button--primary, .FoFLogInButton, .SubscriptionMenu-button--follow, .Post-flagged .Button {
+.Button.Button--primary, .FoFLogInButton, .SubscriptionMenu-button--follow {
 	& when (@config-dark-mode =false) {
 		background: ~"padding-box linear-gradient(var(--button-bg), var(--button-bg)), border-box linear-gradient(#ffffff14 90%, #00000066 100%), border-box var(--button-bg)";
 	}
@@ -205,6 +207,7 @@ div.PostUser-bar--empty {
 .PostUser .UserCard {
 	--border-radius: 8px;
 	.shadow28();
+	outline: 1px solid @Fluent-border;
 }
 
 .Dropdown-menu:not(.sideNav .Dropdown--select .Dropdown-menu, .PostStreamScrubber .Dropdown-menu) {
@@ -280,6 +283,10 @@ p.description, p.Settings-theme--selection_description {
 	font-weight: bold;
 }
 
+.Modal-body {
+	background-color: @LayerFillColorDefault;
+}
+
 .Modal-content {
 	border-radius: 8px;
 	outline: 1px solid @Fluent-border;
@@ -346,22 +353,30 @@ p.description, p.Settings-theme--selection_description {
 
 .FormControl[type=text],
 .FormControl[type=email],
-.FormControl[type=password] {
+.FormControl[type=password],
+textarea.FormControl {
 	border-radius: 4px;
 	border: 1px solid transparent;
-	background: padding-box linear-gradient(@obj-color, @obj-color), border-box linear-gradient(fade(#999, 20%) ~"calc(100% - 2px)", #999 ~"calc(100% - 2px)", #999);
+	& when (@config-dark-mode = false) {
+		background: padding-box linear-gradient(@ControlFillColorDefault, @ControlFillColorDefault), border-box linear-gradient(~"#0000000F" ~"calc(100% - 1px)", ~"#00000072" ~"calc(100% - 1px)", ~"#00000072");
+	}
+	& when (@config-dark-mode = true) {
+		background: padding-box linear-gradient(@ControlFillColorDefault, @ControlFillColorDefault), border-box linear-gradient(~"#FFFFFF12" ~"calc(100% - 1px)", ~"#FFFFFF8B" ~"calc(100% - 1px)", ~"#FFFFFF8B");
+	}
 }
 
 .FormControl[type=text]:focus,
 .FormControl[type=email]:focus,
-.FormControl[type=password]:focus {
-	background: padding-box linear-gradient(@obj-color, @obj-color), border-box linear-gradient(fade(#999, 20%) ~"calc(100% - 2px)", var(--primary-color) ~"calc(100% - 2px)", var(--primary-color)) !important;
-}
-
-.Form--centered .FormControl[type=text],
-.Form--centered .FormControl[type=email],
-.Form--centered .FormControl[type=password] {
-	border: 2px solid transparent;
+.FormControl[type=password]:focus,
+.Modal-body textarea.FormControl:focus {
+	& when (@config-dark-mode = false) {
+		background: padding-box linear-gradient(@ControlFillColorDefault, @ControlFillColorDefault), border-box linear-gradient(~"#0000000F" ~"calc(100% - 2px)", var(--primary-color) ~"calc(100% - 2px)", var(--primary-color)) !important;
+	}
+	& when (@config-dark-mode = true) {
+		background: padding-box linear-gradient(@ControlFillColorDefault, @ControlFillColorDefault), border-box linear-gradient(~"#FFFFFF12" ~"calc(100% - 2px)", var(--primary-color) ~"calc(100% - 2px)", var(--primary-color)) !important;
+	}
+	border-width: 1px 1px 2px 1px;
+	border-color: transparent;
 }
 
 .Checkbox--switch .Checkbox-display {
@@ -442,9 +457,14 @@ ul.NotificationGroup-content {
 		overflow: hidden;
 		--muted-color: @details-second-font-color;
 		& > a {
-			background-color: @CardBackgroundFillColorDefault;
+			background-color: var(--button-bg-hover);
 			&.Notification:hover, &.Notification:focus, &.Notification:focus-within, &.unread {
-				background-color: fade(@obj-color, 80%);
+				& when (@config-dark-mode = false) {
+					background-color: fade(@CardBackgroundFillColorDefault, 80%);
+				}
+				& when (@config-dark-mode = true) {
+					background-color: fade(@CardBackgroundFillColorDefault, 16%);
+				}
 			}
 		}
 		& .Notification-excerpt {
