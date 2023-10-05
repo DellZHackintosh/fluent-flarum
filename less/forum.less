@@ -13,11 +13,14 @@
 	@CardBackgroundFillColorDefault: fade(white, 70%);
 	@obj-title-color: #191a1a;
 	@Fluent-border: fade(black, 5.9%);
+	@shadow-outline: 0 0 0 1px @Fluent-border;
 	@details-second-font-color: #5e5e5e;
 	@titlebar-bg: @header-bg-light;
 	@Switch-button-color: #ffffff;
 	@button-border: linear-gradient(#e5e5e5 90%, #ccc 100%);
 	@ControlFillColorDefault: ~"#FFFFFFB3";
+	@low-elevation-ramp: ~"0px calc(0.5 * var(--elevation-height)) calc(1 * var(--elevation-height)) 0px" fade(#000, 14%), ~"0px calc(0.5 * var(--elevation-height)) calc(1 * var(--elevation-height)) 0" fade(#000, 14%);
+	@high-elevation-ramp: ~"0px calc(0.5 * var(--elevation-height)) calc(1 * var(--elevation-height)) 0px" fade(#000, 24%), ~"0px 0px 8px 0px" fade(#000, 20%);
 }
 .define-colors(true) {
 	@body-bg: lighten(average(average(fade(@config-primary-color, 30%), black), @layer-2-color), 2%);
@@ -29,11 +32,14 @@
 	@CardBackgroundFillColorDefault: fade(white, 5%);
 	@obj-title-color: white;
 	@Fluent-border: fade(black, 9.8%);
+	@shadow-outline: 0 0 0 1px @Fluent-border;
 	@details-second-font-color: #cfcfcf;
 	@titlebar-bg: @header-bg-dark;
 	@Switch-button-color: #2d2d2d;
 	@button-border: linear-gradient(#303030, #303030);
 	@ControlFillColorDefault: ~"#FFFFFF0F";
+	@low-elevation-ramp: ~"0px calc(0.5 * var(--elevation-height)) calc(1 * var(--elevation-height)) 0px" fade(#000, 28%), ~"0px calc(0.5 * var(--elevation-height)) calc(1 * var(--elevation-height)) 0px" fade(#000, 14%);
+	@high-elevation-ramp: ~"0px calc(0.5 * var(--elevation-height)) calc(1 * var(--elevation-height)) 0px" fade(#000, 28%), ~"0px 0px 2px 0px" fade(#000, 20%);
 }
 .define-header(@config-colored-header);
 .define-header(false) {
@@ -41,93 +47,27 @@
 }
 
 .shadow2() {
-	& when (@config-dark-mode =false) {
-		--low-elevation-ramp: 0px 0.5 * @elevation-height 1 * @elevation-height 0px fade(#000, 14%),
-			0px 0.5 * @elevation-height 1 * @elevation-height 0 fade(#000, 14%);
-	}
-
-	& when (@config-dark-mode =true) {
-		--low-elevation-ramp: 0px 0.5 * @elevation-height 1 * @elevation-height 0px fade(#000, 28%),
-			0px 0.5 * @elevation-height 1 * @elevation-height 0px fade(#000, 14%);
-	}
-
-	@elevation-height: 2px;
-	box-shadow: var(--low-elevation-ramp);
+	--elevation-height: 2px;
 }
 
 .shadow4() {
-	& when (@config-dark-mode =false) {
-		--low-elevation-ramp: 0px 0.5 * @elevation-height 1 * @elevation-height 0px fade(#000, 14%),
-			0px 0.5 * @elevation-height 1 * @elevation-height 0 fade(#000, 14%);
-	}
-
-	& when (@config-dark-mode =true) {
-		--low-elevation-ramp: 0px 0.5 * @elevation-height 1 * @elevation-height 0px fade(#000, 28%),
-			0px 0.5 * @elevation-height 1 * @elevation-height 0px fade(#000, 14%);
-	}
-
-	@elevation-height: 4px;
-	box-shadow: var(--low-elevation-ramp);
+	--elevation-height: 4px;
 }
 
 .shadow8() {
-	& when (@config-dark-mode =false) {
-		--low-elevation-ramp: 0px 0.5 * @elevation-height 1 * @elevation-height 0px fade(#000, 14%),
-			0px 0.5 * @elevation-height 1 * @elevation-height 0 fade(#000, 14%);
-	}
-
-	& when (@config-dark-mode =true) {
-		--low-elevation-ramp: 0px 0.5 * @elevation-height 1 * @elevation-height 0px fade(#000, 28%),
-			0px 0.5 * @elevation-height 1 * @elevation-height 0px fade(#000, 14%);
-	}
-
-	@elevation-height: 8px;
-	box-shadow: var(--low-elevation-ramp);
+	--elevation-height: 8px;
 }
 
 .shadow16() {
-	& when (@config-dark-mode =false) {
-		--low-elevation-ramp: 0px 0.5 * @elevation-height 1 * @elevation-height 0px fade(#000, 14%),
-			0px 0.5 * @elevation-height 1 * @elevation-height 0 fade(#000, 14%);
-	}
-
-	& when (@config-dark-mode =true) {
-		--low-elevation-ramp: 0px 0.5 * @elevation-height 1 * @elevation-height 0px fade(#000, 28%),
-			0px 0.5 * @elevation-height 1 * @elevation-height 0px fade(#000, 14%);
-	}
-
-	@elevation-height: 16px;
-	box-shadow: var(--low-elevation-ramp);
+	--elevation-height: 16px;
 }
 
 .shadow28() {
-	& when (@config-dark-mode =false) {
-		--high-elevation-ramp: 0px 0.5 * @elevation-height 1 * @elevation-height 0px fade(#000, 24%),
-			0px 0px 8px 0px fade(#000, 20%);
-	}
-
-	& when (@config-dark-mode =true) {
-		--high-elevation-ramp: 0px 0.5 * @elevation-height 1 * @elevation-height 0px fade(#000, 28%),
-			0px 0px 2px 0px fade(#000, 20%);
-	}
-
-	@elevation-height: 28px;
-	box-shadow: var(--high-elevation-ramp);
+	--elevation-height: 28px;
 }
 
 .shadow64() {
-	& when (@config-dark-mode =false) {
-		--high-elevation-ramp: 0px 0.5 * @elevation-height 1 * @elevation-height 0px fade(#000, 24%),
-			0px 0px 8px 0px fade(#000, 20%);
-	}
-
-	& when (@config-dark-mode =true) {
-		--high-elevation-ramp: 0px 0.5 * @elevation-height 1 * @elevation-height 0px fade(#000, 28%),
-			0px 0px 2px 0px fade(#000, 20%);
-	}
-
-	@elevation-height: 64px;
-	box-shadow: var(--high-elevation-ramp);
+	--elevation-height: 64px;
 }
 
 :root {
@@ -207,13 +147,13 @@ div.PostUser-bar--empty {
 .PostUser .UserCard {
 	--border-radius: 8px;
 	.shadow28();
-	outline: 1px solid @Fluent-border;
+	box-shadow: @high-elevation-ramp, @shadow-outline;
 }
 
 .Dropdown-menu:not(.sideNav .Dropdown--select .Dropdown-menu, .PostStreamScrubber .Dropdown-menu) {
 	.shadow16();
+	box-shadow: @low-elevation-ramp, @shadow-outline;
 	padding: 0;
-	outline: 1px solid @Fluent-border;
 	border-radius: 8px;
 	background-image: var(--noise-asset);
 	background-attachment: fixed;
@@ -251,7 +191,7 @@ p.description, p.Settings-theme--selection_description {
 }
 
 .SettingsPage>ul>li {
-	outline: 1px solid @Fluent-border;
+	box-shadow: @shadow-outline;
 	border-radius: 4px;
 	background-color: @LayerFillColorDefault;
 	margin-bottom: 12px;
@@ -268,6 +208,7 @@ p.description, p.Settings-theme--selection_description {
 	margin: 12px;
 	border-radius: 8px;
 	.shadow8();
+	box-shadow: @low-elevation-ramp, @shadow-outline;
 }
 
 .darkenBackground {
@@ -277,6 +218,7 @@ p.description, p.Settings-theme--selection_description {
 .Modal {
 	border-radius: 8px;
 	.shadow64();
+	box-shadow: @high-elevation-ramp;
 }
 
 .Modal-header h3 {
@@ -289,7 +231,7 @@ p.description, p.Settings-theme--selection_description {
 
 .Modal-content {
 	border-radius: 8px;
-	outline: 1px solid @Fluent-border;
+	box-shadow: @shadow-outline;
 	& when (@config-colored-header = false) {
 		background-color: var(--header-bg);
 	}
@@ -410,6 +352,7 @@ textarea.FormControl {
 
 .AfruxWidgets-Widget-content {
 	.shadow2();
+	box-shadow: @low-elevation-ramp, @shadow-outline;
 }
 
 .Alert {
@@ -418,11 +361,13 @@ textarea.FormControl {
 
 .AlertManager .Alert {
 	.shadow28();
+	box-shadow: @high-elevation-ramp, @shadow-outline;
 }
 
 .Composer {
 	.shadow64();
 	border-radius: 8px 8px 0 0;
+	box-shadow: @high-elevation-ramp;
 }
 
 .ComposerBody-loading {
@@ -431,7 +376,7 @@ textarea.FormControl {
 
 .DiscussionListItem {
 	margin: 12px 8px;
-    outline: 1px solid @Fluent-border;
+    box-shadow: @shadow-outline;
     border-radius: 4px;
     background-color: @CardBackgroundFillColorDefault;
 	.DiscussionList:not(.DiscussionList--searchResults) & .read .DiscussionListItem-title, .DiscussionList:not(.DiscussionList--searchResults) & .unread .DiscussionListItem-title {
@@ -452,7 +397,7 @@ ul.NotificationGroup-content {
     row-gap: 12px;
 	& > li {
 		margin: 0 8px;
-		outline: 1px solid @Fluent-border;
+		box-shadow: @shadow-outline;
 		border-radius: 4px;
 		overflow: hidden;
 		--muted-color: @details-second-font-color;
@@ -482,9 +427,9 @@ ul.NotificationGroup-content {
 }
 
 aside.DiscussionPage-list {
-	outline: 1px solid @Fluent-border;
 	border-radius: 8px;
 	.shadow16();
+	box-shadow: @low-elevation-ramp, @shadow-outline;
 	& .DiscussionListItem {
 		margin: 12px 8px;
 		border-radius: 4px;
@@ -544,6 +489,7 @@ aside.DiscussionPage-list {
 
 .Badge:not(.Badge--social) {
 	.shadow4();
+	box-shadow: @low-elevation-ramp;
 }
 
 .disabled .Scrubber-bar {
@@ -563,9 +509,10 @@ aside.DiscussionPage-list {
 	border-radius: 50%;
 	margin-left: -9px;
 	transition: border-width 0.1s;
-	outline: 1px solid @Fluent-border;
+	box-shadow: @shadow-outline;
 	&:not(.disabled .Scrubber-bar) {
 		.shadow4();
+		box-shadow: @low-elevation-ramp, @shadow-outline;
 	}
 }
 
@@ -637,6 +584,7 @@ aside.DiscussionPage-list {
 @media (max-width: 767.98px) {
 	.App-drawer {
 		.shadow16();
+		box-shadow: @low-elevation-ramp, @shadow-outline;
 	}
 
 	.IndexPage-toolbar {
@@ -678,7 +626,7 @@ aside.DiscussionPage-list {
 	}
 
 	.DiscussionPage-discussion > .container, .PostsUserPage {
-		outline: 1px solid @Fluent-border;
+		box-shadow: @shadow-outline;
 		background-color: @obj-color;
 	}
 	
@@ -692,6 +640,7 @@ aside.DiscussionPage-list {
 
 	.Dropdown .Dropdown-menu {
 		.shadow28();
+		box-shadow: @high-elevation-ramp, @shadow-outline;
 		&>li>a, &>li>button {
 			background: transparent;
 			&:hover {
@@ -748,6 +697,7 @@ aside.DiscussionPage-list {
 @media (min-width:768px) {
 	.Composer.active:not(.fullScreen) {
 		.shadow64();
+		box-shadow: @high-elevation-ramp, @shadow-outline;
 	}
 
 	@supports (backdrop-filter: blur(30px)) {
@@ -778,7 +728,7 @@ aside.DiscussionPage-list {
 				background-image: var(--noise-asset);
 				backdrop-filter: blur(30px) saturate(1.25);
 				.shadow4();
-				outline: 1px solid @Fluent-border;
+				box-shadow: @low-elevation-ramp, @shadow-outline;
 			}
 		}
 	}
@@ -788,6 +738,7 @@ aside.DiscussionPage-list {
 		border-radius: 8px !important;
 		width: ~"calc(33.333% - 12px)";
 		.shadow4();
+		box-shadow: @low-elevation-ramp, @shadow-outline;
 	}
 
 	nav.IndexPage-nav.sideNav,
@@ -805,7 +756,7 @@ aside.DiscussionPage-list {
 
 	.DiscussionPage-stream, .PostsUserPage {
 		padding: 0 16px 16px;
-		outline: 1px solid @Fluent-border;
+		box-shadow: @shadow-outline;
 		background-color: @LayerFillColorDefault;
 		border-radius: 8px;
 	}
@@ -826,6 +777,7 @@ aside.DiscussionPage-list {
 			background-color: @obj-color;
 			margin-right: 0;
 			.shadow16();
+			box-shadow: @low-elevation-ramp;
 		}
 
 		.sideNav:after {
@@ -907,6 +859,11 @@ aside.DiscussionPage-list {
 		.Search.focused {
 			margin-left: 0;
 		}
+
+		.fullScreen .Composer-controls .Button {
+			margin-right: ~"calc(100vw - env(titlebar-area-x) - env(titlebar-area-width))" !important;
+			app-region: no-drag;
+		}
 	}
 }
 
@@ -918,6 +875,6 @@ aside.DiscussionPage-list {
 	}
 
 	.Composer {
-		outline: 1px solid @Fluent-border;
+		box-shadow: @high-elevation-ramp, @shadow-outline;
 	}
 }
