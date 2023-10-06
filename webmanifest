@@ -1,0 +1,15 @@
+{
+    "name": "Fluent Theme For Flarum",
+    "short_name": "Fluent Demo",
+    "description": "Fluent Theme Demo Site",
+    "start_url": "/",
+    "scope": "/",
+    "dir": "auto",
+    "theme_color": "#0078E4",
+    "display": "standalone",
+    "background_color": "#0078E4",
+    "display_override": [
+        "window-controls-overlay",
+        "standalone"
+    ]
+}

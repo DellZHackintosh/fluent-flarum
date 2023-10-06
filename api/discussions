@@ -1,0 +1,202 @@
+{
+    "links": {
+        "first": "http://127.0.0.1:8888/api/discussions"
+    },
+    "data": [
+        {
+            "type": "discussions",
+            "id": "3",
+            "attributes": {
+                "title": "Fluent Theme Demo Site",
+                "slug": "3-fluent-theme-demo-site",
+                "commentCount": 1,
+                "participantCount": 1,
+                "createdAt": "2023-10-06T06:51:37+00:00",
+                "lastPostedAt": "2023-10-06T06:51:37+00:00",
+                "lastPostNumber": 1,
+                "canReply": true,
+                "canRename": true,
+                "canDelete": true,
+                "canHide": true,
+                "lastReadAt": "2023-10-06T06:52:02+00:00",
+                "lastReadPostNumber": 1,
+                "canTag": true,
+                "subscription": null
+            },
+            "relationships": {
+                "user": {
+                    "data": {
+                        "type": "users",
+                        "id": "2"
+                    }
+                },
+                "lastPostedUser": {
+                    "data": {
+                        "type": "users",
+                        "id": "2"
+                    }
+                },
+                "tags": {
+                    "data": [
+                        {
+                            "type": "tags",
+                            "id": "1"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "type": "discussions",
+            "id": "2",
+            "attributes": {
+                "title": "More Test",
+                "slug": "2-more-test",
+                "commentCount": 5,
+                "participantCount": 1,
+                "createdAt": "2023-08-19T07:38:20+00:00",
+                "lastPostedAt": "2023-08-30T06:44:39+00:00",
+                "lastPostNumber": 5,
+                "canReply": true,
+                "canRename": true,
+                "canDelete": true,
+                "canHide": true,
+                "lastReadAt": "2023-08-30T06:44:41+00:00",
+                "lastReadPostNumber": 5,
+                "canTag": true,
+                "subscription": null
+            },
+            "relationships": {
+                "user": {
+                    "data": {
+                        "type": "users",
+                        "id": "1"
+                    }
+                },
+                "lastPostedUser": {
+                    "data": {
+                        "type": "users",
+                        "id": "1"
+                    }
+                },
+                "tags": {
+                    "data": [
+                        {
+                            "type": "tags",
+                            "id": "2"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "type": "discussions",
+            "id": "1",
+            "attributes": {
+                "title": "Emoji Test",
+                "slug": "1-emoji-test",
+                "commentCount": 4,
+                "participantCount": 1,
+                "createdAt": "2023-07-18T11:43:00+00:00",
+                "lastPostedAt": "2023-08-24T08:17:51+00:00",
+                "lastPostNumber": 4,
+                "canReply": true,
+                "canRename": true,
+                "canDelete": true,
+                "canHide": true,
+                "lastReadAt": "2023-08-24T08:17:53+00:00",
+                "lastReadPostNumber": 4,
+                "canTag": true,
+                "subscription": null
+            },
+            "relationships": {
+                "user": {
+                    "data": {
+                        "type": "users",
+                        "id": "1"
+                    }
+                },
+                "lastPostedUser": {
+                    "data": {
+                        "type": "users",
+                        "id": "1"
+                    }
+                },
+                "tags": {
+                    "data": [
+                        {
+                            "type": "tags",
+                            "id": "1"
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "included": [
+        {
+            "type": "users",
+            "id": "2",
+            "attributes": {
+                "username": "Test",
+                "displayName": "Test",
+                "avatarUrl": null,
+                "slug": "Test"
+            }
+        },
+        {
+            "type": "users",
+            "id": "1",
+            "attributes": {
+                "username": "Admin",
+                "displayName": "Admin",
+                "avatarUrl": null,
+                "slug": "Admin"
+            }
+        },
+        {
+            "type": "tags",
+            "id": "1",
+            "attributes": {
+                "name": "General",
+                "description": null,
+                "slug": "general",
+                "color": "#888",
+                "backgroundUrl": null,
+                "backgroundMode": null,
+                "icon": null,
+                "discussionCount": 2,
+                "position": 0,
+                "defaultSort": null,
+                "isChild": false,
+                "isHidden": false,
+                "lastPostedAt": "2023-10-06T06:51:37+00:00",
+                "canStartDiscussion": true,
+                "canAddToDiscussion": true,
+                "isRestricted": false
+            }
+        },
+        {
+            "type": "tags",
+            "id": "2",
+            "attributes": {
+                "name": "Test",
+                "description": "Just for Test.",
+                "slug": "test",
+                "color": "#0078d4",
+                "backgroundUrl": null,
+                "backgroundMode": null,
+                "icon": "fas fa-flask",
+                "discussionCount": 1,
+                "position": 1,
+                "defaultSort": null,
+                "isChild": false,
+                "isHidden": false,
+                "lastPostedAt": "2023-08-30T06:44:39+00:00",
+                "canStartDiscussion": true,
+                "canAddToDiscussion": true,
+                "isRestricted": false
+            }
+        }
+    ]
+}

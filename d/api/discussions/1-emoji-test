@@ -1,0 +1,280 @@
+{
+    "data": {
+        "type": "discussions",
+        "id": "1",
+        "attributes": {
+            "title": "Emoji Test",
+            "slug": "1-emoji-test",
+            "commentCount": 4,
+            "participantCount": 1,
+            "createdAt": "2023-07-18T11:43:00+00:00",
+            "lastPostedAt": "2023-08-24T08:17:51+00:00",
+            "lastPostNumber": 4,
+            "canReply": true,
+            "canRename": true,
+            "canDelete": true,
+            "canHide": true,
+            "lastReadAt": "2023-08-24T08:17:53+00:00",
+            "lastReadPostNumber": 4,
+            "canTag": true,
+            "subscription": null
+        },
+        "relationships": {
+            "user": {
+                "data": {
+                    "type": "users",
+                    "id": "1"
+                }
+            },
+            "posts": {
+                "data": [
+                    {
+                        "type": "posts",
+                        "id": "1"
+                    },
+                    {
+                        "type": "posts",
+                        "id": "3"
+                    },
+                    {
+                        "type": "posts",
+                        "id": "5"
+                    },
+                    {
+                        "type": "posts",
+                        "id": "7"
+                    }
+                ]
+            },
+            "tags": {
+                "data": [
+                    {
+                        "type": "tags",
+                        "id": "1"
+                    }
+                ]
+            }
+        }
+    },
+    "included": [
+        {
+            "type": "users",
+            "id": "1",
+            "attributes": {
+                "username": "Admin",
+                "displayName": "Admin",
+                "avatarUrl": null,
+                "slug": "Admin",
+                "joinTime": "2023-07-18T09:26:40+00:00",
+                "discussionCount": 2,
+                "commentCount": 9,
+                "canEdit": true,
+                "canEditCredentials": true,
+                "canEditGroups": true,
+                "canDelete": true,
+                "lastSeenAt": "2023-10-06T07:26:12+00:00",
+                "isEmailConfirmed": true,
+                "email": "3089301566@qq.com"
+            },
+            "relationships": {
+                "groups": {
+                    "data": [
+                        {
+                            "type": "groups",
+                            "id": "1"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "type": "posts",
+            "id": "1",
+            "attributes": {
+                "number": 1,
+                "createdAt": "2023-07-18T11:43:00+00:00",
+                "contentType": "comment",
+                "contentHtml": "<p>😔💩🤪🌿🤔😀</p>",
+                "renderFailed": false,
+                "content": "😔💩🤪🌿🤔😀",
+                "ipAddress": "127.0.0.1",
+                "canEdit": true,
+                "canDelete": true,
+                "canHide": true,
+                "canLike": true,
+                "likesCount": 0,
+                "canFlag": true
+            },
+            "relationships": {
+                "discussion": {
+                    "data": {
+                        "type": "discussions",
+                        "id": "1"
+                    }
+                },
+                "user": {
+                    "data": {
+                        "type": "users",
+                        "id": "1"
+                    }
+                },
+                "likes": {
+                    "data": []
+                },
+                "flags": {
+                    "data": []
+                }
+            }
+        },
+        {
+            "type": "posts",
+            "id": "3",
+            "attributes": {
+                "number": 2,
+                "createdAt": "2023-08-19T07:31:30+00:00",
+                "contentType": "comment",
+                "contentHtml": "<p>123333333456789999999999</p>",
+                "renderFailed": false,
+                "content": "123333333456789999999999",
+                "ipAddress": "127.0.0.1",
+                "canEdit": true,
+                "canDelete": true,
+                "canHide": true,
+                "canLike": true,
+                "likesCount": 0,
+                "canFlag": true
+            },
+            "relationships": {
+                "discussion": {
+                    "data": {
+                        "type": "discussions",
+                        "id": "1"
+                    }
+                },
+                "user": {
+                    "data": {
+                        "type": "users",
+                        "id": "1"
+                    }
+                },
+                "likes": {
+                    "data": []
+                },
+                "flags": {
+                    "data": []
+                }
+            }
+        },
+        {
+            "type": "posts",
+            "id": "5",
+            "attributes": {
+                "number": 3,
+                "createdAt": "2023-08-19T08:23:12+00:00",
+                "contentType": "comment",
+                "contentHtml": "<p>And another test~</p>",
+                "renderFailed": false,
+                "content": "And another test~",
+                "ipAddress": "127.0.0.1",
+                "canEdit": true,
+                "canDelete": true,
+                "canHide": true,
+                "canLike": true,
+                "likesCount": 0,
+                "canFlag": true
+            },
+            "relationships": {
+                "discussion": {
+                    "data": {
+                        "type": "discussions",
+                        "id": "1"
+                    }
+                },
+                "user": {
+                    "data": {
+                        "type": "users",
+                        "id": "1"
+                    }
+                },
+                "likes": {
+                    "data": []
+                },
+                "flags": {
+                    "data": []
+                }
+            }
+        },
+        {
+            "type": "posts",
+            "id": "7",
+            "attributes": {
+                "number": 4,
+                "createdAt": "2023-08-24T08:17:51+00:00",
+                "contentType": "comment",
+                "contentHtml": "<p>Test.<br>\n8/24.</p>",
+                "renderFailed": false,
+                "content": "Test.\n8/24.",
+                "ipAddress": "127.0.0.1",
+                "canEdit": true,
+                "canDelete": true,
+                "canHide": true,
+                "canLike": true,
+                "likesCount": 0,
+                "canFlag": true
+            },
+            "relationships": {
+                "discussion": {
+                    "data": {
+                        "type": "discussions",
+                        "id": "1"
+                    }
+                },
+                "user": {
+                    "data": {
+                        "type": "users",
+                        "id": "1"
+                    }
+                },
+                "likes": {
+                    "data": []
+                },
+                "flags": {
+                    "data": []
+                }
+            }
+        },
+        {
+            "type": "groups",
+            "id": "1",
+            "attributes": {
+                "nameSingular": "管理员",
+                "namePlural": "管理组",
+                "color": "#B72A2A",
+                "icon": "fas fa-wrench",
+                "isHidden": 0
+            }
+        },
+        {
+            "type": "tags",
+            "id": "1",
+            "attributes": {
+                "name": "General",
+                "description": null,
+                "slug": "general",
+                "color": "#888",
+                "backgroundUrl": null,
+                "backgroundMode": null,
+                "icon": null,
+                "discussionCount": 2,
+                "position": 0,
+                "defaultSort": null,
+                "isChild": false,
+                "isHidden": false,
+                "lastPostedAt": "2023-10-06T06:51:37+00:00",
+                "canStartDiscussion": true,
+                "canAddToDiscussion": true,
+                "isRestricted": false
+            }
+        }
+    ]
+}

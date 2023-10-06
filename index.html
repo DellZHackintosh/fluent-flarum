@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en"><head>
+        <meta charset="utf-8">
+        <title>Test</title>
+
+        <link rel="canonical" href=".">
+<link rel="preload" href="./assets/forum.js?v=939c3afa" as="script">
+<link rel="preload" href="./assets/forum-en.js?v=d81f2a26" as="script">
+<link rel="preload" href="./assets/forum-zh.js?v=d81f2a26" as="script">
+<link rel="preload" href="./assets/fonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin="">
+<link rel="preload" href="./assets/fonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin="">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
+<meta name="description" content="">
+<meta name="theme-color" content="#0078d4">
+<meta name="color-scheme" content="light">
+<link rel="stylesheet" media="not all and (prefers-color-scheme: dark)" class="nightmode-light" href="./assets/forum.css?v=7d20e530">
+<link rel="stylesheet" media="(prefers-color-scheme: dark)" class="nightmode-dark" href="./assets/forum-dark.css?v=a7f4f65e">
+
+        <script>
+            /* fof/nightmode workaround for browsers without (prefers-color-scheme) CSS media query support */
+            if (!window.matchMedia('not all and (prefers-color-scheme), (prefers-color-scheme)').matches) {
+                document.querySelector('link.nightmode-light').removeAttribute('media');
+            }
+        </script>
+        
+<script>(function () {
+                var r = getComputedStyle(document.querySelector(":root"));
+
+                function changeTitleColor() {
+                    if (r.getPropertyValue("--colored-titlebar") === "false") {
+                        var m = document.querySelector(`meta[name="theme-color"]`);
+                        m.content = r.getPropertyValue("--header-bg");
+                    };
+                }
+            
+                changeTitleColor();
+                if (r.getPropertyValue("--colored-titlebar") === "false") new Promise(function (resolve) {
+                    var id = setInterval(function () {
+                        if (flarum) {
+                            if (flarum.extensions) {
+                                clearInterval(id);
+                                resolve();
+                            }
+                        }
+                    }, 500)
+                }).then(function () {
+                    if (flarum.extensions["fof-nightmode"]) {
+                        document.addEventListener("fofnightmodechange", changeTitleColor);
+                    }
+                });
+            })();</script>
+	<link rel="manifest" href="/webmanifest">
+    </head>
+
+    <body>
+        <div id="app" class="App">
+
+    <div id="app-navigation" class="App-navigation"></div>
+
+    <div id="drawer" class="App-drawer">
+
+        <header id="header" class="App-header">
+            <div id="header-navigation" class="Header-navigation"></div>
+            <div class="container">
+                <div class="Header-title">
+                    <a href="." id="home-link">
+                                                    Test
+                                            </a>
+                </div>
+                <div id="header-primary" class="Header-primary"></div>
+                <div id="header-secondary" class="Header-secondary"></div>
+            </div>
+        </header>
+
+    </div>
+
+    <main class="App-content">
+        <div id="content"></div>
+
+        <div id="flarum-loading" style="display: none">
+    Loading...
+</div>
+
+<noscript>
+    <div class="Alert">
+        <div class="container">
+            This site is best viewed in a modern browser with JavaScript enabled.
+        </div>
+    </div>
+</noscript>
+
+<div id="flarum-loading-error" style="display: none">
+    <div class="Alert">
+        <div class="container">
+            Something went wrong while trying to load the full version of this site. Try hard-refreshing this page to fix the error.
+        </div>
+    </div>
+</div>
+
+<noscript id="flarum-content">
+    <div class="container">
+    <h1>All Discussions</h1>
+
+    <ul>
+                    <li>
+                <a href="./d/3-fluent-theme-demo-site">
+                    Fluent Theme Demo Site
+                </a>
+            </li>
+                    <li>
+                <a href="./d/2-more-test">
+                    More Test
+                </a>
+            </li>
+                    <li>
+                <a href="./d/1-emoji-test">
+                    Emoji Test
+                </a>
+            </li>
+            </ul>
+
+    
+    </div>
+
+</noscript>
+
+
+        <div class="App-composer">
+            <div class="container">
+                <div id="composer"></div>
+            </div>
+        </div>
+    </main>
+
+</div>
+
+
+
+
+        <div id="modal"></div>
+        <div id="alerts"></div>
+
+        <script>
+            document.getElementById('flarum-loading').style.display = 'block';
+            var flarum = {extensions: {}};
+        </script>
+
+        <script src="./assets/forum.js?v=939c3afa"></script>
+<script src="./assets/forum-en.js?v=d81f2a26"></script>
+<script src="./assets/forum-zh.js?v=d81f2a26"></script>
+
+        <script id="flarum-json-payload" type="application/json">{"fof-nightmode.assets.day":".\/assets\/forum.css?v=7d20e530","fof-nightmode.assets.night":".\/assets\/forum-dark.css?v=a7f4f65e","resources":[{"type":"forums","id":"1","attributes":{"title":"Test","description":"","showLanguageSelector":false,"baseUrl":".","basePath":"","baseOrigin":".","debug":false,"apiUrl":".\/api","welcomeTitle":"Welcome to Fluent Theme Demo Site","welcomeMessage":"Enjoy it! Some features need edit a discussion/post to view.","themePrimaryColor":"#0078d4","themeSecondaryColor":"#0078d4","logoUrl":null,"faviconUrl":null,"headerHtml":null,"footerHtml":null,"allowSignUp":true,"defaultRoute":"\/all","canViewForum":true,"canStartDiscussion":false,"canSearchUsers":false,"canCreateAccessToken":false,"canModerateAccessTokens":false,"assetsBaseUrl":".\/assets","fofNightMode_autoUnsupportedFallback":1,"fofNightMode.showThemeToggleOnHeaderAlways":false,"fof-nightmode.default_theme":0,"canBypassTagCounts":false,"minPrimaryTags":"1","maxPrimaryTags":"1","minSecondaryTags":"0","maxSecondaryTags":"3","canViewFlags":false,"guidelinesUrl":""},"relationships":{"groups":{"data":[{"type":"groups","id":"1"},{"type":"groups","id":"2"},{"type":"groups","id":"3"},{"type":"groups","id":"4"}]},"tags":{"data":[{"type":"tags","id":"1"},{"type":"tags","id":"2"}]}}},{"type":"groups","id":"1","attributes":{"nameSingular":"Admin","namePlural":"Admins","color":"#B72A2A","icon":"fas fa-wrench","isHidden":0}},{"type":"groups","id":"2","attributes":{"nameSingular":"Guest","namePlural":"Guests","color":null,"icon":null,"isHidden":0}},{"type":"groups","id":"3","attributes":{"nameSingular":"Member","namePlural":"Members","color":null,"icon":null,"isHidden":0}},{"type":"groups","id":"4","attributes":{"nameSingular":"Mod","namePlural":"Mods","color":"#80349E","icon":"fas fa-bolt","isHidden":0}},{"type":"tags","id":"1","attributes":{"name":"General","description":null,"slug":"general","color":"#888","backgroundUrl":null,"backgroundMode":null,"icon":null,"discussionCount":2,"position":0,"defaultSort":null,"isChild":false,"isHidden":false,"lastPostedAt":"2023-10-06T06:51:37+00:00","canStartDiscussion":false,"canAddToDiscussion":false}},{"type":"tags","id":"2","attributes":{"name":"Test","description":"Just for Test.","slug":"test","color":"#0078d4","backgroundUrl":null,"backgroundMode":null,"icon":"fas fa-flask","discussionCount":1,"position":1,"defaultSort":null,"isChild":false,"isHidden":false,"lastPostedAt":"2023-08-30T06:44:39+00:00","canStartDiscussion":false,"canAddToDiscussion":false}}],"session":{"userId":0,"csrfToken":"fwYpQfuwsWZr2Qfdfd0diGl4PfzImWHRqF1f37AE"},"locales":{"en":"English","zh-Hans":"\u7b80\u4f53\u4e2d\u6587"},"locale":"en","apiDocument":{"links":{"first":".\/api\/discussions?sort=\u0026page%5Blimit%5D=20"},"data":[{"type":"discussions","id":"3","attributes":{"title":"Fluent Theme Demo Site","slug":"3-fluent-theme-demo-site","commentCount":1,"participantCount":1,"createdAt":"2023-10-06T06:51:37+00:00","lastPostedAt":"2023-10-06T06:51:37+00:00","lastPostNumber":1,"canReply":false,"canRename":false,"canDelete":false,"canHide":false,"canTag":false,"subscription":null},"relationships":{"user":{"data":{"type":"users","id":"2"}},"lastPostedUser":{"data":{"type":"users","id":"2"}},"tags":{"data":[{"type":"tags","id":"1"}]}}},{"type":"discussions","id":"2","attributes":{"title":"More Test","slug":"2-more-test","commentCount":5,"participantCount":1,"createdAt":"2023-08-19T07:38:20+00:00","lastPostedAt":"2023-08-30T06:44:39+00:00","lastPostNumber":5,"canReply":false,"canRename":false,"canDelete":false,"canHide":false,"canTag":false,"subscription":null},"relationships":{"user":{"data":{"type":"users","id":"1"}},"lastPostedUser":{"data":{"type":"users","id":"1"}},"tags":{"data":[{"type":"tags","id":"2"}]}}},{"type":"discussions","id":"1","attributes":{"title":"Emoji Test","slug":"1-emoji-test","commentCount":4,"participantCount":1,"createdAt":"2023-07-18T11:43:00+00:00","lastPostedAt":"2023-08-24T08:17:51+00:00","lastPostNumber":4,"canReply":false,"canRename":false,"canDelete":false,"canHide":false,"canTag":false,"subscription":null},"relationships":{"user":{"data":{"type":"users","id":"1"}},"lastPostedUser":{"data":{"type":"users","id":"1"}},"tags":{"data":[{"type":"tags","id":"1"}]}}}],"included":[{"type":"users","id":"2","attributes":{"username":"Test","displayName":"Test","avatarUrl":null,"slug":"Test"}},{"type":"users","id":"1","attributes":{"username":"Admin","displayName":"Admin","avatarUrl":null,"slug":"Admin"}},{"type":"tags","id":"1","attributes":{"name":"General","description":null,"slug":"general","color":"#888","backgroundUrl":null,"backgroundMode":null,"icon":null,"discussionCount":2,"position":0,"defaultSort":null,"isChild":false,"isHidden":false,"lastPostedAt":"2023-10-06T06:51:37+00:00","canStartDiscussion":false,"canAddToDiscussion":false}},{"type":"tags","id":"2","attributes":{"name":"Test","description":"Just for Test.","slug":"test","color":"#0078d4","backgroundUrl":null,"backgroundMode":null,"icon":"fas fa-flask","discussionCount":1,"position":1,"defaultSort":null,"isChild":false,"isHidden":false,"lastPostedAt":"2023-08-30T06:44:39+00:00","canStartDiscussion":false,"canAddToDiscussion":false}}]}}</script>
+
+        <script>
+            const data = JSON.parse(document.getElementById('flarum-json-payload').textContent);
+            document.getElementById('flarum-loading').style.display = 'none';
+
+            try {
+                flarum.core.app.load(data);
+                flarum.core.app.bootExtensions(flarum.extensions);
+                flarum.core.app.boot();
+            } catch (e) {
+                var error = document.getElementById('flarum-loading-error');
+                error.innerHTML += document.getElementById('flarum-content').textContent;
+                error.style.display = 'block';
+                throw e;
+            }
+        </script>
+
+        
+    
+
+</body></html>

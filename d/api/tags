@@ -1,0 +1,48 @@
+{
+    "data": [
+        {
+            "type": "tags",
+            "id": "1",
+            "attributes": {
+                "name": "General",
+                "description": null,
+                "slug": "general",
+                "color": "#888",
+                "backgroundUrl": null,
+                "backgroundMode": null,
+                "icon": null,
+                "discussionCount": 2,
+                "position": 0,
+                "defaultSort": null,
+                "isChild": false,
+                "isHidden": false,
+                "lastPostedAt": "2023-10-06T06:51:37+00:00",
+                "canStartDiscussion": true,
+                "canAddToDiscussion": true,
+                "isRestricted": false
+            }
+        },
+        {
+            "type": "tags",
+            "id": "2",
+            "attributes": {
+                "name": "Test",
+                "description": "Just for Test.",
+                "slug": "test",
+                "color": "#0078d4",
+                "backgroundUrl": null,
+                "backgroundMode": null,
+                "icon": "fas fa-flask",
+                "discussionCount": 1,
+                "position": 1,
+                "defaultSort": null,
+                "isChild": false,
+                "isHidden": false,
+                "lastPostedAt": "2023-08-30T06:44:39+00:00",
+                "canStartDiscussion": true,
+                "canAddToDiscussion": true,
+                "isRestricted": false
+            }
+        }
+    ]
+}

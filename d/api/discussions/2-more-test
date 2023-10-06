@@ -1,0 +1,323 @@
+{
+    "data": {
+        "type": "discussions",
+        "id": "2",
+        "attributes": {
+            "title": "More Test",
+            "slug": "2-more-test",
+            "commentCount": 5,
+            "participantCount": 1,
+            "createdAt": "2023-08-19T07:38:20+00:00",
+            "lastPostedAt": "2023-08-30T06:44:39+00:00",
+            "lastPostNumber": 5,
+            "canReply": true,
+            "canRename": true,
+            "canDelete": true,
+            "canHide": true,
+            "lastReadAt": "2023-08-30T06:44:41+00:00",
+            "lastReadPostNumber": 5,
+            "canTag": true,
+            "subscription": null
+        },
+        "relationships": {
+            "user": {
+                "data": {
+                    "type": "users",
+                    "id": "1"
+                }
+            },
+            "posts": {
+                "data": [
+                    {
+                        "type": "posts",
+                        "id": "4"
+                    },
+                    {
+                        "type": "posts",
+                        "id": "6"
+                    },
+                    {
+                        "type": "posts",
+                        "id": "8"
+                    },
+                    {
+                        "type": "posts",
+                        "id": "9"
+                    },
+                    {
+                        "type": "posts",
+                        "id": "10"
+                    }
+                ]
+            },
+            "tags": {
+                "data": [
+                    {
+                        "type": "tags",
+                        "id": "2"
+                    }
+                ]
+            }
+        }
+    },
+    "included": [
+        {
+            "type": "users",
+            "id": "1",
+            "attributes": {
+                "username": "Admin",
+                "displayName": "Admin",
+                "avatarUrl": null,
+                "slug": "Admin",
+                "joinTime": "2023-07-18T09:26:40+00:00",
+                "discussionCount": 2,
+                "commentCount": 9,
+                "canEdit": true,
+                "canEditCredentials": true,
+                "canEditGroups": true,
+                "canDelete": true,
+                "lastSeenAt": "2023-10-06T07:26:12+00:00",
+                "isEmailConfirmed": true,
+                "email": "3089301566@qq.com"
+            },
+            "relationships": {
+                "groups": {
+                    "data": [
+                        {
+                            "type": "groups",
+                            "id": "1"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "type": "posts",
+            "id": "4",
+            "attributes": {
+                "number": 1,
+                "createdAt": "2023-08-19T07:38:20+00:00",
+                "contentType": "comment",
+                "contentHtml": "<p>TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssstttttttttttttttttttttttttttttt</p>",
+                "renderFailed": false,
+                "content": "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeesssssssssssssssssssssssssssssssssssssstttttttttttttttttttttttttttttt",
+                "ipAddress": "127.0.0.1",
+                "canEdit": true,
+                "canDelete": true,
+                "canHide": true,
+                "canLike": true,
+                "likesCount": 0,
+                "canFlag": true
+            },
+            "relationships": {
+                "discussion": {
+                    "data": {
+                        "type": "discussions",
+                        "id": "2"
+                    }
+                },
+                "user": {
+                    "data": {
+                        "type": "users",
+                        "id": "1"
+                    }
+                },
+                "likes": {
+                    "data": []
+                },
+                "flags": {
+                    "data": []
+                }
+            }
+        },
+        {
+            "type": "posts",
+            "id": "6",
+            "attributes": {
+                "number": 2,
+                "createdAt": "2023-08-19T08:33:55+00:00",
+                "contentType": "comment",
+                "contentHtml": "<p>Hello</p>",
+                "renderFailed": false,
+                "content": "Hello",
+                "ipAddress": "127.0.0.1",
+                "canEdit": true,
+                "canDelete": true,
+                "canHide": true,
+                "canLike": true,
+                "likesCount": 0,
+                "canFlag": true
+            },
+            "relationships": {
+                "discussion": {
+                    "data": {
+                        "type": "discussions",
+                        "id": "2"
+                    }
+                },
+                "user": {
+                    "data": {
+                        "type": "users",
+                        "id": "1"
+                    }
+                },
+                "likes": {
+                    "data": []
+                },
+                "flags": {
+                    "data": []
+                }
+            }
+        },
+        {
+            "type": "posts",
+            "id": "8",
+            "attributes": {
+                "number": 3,
+                "createdAt": "2023-08-26T04:03:43+00:00",
+                "contentType": "comment",
+                "contentHtml": "<blockquote><p>Test</p>\n<blockquote><p>Test</p></blockquote></blockquote>\n\n<hr>\n<p><code>Code</code></p>\n<pre><code>More Code</code></pre>",
+                "renderFailed": false,
+                "content": "> Test\n>> Test\n\n***\n`Code`\n```\nMore Code\n```",
+                "ipAddress": "127.0.0.1",
+                "canEdit": true,
+                "canDelete": true,
+                "canHide": true,
+                "canLike": true,
+                "likesCount": 0,
+                "canFlag": true
+            },
+            "relationships": {
+                "discussion": {
+                    "data": {
+                        "type": "discussions",
+                        "id": "2"
+                    }
+                },
+                "user": {
+                    "data": {
+                        "type": "users",
+                        "id": "1"
+                    }
+                },
+                "likes": {
+                    "data": []
+                },
+                "flags": {
+                    "data": []
+                }
+            }
+        },
+        {
+            "type": "posts",
+            "id": "9",
+            "attributes": {
+                "number": 4,
+                "createdAt": "2023-08-29T06:56:21+00:00",
+                "contentType": "comment",
+                "contentHtml": "<blockquote><p>@\"Admin\"#p6 Hello</p></blockquote>\n\n<p>Hi!</p>",
+                "renderFailed": false,
+                "content": "> @\"Admin\"#p6 Hello\n\nHi!",
+                "ipAddress": "127.0.0.1",
+                "canEdit": true,
+                "canDelete": true,
+                "canHide": true,
+                "canLike": true,
+                "likesCount": 0,
+                "canFlag": true
+            },
+            "relationships": {
+                "discussion": {
+                    "data": {
+                        "type": "discussions",
+                        "id": "2"
+                    }
+                },
+                "user": {
+                    "data": {
+                        "type": "users",
+                        "id": "1"
+                    }
+                },
+                "likes": {
+                    "data": []
+                },
+                "flags": {
+                    "data": []
+                }
+            }
+        },
+        {
+            "type": "posts",
+            "id": "10",
+            "attributes": {
+                "number": 5,
+                "createdAt": "2023-08-30T06:44:39+00:00",
+                "contentType": "comment",
+                "contentHtml": "<p><img src=\"https://s1.ax1x.com/2023/08/29/pPaxr9S.png\" alt=\"pPaxr9S.png\"><br>\n<img src=\"https://s1.ax1x.com/2023/08/29/pPax0tf.png\" alt=\"pPax0tf.png\"><br>\n<img src=\"https://s1.ax1x.com/2023/08/29/pPaxBh8.png\" alt=\"pPaxBh8.png\"></p>",
+                "renderFailed": false,
+                "content": "![pPaxr9S.png](https://s1.ax1x.com/2023/08/29/pPaxr9S.png)\n![pPax0tf.png](https://s1.ax1x.com/2023/08/29/pPax0tf.png)\n![pPaxBh8.png](https://s1.ax1x.com/2023/08/29/pPaxBh8.png)",
+                "ipAddress": "127.0.0.1",
+                "canEdit": true,
+                "canDelete": true,
+                "canHide": true,
+                "canLike": true,
+                "likesCount": 0,
+                "canFlag": true
+            },
+            "relationships": {
+                "discussion": {
+                    "data": {
+                        "type": "discussions",
+                        "id": "2"
+                    }
+                },
+                "user": {
+                    "data": {
+                        "type": "users",
+                        "id": "1"
+                    }
+                },
+                "likes": {
+                    "data": []
+                },
+                "flags": {
+                    "data": []
+                }
+            }
+        },
+        {
+            "type": "groups",
+            "id": "1",
+            "attributes": {
+                "nameSingular": "管理员",
+                "namePlural": "管理组",
+                "color": "#B72A2A",
+                "icon": "fas fa-wrench",
+                "isHidden": 0
+            }
+        },
+        {
+            "type": "tags",
+            "id": "2",
+            "attributes": {
+                "name": "Test",
+                "description": "Just for Test.",
+                "slug": "test",
+                "color": "#0078d4",
+                "backgroundUrl": null,
+                "backgroundMode": null,
+                "icon": "fas fa-flask",
+                "discussionCount": 1,
+                "position": 1,
+                "defaultSort": null,
+                "isChild": false,
+                "isHidden": false,
+                "lastPostedAt": "2023-08-30T06:44:39+00:00",
+                "canStartDiscussion": true,
+                "canAddToDiscussion": true,
+                "isRestricted": false
+            }
+        }
+    ]
+}
