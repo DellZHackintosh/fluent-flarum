@@ -1,6 +1,9 @@
 @header-bg-light: saturate(average(average(fade(@config-primary-color, 30%), white), @layer-1-color), 30%);
 @header-bg-dark: saturate(average(average(fade(@config-primary-color, 30%), black), @layer-1-color), 30%);
 @backdrop: ~"#0000004D";
+@SurfaceStrokeColorDefault: fade(#757575, 40%);
+@shadow-outline-normal: 0 0 0 1px @Fluent-border;
+@shadow-outline-window: 0 0 0 1px @SurfaceStrokeColorDefault;
 .define-colors(@config-dark-mode);
 .define-colors(false) {
 	@body-bg: lighten(average(average(fade(@config-primary-color, 30%), white), @layer-2-color), 1%);
@@ -11,16 +14,25 @@
 	@obj-color: lighten(saturate(average(fade(@config-primary-color, 2%), #fbfbfb), 30%), 1%);
 	@LayerFillColorDefault: ~"#ffffff80";
 	@CardBackgroundFillColorDefault: fade(white, 70%);
+	@ExpanderHeaderBackground: ~"#00000009";
 	@obj-title-color: #191a1a;
 	@Fluent-border: fade(black, 5.9%);
-	@shadow-outline: 0 0 0 1px @Fluent-border;
 	@details-second-font-color: #5e5e5e;
 	@titlebar-bg: @header-bg-light;
-	@Switch-button-color: #ffffff;
-	@button-border: linear-gradient(#e5e5e5 90%, #ccc 100%);
+	@button-border-color: ~"#0000000f #0000000f #00000029";
+	@button-active-border-color: ~"#0000000f";
+	@button-color: ~"padding-box linear-gradient(#ffffffb3, #ffffffb3)";
+	@button-hover-color: ~"#f9f9f980";
+	@button-active-color: ~"#f9f9f94d";
+	@menu-item-hover: ~"#00000009";
+	@menu-item-active: ~"#00000006";
 	@ControlFillColorDefault: ~"#FFFFFFB3";
+	@ControlFillColorInputActive: white;
 	@low-elevation-ramp: ~"0px calc(0.5 * var(--elevation-height)) calc(1 * var(--elevation-height)) 0px" fade(#000, 14%), ~"0px calc(0.5 * var(--elevation-height)) calc(1 * var(--elevation-height)) 0" fade(#000, 14%);
 	@high-elevation-ramp: ~"0px calc(0.5 * var(--elevation-height)) calc(1 * var(--elevation-height)) 0px" fade(#000, 24%), ~"0px 0px 8px 0px" fade(#000, 20%);
+	@Acrylic-bg: rgba(255, 255, 255, 0.6);
+	@Text-Input: padding-box linear-gradient(@ControlFillColorDefault, @ControlFillColorDefault), border-box linear-gradient(~"#0000000F" ~"calc(100% - 1px)", ~"#00000072" ~"calc(100% - 1px)", ~"#00000072");
+	@Text-Input-focus: padding-box linear-gradient(@ControlFillColorDefault, @ControlFillColorDefault), border-box linear-gradient(~"#0000000F" ~"calc(100% - 2px)", var(--primary-color) ~"calc(100% - 2px)", var(--primary-color)) !important;
 }
 .define-colors(true) {
 	@body-bg: lighten(average(average(fade(@config-primary-color, 30%), black), @layer-2-color), 2%);
@@ -30,16 +42,25 @@
 	@obj-color: lighten(saturate(average(fade(@config-primary-color, 2%), #2b2b2b), 15%), 1%);
 	@LayerFillColorDefault: ~"#3a3a3a4c";
 	@CardBackgroundFillColorDefault: fade(white, 5%);
+	@ExpanderHeaderBackground: ~"#ffffff0f";
 	@obj-title-color: white;
 	@Fluent-border: fade(black, 9.8%);
-	@shadow-outline: 0 0 0 1px @Fluent-border;
 	@details-second-font-color: #cfcfcf;
 	@titlebar-bg: @header-bg-dark;
-	@Switch-button-color: #2d2d2d;
-	@button-border: linear-gradient(#303030, #303030);
+	@button-border-color: ~"#ffffff18 #ffffff12 #ffffff12";
+	@button-active-border-color: ~"#ffffff12";
+	@button-color: ~"padding-box linear-gradient(#ffffff0f, #ffffff0f)";
+	@button-hover-color: ~"#ffffff15";
+	@button-active-color: ~"#ffffff08";
+	@menu-item-hover: ~"#ffffff0f";
+	@menu-item-active: ~"#ffffff0a";
 	@ControlFillColorDefault: ~"#FFFFFF0F";
+	@ControlFillColorInputActive: ~"#1E1E1EB3";
 	@low-elevation-ramp: ~"0px calc(0.5 * var(--elevation-height)) calc(1 * var(--elevation-height)) 0px" fade(#000, 28%), ~"0px calc(0.5 * var(--elevation-height)) calc(1 * var(--elevation-height)) 0px" fade(#000, 14%);
 	@high-elevation-ramp: ~"0px calc(0.5 * var(--elevation-height)) calc(1 * var(--elevation-height)) 0px" fade(#000, 28%), ~"0px 0px 2px 0px" fade(#000, 20%);
+	@Acrylic-bg: transparent;
+	@Text-Input: padding-box linear-gradient(@ControlFillColorDefault, @ControlFillColorDefault), border-box linear-gradient(~"#FFFFFF12" ~"calc(100% - 1px)", ~"#FFFFFF8B" ~"calc(100% - 1px)", ~"#FFFFFF8B");
+	@Text-Input-focus: padding-box linear-gradient(@ControlFillColorInputActive, @ControlFillColorInputActive), border-box linear-gradient(~"#FFFFFF12" ~"calc(100% - 2px)", var(--primary-color) ~"calc(100% - 2px)", var(--primary-color)) !important;
 }
 .define-header(@config-colored-header);
 .define-header(false) {
@@ -75,13 +96,14 @@
 	--button-bg: @obj-color;
 	--button-bg-hover: fade(#999, 10%);
 	--fancybox-bg: @backdrop;
+	--fancybox-accent-color: var(--primary-color);
 	--noise-asset: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEAAQMAAABmvDolAAAABlBMVEVgYGDKysrZGzEnAAAAAnRSTlMFBXuOzfIAAAzFSURBVGjehJdLjKtjGMd/z9u39fZTvB0fSkjedoqaHFKcBSHxTE9n1LikIxYSFiXEZTU2Yudp1dEzLikmglj0nBCzFCvLEkTYHFY2EpFIrISdhYjEdXTmjO2XfJf3ufz+v48+cehcpEVXBrHICs61buPzDRL4yioyp2suEAWMZghjK3kQkqcrsUvPWZhjCfHXTcu6gm989dHEp4QLZQCJxI6tJc4qBGzKCYEweNPdYRGf+c8IGa05ZhSz5Bz9IwOAWvKcFWOjbgyp0DW0yfMm/qGb3rsHNOHdSb2NY5qRRu76F+gtpXB6fKeSMjUa5nvTNgbUznQ4gizxgvzaJWy3whE3wVKA5On38nGi1jYL20dl8xRCmipEPQ2DbEjqc3aqlURMXz2ZRaNW+GUiHZ/8rAKgvavUF+7C13VO1Rv0Ir7PiaUSESgUVnW+aj64I30TUj3gI8kh0IvVMpUADg1MXJoQpXM3dsQxKyq6Vk4X36YeGE4SQkOrdsvEoB/c0PNx8IOK4GZWeK0F4wmAPirC/QJxd/QMNnMvEAL0T5FS0X0KICPaCYKQXAqjhBbLtw8oJO1MGYI2oBOp1FT92iXsfhkqE/i5pjdenMO5wSSB30piYUrwVt0ivfDck5kRPNg9rXIKjxKKHXuF45anUU13VhXX2HZnc4oUHAThwDGq0fWMVoFVTkUt++61D54URVLGMg7Dx8/1cnaJzxOcM4s6vYpL8T2SCZGAU5v0GChk0ciiPybtO/DUIRPdqMBa3W4mRKMMXAUs8waty+cRySat9r+TymolbaQZUl2Tom0SvYDHsrKbjimUIgu37R/wOjWfTR71ZzoNszuGuoXFVbn4U5rl6B/tXDEjFpNSVdfs7TlPdKjXqlcsW3ptTknt2SRIOQLYaed4Zqirar4QWwQdSiCnQasW2gxZ244k7+s+biTCt1qgmohlGrRJCelMMMvPrgGUgiAf+zAZMItFoFWUVhvJj/MTqQO+ZynKqBCHfkCgEh2FSajGuWjKfCzEVLW2Jxtx7r0zHAc3QJZS8Azs48Q/fb09S9GMkJrAQGJ0ZQ+CS2djLekTq51e6e6+AOnBABqmfnDed8DcpeSXArhwCVSkn3yGPFRgntphCe72SE6jOzQPMD/db8eBOJ7PExoCnDh8PSlAdwkXxXT3uG3UPdPusQtXYg5LzFwbt7pBumSLelaCSROfCgw3z2GnEyRNjh9hOIP5BQ6dcaG2K67A8MpOXoc8heNu8DoOtqk2dO4ABo8uNg9aG/fBxc7l5gNuH3jJuAfv+6/Izg4KoTaC6JryN7tYQFIabcKtjhonwHpyEYeBPD+LsAC2/U/hv2x3pnlIpaTLDAIXeC7Ft4etkeHXcn+hdNHoITpazexP9jBMd3MDYcoqjkTEDyVOmRskjwWeTeLAuvg4q/aQ+UekJg1VXO0KezURT+zi5cxA/v+82Es06YT6uNzNodGapfey5DCWG4Z8GGkSjkmCYgI/OD8V/QcO6puLzQ10IHe2U4PtYzwFiqNryzxdpaVjdsSAUC62sMfmjFsco4i1olbU1plHVgI3PmiEngG+ZOA0Zx0vEOo7tiF96he+lmtdIGoP/kiNPHXYYA54P9pBj35LJ68gsQdvk5QYjFHuroIbauq9+V6AY/700kNwwDUj9a/Q2Q1oSIYvWYz+0sxlnlQbKh0fgjKTWDTN2YVOFyAdxSx924/9JHyc4WLSDkUCf8yV+Fh9a+D0ZdbHjceRPQvLrPmZgJ4RlxRl7lj1/pEa06ZWT4Y3Dc2HsEZ4OQ0ESf5+wnL9m9EMJ5AuyFzPXUJ/FB5wm0Vgx83oXH2kZR0HyaYg5lVDM4KPRwkR7xLpWbaVc0tRJMmSg/jhUf8GCT4JROfiKFweD47IPX05EFd7E7CgiK14hsoRG9R8SdxdYyRv2sOXE8GVkuE5wTq/NegPg7QKgGuXp250iAMoFuM4rraM5YOkC+icyirOWXZwMEBDSUuszRldd9nXK5AiTvqzptVnxZCO/39eUN8slkS0WCNGONlFNSu+AFDwGOzZwpMuun4JIDXzmZN3cXHGQfUPeXnaOpfoQlpmT0QeyAlMB7H5Q2eccGOJ8zvORwiKs/7SM1Dtsag2iyBY2MX9O4D+z1dyurg+0YeUsyYfyWefzWCrSxkX5z2QHuBOXSKtcXSr1cq9u9pn0cTZk1+dkHaU6txKexrEtU5qBZTdxPfbUG8AxEtQjVut0IocqsTx4kgbOCzhF/1pvwgtaFOU6rqtHO0UGnDzejx3nf1578+BErvRFeF9+X9l7at8kR/CmQWD7dT2yV9ULOCRpN3mAS9kpG/X4cOxp7s5y16M9plxXnVcePllhW8ngOnh4jtCeUJco0bLi4540Lt2CZO/Px6nkCmE+RWalbf84irCS562LCFM3TX46vTHD/sIRsyelaacsyiK+7bgLxgC7aN5xddQa/wHW+xxqlQM0ZasDYikd4jn3EDE6dtsUU2M8CiJsnP1JENAg1BdDNT9q6waUi+3c3HNg8t+cKT+iw0WBW5xATgUsxlyxsSt4dKUaCxWZxHq4FfToYK/0N39o7nyP6VCCvFQQ1j0iVgH19QY+FAmOmrDob+zWfRn8itrBBPyy69eHJX9xTg8FEPOYbPye2Hm8vNSEMbhZ+ab1tsvxbRKSiymdckhIiUkYjWlcQmSQyywqsvCwgIbltMqaVySEgkSkrosLEnEuoTESiQ2loKlP0LiWqenp+uueua9PL/nbZXQjGUNLapvZVTV5Jos2BD/ijdeGxR9pObrA+Y6PfweWiFgGgfUWi/4ezp8VtMdAbXu6cJmPDZa4uKVOGP9rnOhoFtqxU9QBMCW52PFx6AkbiRfl+RvyZcHs9oDes6L6EU5ldPYoh9S08Y4YgidUpGKZthMn8rQOuib7Yo3Co/C6cTIIVqWPYyZug+3jUynzo3Z8yFJ/EkygyuFTBhj6kZtL0YbB1h6WYiAeI+xZaBBX5TpAt18YI7DonQAKFLXNF0Al5KpUNFc5oMynT2+aNNqQBgcCpK/j+zoBOoFlDByh3f6NbbLnnrtGjN7TxZk5wMyA06oC2oz8b7g0Ett3LYVDgalYL7ijWF4ZASQTYz8j/ri8+p/oiBPKdN68TfbOoFm8YmO54OSF88eKRHoakxfb6ktiRE9cMhQlVcXcUA+3+2ESwhjyVLLuwvtp4lFCQSrmu6QDbRfa+pREou8R1+2Sk2rf57GZW8/6J7dKeV+NNlHTPl6DS8scq61k2RkSG5JMmNaFU1tDz7gSigTmUNwthGkgAzs747Buho6GL9MEeshrt4bFJ8MNeDfWAiz10GfMqYWBqAHaaRP8usmMYR/SqbsAKWGxqgFOnQ7SN7FjL2bNUceovE7bNM8+gseJM1LkhIgWE2dfh1DfPslbDZm3Vh24tT8XDB0Rd43lNsTVu0obYWw7q/54BdQTf+zbJ4R9phDQrB7HIg7DY2cDzYiNyjOEUZu74dUzlVfGuH85ghWluC/GvdM9AnZgVdkNoFMtSPP/a9VMrY7+nrkJsQOv/P39a+U07uwbdfXhuV+k9Ul+/ZqLwcmRFxHNNid6+A4tkzJOVRxid870ND5b5WS1DMTajg9uKiqeaeaGwlkuO5P8M5awN4EkIU4J9sqpiL4TTrQE2uD8qSE9f9dfpTz9I4dOUjPQFM5kgUAT4Dr+hTDO3jMejccuYjHaA2VKDCmyFL1Pho6WZCBnTEomVDglXKuJuSLzun6DQ6n3RN64y9IEiiSRcHpXr4FF6+7ldevwgLjGVArmgCVAKXA9BQYTuRQgtMElzGPmbFXH0322mXx5ETXwt21aCzs1pkbgQL1zzSXL/q+FKygJqZ7dp4NJ1AzAsYUb2HX2Bj6j0KXoRt6rfoVjPOhxzwljhjl5wPhatlvvoUlyhSIHMRa3TkJwCsc2xL0Rx0TlLRXTyvOhOSdlLJwlFFDito8kLgHcahXC902TgnE8zpmlq4mrUj2h0r5s8DlVqWKn1Ex/G7i6Q5xTF5FOyDypaJ51fiHgCTPP0mUISXua4nlCXz+Ob5IBvLk/iB7zKIRcCZjKZCKgEtlHgrEqgregheGg3XiaRxXlCqn9eOW2+yYe3Ocb8wIMBqvVxsycgopktugdOfPNmSijEdREE1A43Oms4esA4tZCD9Va1a0Zkz7pFNE0kQnjSc0R5nNRfZlUe3g72HrmeiwFDWhRJMGOfm30DOQlHT/S1UPvVTQ72ZdBhxZ8rKNdDOL5VTMTN50TLnVCw/XnYFTApbsUw3KmJCRpUiV9WMXaiZVXWjbqilstw8FHsKYOE5N+f8x08PVc+siAthNBpzZoxsL6Ikv+CpMi2T8HMhBmGZLfgBxgGDJg4PtkAAAAABJRU5ErkJggg==);
 	& when (@config-dark-mode = false) {
-		--discussion-list-item-bg-hover: lighten(@obj-color, 1%);
+		--Acrylic-filter: contrast(45%) blur(30px) saturate(1.25) brightness(135%);
 		color-scheme: light;
 	}
 	& when (@config-dark-mode = true) {
-		--discussion-list-item-bg-hover: lighten(@obj-color, 2%);
+		--Acrylic-filter: saturate(125%) brightness(125%) blur(30px) contrast(75%) saturate(250%) brightness(60%) contrast(80%) brightness(60%);
 		color-scheme: dark;
 	}
 	& when (@config-colored-header = false) {
@@ -96,17 +118,43 @@ body {
 	overflow-y: auto;
 }
 
+#app-navigation {
+	box-shadow: @shadow-outline-window;
+}
+
 .scrolled .App-header, .scrolled .App-navigation {
 	box-shadow: none;
 }
 
 .App-content {
-	border-top: 1px solid @Fluent-border;
+	border-top: none;
 }
 
-.Button:not(.Button--flat, .App-header .Button, .App-header .Button:hover, .UserCard .Button, .UserCard .Button:hover, .Button--primary, .Button--link, .FoFLogInButton, .SubscriptionMenu-button--follow), .Select>.Select-input {
+.Button:not(.Button--flat, .App-header .Button, .App-header .Button:hover, .UserCard .Button, .UserCard .Button:hover, .Button--primary, .Button--link, .FoFLogInButton, .SubscriptionMenu-button--follow, .App-primaryControl>.Button, .App-titleControl>.Button, .App-backControl>.Button, .PostQuoteButton, .disabled, :disabled), .Select>.Select-input:not(.disabled, :disabled) {
 	border: 1px solid transparent;
-	background: padding-box linear-gradient(@Switch-button-color, @Switch-button-color), border-box @button-border, border-box @Switch-button-color;
+	background: @button-color;
+	border-color: @button-border-color;
+	color: var(--text-color);
+}
+
+.Button:not(.Button--flat, .App-header .Button, .App-header .Button:hover, .UserCard .Button, .UserCard .Button:hover, .Button--primary, .Button--link, .FoFLogInButton, .SubscriptionMenu-button--follow, .App-primaryControl>.Button, .App-titleControl>.Button, .App-backControl>.Button, .PostQuoteButton, .disabled, :disabled):hover, .Select>.Select-input:not(.disabled, :disabled):hover {
+	background: @button-hover-color;
+}
+
+.Button:not(.Button--flat, .App-header .Button, .App-header .Button:hover, .UserCard .Button, .UserCard .Button:hover, .Button--primary, .Button--link, .FoFLogInButton, .SubscriptionMenu-button--follow, .App-primaryControl>.Button, .App-titleControl>.Button, .App-backControl>.Button, .PostQuoteButton):active, .Select>.Select-input:focus {
+	background: @button-active-color;
+	box-shadow: none;
+	border-color: @button-active-border-color;
+}
+
+.Button:not(.Button--flat, .App-header .Button, .App-header .Button:hover, .UserCard .Button, .UserCard .Button:hover, .Button--primary, .Button--link, .FoFLogInButton, .SubscriptionMenu-button--follow, .App-primaryControl>.Button, .App-titleControl>.Button, .App-backControl>.Button, .PostQuoteButton), .Select>.Select-input {
+	&.disabled, &:disabled {
+		background: @button-active-color;
+		box-shadow: none;
+		color: var(--text-color);
+		border: 1px solid @button-active-border-color;
+		opacity: 1;
+	}
 }
 
 .Post-flagged .Button, .Post-flagged .Button:hover, .Post-flagged .Button:active, .Post-flagged .Button:focus, .Post-flagged .Button.focus {
@@ -114,26 +162,57 @@ body {
 		color: black;
 	}
 }
-
-.Button.Button--primary {
-	--button-color: white;
+.PostQuoteButton {
+	--button-color: var(--button-primary-color);
+    --button-bg: var(--button-primary-bg);
+    --button-bg-hover: var(--button-primary-bg-hover);
+    --button-bg-active: var(--button-primary-bg-active);
+    --button-bg-disabled: var(--button-primary-bg-disabled);
 }
 
-.Button.Button--primary, .FoFLogInButton, .SubscriptionMenu-button--follow {
-	& when (@config-dark-mode =false) {
+.Button.Button--primary, .FoFLogInButton, .SubscriptionMenu-button--follow, .PostQuoteButton {
+	& when (@config-dark-mode = false) {
 		background: ~"padding-box linear-gradient(var(--button-bg), var(--button-bg)), border-box linear-gradient(#ffffff14 90%, #00000066 100%), border-box var(--button-bg)";
 	}
 
-	& when (@config-dark-mode =true) {
+	& when (@config-dark-mode = true) {
 		background: ~"padding-box linear-gradient(var(--button-bg), var(--button-bg)), border-box linear-gradient(#ffffff14 90%, #00000023 100%), border-box var(--button-bg)";
 	}
 	border: 1px solid transparent;
+	&:hover {
+		& when (@config-dark-mode = false) {
+			background: ~"padding-box linear-gradient(var(--button-bg-hover), var(--button-bg-hover)), border-box linear-gradient(#ffffff14 90%, #00000066 100%), border-box var(--button-bg-hover)";
+		}
+	
+		& when (@config-dark-mode = true) {
+			background: ~"padding-box linear-gradient(var(--button-bg-hover), var(--button-bg-hover)), border-box linear-gradient(#ffffff14 90%, #00000023 100%), border-box var(--button-bg-hover)";
+		}	
+	}
+
+	&:active {
+		background: var(--button-bg-active);
+	}
+	&.disabled, &:disabled {
+		& when (@config-dark-mode = false) {
+			background: ~"#00000037";
+			color: white;
+		}
+	
+		& when (@config-dark-mode = true) {
+			background: ~"#ffffff28";
+			color: ~"#ffffff87";
+		}	
+	}
 }
 
-.Button:not(.Button--flat, .App-header .Button, .App-header .Button:hover, .UserCard .Button, .UserCard .Button:hover):active, .Select>.Select-input:focus {
-	background: var(--button-bg);
-	border: 1px solid fade(#fff, 13%);
-	box-shadow: none;
+button.Button, select.FormControl, fieldset.Settings-notifications td, #header a.Button {
+	font-size: 14px;
+}
+
+.Button:active,
+.Button.active,
+.open>.Button.Dropdown-toggle {
+	box-shadow: unset;
 }
 
 div.PostUser-bar--empty {
@@ -147,32 +226,51 @@ div.PostUser-bar--empty {
 .PostUser .UserCard {
 	--border-radius: 8px;
 	.shadow28();
-	box-shadow: @high-elevation-ramp, @shadow-outline;
+	box-shadow: @high-elevation-ramp, @shadow-outline-normal;
 }
 
-.Dropdown-menu:not(.sideNav .Dropdown--select .Dropdown-menu, .PostStreamScrubber .Dropdown-menu) {
-	.shadow16();
-	box-shadow: @low-elevation-ramp, @shadow-outline;
-	padding: 0;
-	border-radius: 8px;
-	background-image: var(--noise-asset);
-	background-attachment: fixed;
+.Dropdown-separator {
+	& when (@config-dark-mode = false) {
+		background-color: ~"#0000000f";
+	}
+
+	& when (@config-dark-mode = true) {
+		background-color: ~"#ffffff15";
+	}
 }
 
-.Dropdown-menu>li {
-	margin: 4px;
-}
+.Dropdown-menu {
+	&:not(.sideNav .Dropdown--select .Dropdown-menu, .PostStreamScrubber .Dropdown-menu) {
+		.shadow16();
+		box-shadow: @low-elevation-ramp, @shadow-outline-normal;
+		border-radius: 8px;
+		background-image: var(--noise-asset);
+		background-attachment: fixed;
+	}
 
-.Dropdown-menu>li>a, .Dropdown-menu>li>button {
-	border-radius: 4px;
-}
+	&:not(.sideNav .Dropdown--select .Dropdown-menu, .PostStreamScrubber .Dropdown-menu, .PostMeta .Dropdown-menu) {
+		padding: 0;
+	}
 
-.Dropdown-menu>li>a:hover, .Dropdown-menu>li>button:hover, .Dropdown-menu>li.active>a, .Dropdown-menu>li.active>button {
-	background: var(--button-bg-hover);
-}
+	&>li {
+		margin: 4px;
+		&>a, &>button {
+			border-radius: 4px;
+			&:hover {
+				background: @menu-item-hover;
+			}
+			&:active {
+				background: @menu-item-active;
+			}
+		}
+		&.active>a, &.active>button {
+			background: @menu-item-active;
+		}
+	}
 
-button.Button, select.FormControl, fieldset.Settings-notifications td, #header a.Button {
-	font-size: 14px;
+	.PostMeta & {
+		padding: 8px;
+	}
 }
 
 fieldset>legend, .SettingsPage label {
@@ -191,24 +289,17 @@ p.description, p.Settings-theme--selection_description {
 }
 
 .SettingsPage>ul>li {
-	box-shadow: @shadow-outline;
+	box-shadow: @shadow-outline-normal;
 	border-radius: 4px;
 	background-color: @LayerFillColorDefault;
 	margin-bottom: 12px;
 	padding: 16px;
 }
 
-.Button:active,
-.Button.active,
-.open>.Button.Dropdown-toggle {
-	box-shadow: unset;
-}
-
 .Hero {
 	margin: 12px;
 	border-radius: 8px;
-	.shadow8();
-	box-shadow: @low-elevation-ramp, @shadow-outline;
+	box-shadow: @shadow-outline-normal;
 }
 
 .darkenBackground {
@@ -231,7 +322,7 @@ p.description, p.Settings-theme--selection_description {
 
 .Modal-content {
 	border-radius: 8px;
-	box-shadow: @shadow-outline;
+	box-shadow: @shadow-outline-window;
 	& when (@config-colored-header = false) {
 		background-color: var(--header-bg);
 	}
@@ -245,6 +336,10 @@ p.description, p.Settings-theme--selection_description {
 	margin-top: 16px;
 }
 
+.LoadingIndicator-container--medium, .LoadingIndicator-container--large {
+    color: var(--primary-color);
+}
+
 .LoadingIndicator {
 	animation: none;
 	border: none;
@@ -255,70 +350,59 @@ p.description, p.Settings-theme--selection_description {
 	mask: var(--animation-image);
 }
 
-#header input[type=search] {
-	font-size: 14px;
-	border-color: transparent;
-	& when (@config-colored-header = false) {
-		& when (@config-dark-mode = false) {
-			background: padding-box linear-gradient(@obj-color, @obj-color), border-box linear-gradient(#ddd ~"calc(100% - 2px)", #9a9a9a ~"calc(100% - 2px)", #9a9a9a);
-			&:focus {
-				background: padding-box linear-gradient(@obj-color, @obj-color), border-box linear-gradient(#ddd ~"calc(100% - 2px)", @primary-color ~"calc(100% - 2px)", @primary-color);
-			}
-		}
-		& when (@config-dark-mode =true) {
-			background: padding-box linear-gradient(@obj-color, @obj-color), border-box linear-gradient(#303030 ~"calc(100% - 2px)", #9a9a9a ~"calc(100% - 2px)", #9a9a9a);
-			&:focus {
-				background: padding-box linear-gradient(@obj-color, @obj-color), border-box linear-gradient(#303030 ~"calc(100% - 2px)", @primary-color ~"calc(100% - 2px)", @primary-color);
-			}
+#header {
+	box-shadow: @shadow-outline-window;
+	& input[type=search] {
+		font-size: 14px;
+		border-color: transparent;
+		background: @Text-Input;
+		&:focus {
+			background: @Text-Input-focus;
 		}
 	}
-	& when (@config-colored-header = true) {
-		box-shadow: 0px 0.3px ~"rgb(111 111 111 / 60%)";
-		@media (min-width: 768px) and (max-width: 991.98px) {
-			& {
-				background: var(--header-colored-control-bg, rgba(0,0,0,0.1));
-			}
-		}
-	}
-}
 
-#header .Search-input::before, .FormControl::-webkit-input-placeholder, .FormControl::placeholder {
-	& when (@config-colored-header = false) {
-		& when (@config-dark-mode = false) {
-			color: rgb(117, 117, 117) !important;
-		}
-		& when (@config-dark-mode = true) {
-			color: #cfd1d2 !important;
-		}
+	& .Search-input::before, .FormControl::-webkit-input-placeholder, .FormControl::placeholder, & .Search-input > .Search-clear, & .Search-input > .Search-clear:hover {
+			& when (@config-dark-mode = false) {
+				color: rgb(117, 117, 117) !important;
+			}
+			& when (@config-dark-mode = true) {
+				color: #cfd1d2 !important;
+			}
 	}
 }
 
 .FormControl[type=text],
 .FormControl[type=email],
 .FormControl[type=password],
-textarea.FormControl {
+textarea.FormControl,
+.TagsInput {
 	border-radius: 4px;
 	border: 1px solid transparent;
-	& when (@config-dark-mode = false) {
-		background: padding-box linear-gradient(@ControlFillColorDefault, @ControlFillColorDefault), border-box linear-gradient(~"#0000000F" ~"calc(100% - 1px)", ~"#00000072" ~"calc(100% - 1px)", ~"#00000072");
-	}
-	& when (@config-dark-mode = true) {
-		background: padding-box linear-gradient(@ControlFillColorDefault, @ControlFillColorDefault), border-box linear-gradient(~"#FFFFFF12" ~"calc(100% - 1px)", ~"#FFFFFF8B" ~"calc(100% - 1px)", ~"#FFFFFF8B");
-	}
+	background: @Text-Input;
 }
 
 .FormControl[type=text]:focus,
 .FormControl[type=email]:focus,
 .FormControl[type=password]:focus,
-.Modal-body textarea.FormControl:focus {
-	& when (@config-dark-mode = false) {
-		background: padding-box linear-gradient(@ControlFillColorDefault, @ControlFillColorDefault), border-box linear-gradient(~"#0000000F" ~"calc(100% - 2px)", var(--primary-color) ~"calc(100% - 2px)", var(--primary-color)) !important;
-	}
-	& when (@config-dark-mode = true) {
-		background: padding-box linear-gradient(@ControlFillColorDefault, @ControlFillColorDefault), border-box linear-gradient(~"#FFFFFF12" ~"calc(100% - 2px)", var(--primary-color) ~"calc(100% - 2px)", var(--primary-color)) !important;
-	}
+.Modal-body textarea.FormControl:focus,
+.TagsInput:focus, .TagsInput:focus-within {
+	background: @Text-Input-focus;
 	border-width: 1px 1px 2px 1px;
 	border-color: transparent;
+}
+
+.TagsInput:focus-within {
+	outline: none;
+}
+
+.SelectTagList {
+	& > li {
+		margin: 4px;
+		border-radius: 4px;
+		&.active {
+			background: @menu-item-active;
+		}
+	}
 }
 
 .Checkbox--switch .Checkbox-display {
@@ -327,32 +411,30 @@ textarea.FormControl {
 	border: @Fluent-border 1px solid;
 	border-radius: 20px;
 	margin-top: 0px;
-}
-
-.Checkbox--switch .Checkbox-display:before {
-	background: padding-box linear-gradient(white, white);
-	width: 20px;
-	height: 20px;
-	border: 5px solid transparent;
-	box-shadow: none;
-	top: 0px;
-	left: 0px;
-	margin: -0.5px;
-	transition-property: background-color, border;
+	&:before {
+		background: padding-box linear-gradient(white, white);
+		width: 20px;
+		height: 20px;
+		border: 5px solid transparent;
+		box-shadow: none;
+		top: 0px;
+		left: 0px;
+		margin: -1px -0.5px;
+	}
 }
 
 .on.Checkbox--switch .Checkbox-display {
 	background: var(--primary-color);
 	border: var(--primary-color) 1px solid;
-}
-
-.on.Checkbox--switch .Checkbox-display:before {
-	left: 20px;
+	transition-property: background-color, border;
+	&:before {
+		left: 20px;
+	}
 }
 
 .AfruxWidgets-Widget-content {
 	.shadow2();
-	box-shadow: @low-elevation-ramp, @shadow-outline;
+	box-shadow: @low-elevation-ramp, @shadow-outline-normal;
 }
 
 .Alert {
@@ -361,7 +443,7 @@ textarea.FormControl {
 
 .AlertManager .Alert {
 	.shadow28();
-	box-shadow: @high-elevation-ramp, @shadow-outline;
+	box-shadow: @high-elevation-ramp, @shadow-outline-normal;
 }
 
 .Composer {
@@ -376,9 +458,22 @@ textarea.FormControl {
 
 .DiscussionListItem {
 	margin: 12px 8px;
-    box-shadow: @shadow-outline;
+    box-shadow: @shadow-outline-normal;
     border-radius: 4px;
     background-color: @CardBackgroundFillColorDefault;
+	&:hover {
+		background-color: @button-hover-color;
+		& when (@config-dark-mode = false) {
+			box-shadow: 0 0 0 1px ~"#0000000f";
+		}
+		& when (@config-dark-mode = true) {
+			box-shadow: 0 0 0 1px @button-hover-color;
+		}
+	}
+	&:active {
+		background-color: @button-active-color;
+		box-shadow: 0 0 0 1px @button-active-border-color;
+	}
 	.DiscussionList:not(.DiscussionList--searchResults) & .read .DiscussionListItem-title, .DiscussionList:not(.DiscussionList--searchResults) & .unread .DiscussionListItem-title {
 		color: @obj-title-color;
 	}
@@ -387,8 +482,27 @@ textarea.FormControl {
 	}
 }
 
-.NotificationList-content {
-	padding-bottom: 12px;
+.DiscussionListItem-content:active {
+    background: none !important;
+}
+
+.NotificationList {
+	--muted-color: var(--text-color);
+    --button-color: var(--text-color);
+	&-header {
+		border-bottom: 1px solid @Fluent-border;
+		& when (@config-dark-mode = false) {
+			background-color: ~"#00000005";
+		}
+		& when (@config-dark-mode = true) {
+			background-color: ~"#00000021";
+		}
+		border-radius: 8px 8px 0 0;
+	}
+
+	&-content {
+		padding-bottom: 12px;
+	}
 }
 
 ul.NotificationGroup-content {
@@ -397,19 +511,34 @@ ul.NotificationGroup-content {
     row-gap: 12px;
 	& > li {
 		margin: 0 8px;
-		box-shadow: @shadow-outline;
-		border-radius: 4px;
-		overflow: hidden;
 		--muted-color: @details-second-font-color;
 		& > a {
-			background-color: var(--button-bg-hover);
-			&.Notification:hover, &.Notification:focus, &.Notification:focus-within, &.unread {
+			&.Notification {
+				background-color: @CardBackgroundFillColorDefault;
+				box-shadow: @shadow-outline-normal;
+				border-radius: 4px;
+			}
+			&.Notification:hover, &.unread {
+				background-color: @button-hover-color;
 				& when (@config-dark-mode = false) {
-					background-color: fade(@CardBackgroundFillColorDefault, 80%);
+					box-shadow: 0 0 0 1px ~"#0000000f";
 				}
 				& when (@config-dark-mode = true) {
-					background-color: fade(@CardBackgroundFillColorDefault, 16%);
+					box-shadow: 0 0 0 1px @button-hover-color;
 				}
+			}
+			&.Notification:active, &.Notification:focus, &.Notification:focus-within {
+				background-color: @button-active-color;
+			}
+			&.unread .Notification-title:after {
+				content: '';
+				display: inline-block;
+				width: 1em;
+				height: 1em;
+				border-radius: 50%;
+				background-color: var(--primary-color);
+				transform: translateY(10%);
+				margin-left: 8px;
 			}
 		}
 		& .Notification-excerpt {
@@ -429,71 +558,35 @@ ul.NotificationGroup-content {
 aside.DiscussionPage-list {
 	border-radius: 8px;
 	.shadow16();
-	box-shadow: @low-elevation-ramp, @shadow-outline;
+	box-shadow: @low-elevation-ramp, @shadow-outline-normal;
 	& .DiscussionListItem {
 		margin: 12px 8px;
 		border-radius: 4px;
 	}
 }
 
-.PostQuoteButton {
-	& when (@config-dark-mode = false) {
-		--button-color: black;
-		&:active {
-			--button-bg: white;
+.tooltip {
+	& .tooltip-arrow {
+		display: none;
+		& when (@config-dark-mode = false) {
+			color: black !important;
 		}
 	}
-}
 
-.tooltip {
-	& when (@config-dark-mode = false) {
-		--low-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) fade(#000, 14%);
+	&>.tooltip-inner {
+		.shadow4();
+		box-shadow: @low-elevation-ramp, @shadow-outline-normal;
+		& when (@config-dark-mode = false) {
+			color: black !important;
+		}
+		background-color: @layer-2-color !important;
+		background-image: var(--noise-asset);
 	}
-
-	& when (@config-dark-mode = true) {
-		--low-elevation-ramp: 0px calc(0.5 * @elevation-height) calc(1 * @elevation-height) fade(#000, 28%);
-	}
-
-	@elevation-height: 4px;
-	filter: drop-shadow(var(--low-elevation-ramp));
-}
-
-.tooltip .tooltip-arrow {
-	& when (@config-dark-mode = false) {
-		color: black !important;
-	}
-}
-
-.tooltip.top .tooltip-arrow {
-	border-top-color: @layer-2-color !important;
-}
-
-.tooltip.bottom .tooltip-arrow {
-	border-bottom-color: @layer-2-color !important;
-}
-
-.tooltip.left .tooltip-arrow {
-	border-left-color: @layer-2-color !important;
-}
-
-.tooltip.right .tooltip-arrow {
-	border-right-color: @layer-2-color !important;
-}
-
-.tooltip>.tooltip-inner {
-	& when (@config-dark-mode = false) {
-		color: black !important;
-	}
-	background-color: @layer-2-color !important;
 }
 
 .Badge:not(.Badge--social) {
 	.shadow4();
 	box-shadow: @low-elevation-ramp;
-}
-
-.disabled .Scrubber-bar {
-	filter: grayscale(1);
 }
 
 .Scrubber-bar {
@@ -509,10 +602,14 @@ aside.DiscussionPage-list {
 	border-radius: 50%;
 	margin-left: -9px;
 	transition: border-width 0.1s;
-	box-shadow: @shadow-outline;
+	box-shadow: @shadow-outline-normal;
+	.disabled & {
+		filter: grayscale(1);
+	}
+
 	&:not(.disabled .Scrubber-bar) {
 		.shadow4();
-		box-shadow: @low-elevation-ramp, @shadow-outline;
+		box-shadow: @low-elevation-ramp, @shadow-outline-normal;
 	}
 }
 
@@ -537,6 +634,10 @@ aside.DiscussionPage-list {
 	app-region: drag;
 }
 
+.fancybox__backdrop, .fancybox__image {
+	app-region: no-drag;
+}
+
 .fancybox__toolbar__items--left {
 	margin-left: ~"env(titlebar-area-x, 0)";
 	margin-right: -100px;
@@ -546,18 +647,28 @@ aside.DiscussionPage-list {
 	height: 48px;
 }
 
-.carousel__viewport {
-	border-top: 1px solid @Fluent-border;
+.carousel__viewport, .fancybox__toolbar__items--right {
+	box-shadow: @shadow-outline-normal;
 	border-radius: 8px;
+	background-image: var(--noise-asset);
 	background-color: @layer-3-color;
+}
+
+.carousel__viewport {
 	margin-bottom: 4px;
+}
+
+.fancybox__thumbs .carousel__slide .fancybox__thumb::after {
+	border-width: 2.4px;
+}
+
+.fancybox__thumbs .carousel__slide.is-nav-selected .fancybox__thumb::after {
+	opacity: 1;
 }
 
 .fancybox__toolbar__items--right {
 	margin-left: -500px;
 	margin-right: ~"calc(100% - env(titlebar-area-width, 100%) - env(titlebar-area-x, 0px) + 16px)";
-	border: 1px solid @Fluent-border;
-	border-radius: 8px;
 	background-color: @layer-1-color;
 	padding: 8px 12px;
 	column-gap: 12px;
@@ -567,7 +678,10 @@ aside.DiscussionPage-list {
 		app-region: no-drag;
 		border-radius: 4px;
 		&:hover {
-			background-color: var(--button-bg-hover);
+			background-color: @menu-item-hover;
+		}
+		&:active {
+			background-color: @menu-item-active;
 		}
 		& > svg {
 			--carousel-button-svg-filter: none;
@@ -581,10 +695,56 @@ aside.DiscussionPage-list {
 	}
 }
 
-@media (max-width: 767.98px) {
+//Blog
+
+.FlarumBlogOverview {
+	& .BlogScrubber {
+		& .BlogList-item, & .BlogList-item:hover {
+			.fluent-card();
+			overflow: hidden;
+		}
+	}
+	.BlogSideWidget {
+		.fluent-card();
+		& .sideNav li, & .BlogSideWidget-item {
+			margin: 4px;
+			border-radius: 4px;
+		}
+		& .sideNav li.active::before {
+    		content: '';
+    		width: 4px;
+    		height: 17px;
+    		background: var(--primary-color);
+    		border-radius: 2px;
+    		float: left;
+    		margin: 9px -28px 0 -8px;
+		}
+	}
+}
+
+.FlarumBlogItem {
+	& .FlarumBlog-Article {
+		& .FlarumBlog-Article-Sidebar {
+			& .FlarumBlog-Article-Author {
+				.fluent-card();
+			}
+		}
+		& .FlarumBlog-Article-Container {
+			& .FlarumBlog-Article-Content, & .FlarumBlog-Article-Comments {
+				.fluent-card();
+			}
+		}
+	}
+}
+
+@media @phone {
+	#header {
+		box-shadow: none;
+	}
+
 	.App-drawer {
 		.shadow16();
-		box-shadow: @low-elevation-ramp, @shadow-outline;
+		box-shadow: @low-elevation-ramp, @shadow-outline-normal;
 	}
 
 	.IndexPage-toolbar {
@@ -626,7 +786,7 @@ aside.DiscussionPage-list {
 	}
 
 	.DiscussionPage-discussion > .container, .PostsUserPage {
-		box-shadow: @shadow-outline;
+		box-shadow: @shadow-outline-normal;
 		background-color: @obj-color;
 	}
 	
@@ -639,12 +799,16 @@ aside.DiscussionPage-list {
 	}
 
 	.Dropdown .Dropdown-menu {
-		.shadow28();
-		box-shadow: @high-elevation-ramp, @shadow-outline;
+		.shadow28() !important;
+		border-radius: 0px !important;
+		box-shadow: @high-elevation-ramp, @shadow-outline-normal !important;
 		&>li>a, &>li>button {
-			background: transparent;
+			background: transparent !important;
 			&:hover {
-				background: var(--button-bg-hover);
+				background: @menu-item-hover !important;
+			}
+			&:active {
+				background: @menu-item-active !important;
 			}
 		}
 	}
@@ -694,41 +858,26 @@ aside.DiscussionPage-list {
 	}
 }
 
-@media (min-width:768px) {
+@media @tablet-up {
 	.Composer.active:not(.fullScreen) {
 		.shadow64();
-		box-shadow: @high-elevation-ramp, @shadow-outline;
+		box-shadow: @high-elevation-ramp, @shadow-outline-window;
 	}
 
 	@supports (backdrop-filter: blur(30px)) {
-		.Dropdown-menu:not(.sideNav .Dropdown--select .Dropdown-menu, .PostStreamScrubber .Dropdown-menu) {
-			& when (@config-dark-mode = false) {
-				background-color: rgba(255, 255, 255, 75%);
-			}
-			& when (@config-dark-mode = true) {
-				background-color: rgba(25, 25, 25, 60%);
-			}
-			backdrop-filter: blur(30px) saturate(1.25);
+		.Dropdown-menu:not(.sideNav .Dropdown--select .Dropdown-menu, .PostStreamScrubber .Dropdown-menu), .carousel__viewport {
+			background-color: @Acrylic-bg;
+			backdrop-filter: var(--Acrylic-filter);
 		}
 
 		.tooltip {
-			filter: none;
-
 			& .tooltip-arrow {
 				display: none;
 			}
 	
 			&>.tooltip-inner {
-				& when (@config-dark-mode = false) {
-					background-color: rgba(255, 255, 255, 75%) !important;
-				}
-				& when (@config-dark-mode = true) {
-					background-color: rgba(25, 25, 25, 60%) !important;
-				}
-				background-image: var(--noise-asset);
-				backdrop-filter: blur(30px) saturate(1.25);
-				.shadow4();
-				box-shadow: @low-elevation-ramp, @shadow-outline;
+				background-color: @Acrylic-bg !important;
+				backdrop-filter: var(--Acrylic-filter);
 			}
 		}
 	}
@@ -738,7 +887,7 @@ aside.DiscussionPage-list {
 		border-radius: 8px !important;
 		width: ~"calc(33.333% - 12px)";
 		.shadow4();
-		box-shadow: @low-elevation-ramp, @shadow-outline;
+		box-shadow: @low-elevation-ramp, @shadow-outline-normal;
 	}
 
 	nav.IndexPage-nav.sideNav,
@@ -747,7 +896,7 @@ aside.DiscussionPage-list {
 	}
 
 	.sideNav .Dropdown--select .Dropdown-menu>li>a {
-		color: --obj-title-color;
+		color: var(--text-color);
 	}
 
 	.DiscussionListItem {
@@ -756,7 +905,7 @@ aside.DiscussionPage-list {
 
 	.DiscussionPage-stream, .PostsUserPage {
 		padding: 0 16px 16px;
-		box-shadow: @shadow-outline;
+		box-shadow: @shadow-outline-normal;
 		background-color: @LayerFillColorDefault;
 		border-radius: 8px;
 	}
@@ -769,15 +918,13 @@ aside.DiscussionPage-list {
 		font-size: 14px;
 	}
 
-	@media (max-width: 991.98px) {
+	@media (max-width: (@screen-desktop - 0.02)) {
 		nav.IndexPage-nav.sideNav {
 			padding: 16px;
 			border-radius: 8px;
-			border: 1px solid var(--control-bg);
-			background-color: @obj-color;
+			background-color: @LayerFillColorDefault;
 			margin-right: 0;
-			.shadow16();
-			box-shadow: @low-elevation-ramp;
+			box-shadow: @shadow-outline-normal;
 		}
 
 		.sideNav:after {
@@ -789,37 +936,35 @@ aside.DiscussionPage-list {
 		margin: 4px 0;
 		padding: 0 8px;
 		border-radius: 4px;
-	}
+		&:hover {
+			background-color: @menu-item-hover;
+		}
 
-	.item-nav>div>ul>li:hover,
-	.item-nav>div>ul>li.active {
-		background-color: fade(#999, 13%);
-	}
+		&:active, &.active {
+			background-color: @menu-item-active;
+		}
 
-	.item-nav>div>ul>li.active::before {
-		content: '';
-		width: 4px;
-		height: 17px;
-		background: var(--primary-color);
-		border-radius: 2px;
-		float: left;
-		margin: 9px -28px 0 -8px;
-	}
+		&.active::before {
+			content: '';
+			width: 4px;
+			height: 17px;
+			background: var(--primary-color);
+			border-radius: 2px;
+			float: left;
+			margin: 9px -28px 0 -8px;
+		}
 
-	.item-nav>div>ul>li:active {
-		background-color: fade(#999, 20%);
-	}
+		&.active~li.active::before {
+			margin: 9px -28px 0 0;
+		}
 
-	.item-nav>div>ul>li.active~li.active::before {
-		margin: 9px -28px 0 0;
-	}
+		&.active:has(~ li.active) {
+			background-color: transparent;
+		}
 
-	.item-nav>div>ul>li.active:has(~ li.active) {
-		background-color: transparent;
-	}
-
-	.item-nav>div>ul>li.active:has(~ li.active)::before {
-		display: none;
+		&.active:has(~ li.active)::before {
+			display: none;
+		}
 	}
 
 	@media (display-mode: window-controls-overlay) {
@@ -867,7 +1012,7 @@ aside.DiscussionPage-list {
 	}
 }
 
-@media (min-width: 992px) {
+@media @desktop-up {
 	.IndexPage-results.sideNavOffset,
 	.UserPage-content.sideNavOffset {
 		padding-left: 16px;
@@ -875,6 +1020,104 @@ aside.DiscussionPage-list {
 	}
 
 	.Composer {
-		box-shadow: @high-elevation-ramp, @shadow-outline;
+		box-shadow: @high-elevation-ramp, @shadow-outline-window;
 	}
+}
+
+// The contents this line below are fluent compoents.
+
+.fluent-button(@accent) {
+	& when (@accent) {
+		& when (@config-dark-mode = false) {
+			background: ~"padding-box linear-gradient(var(--button-bg), var(--button-bg)), border-box linear-gradient(#ffffff14 90%, #00000066 100%), border-box var(--button-bg)";
+		}
+	
+		& when (@config-dark-mode = true) {
+			background: ~"padding-box linear-gradient(var(--button-bg), var(--button-bg)), border-box linear-gradient(#ffffff14 90%, #00000023 100%), border-box var(--button-bg)";
+		}
+		border: 1px solid transparent;
+		&:hover {
+			& when (@config-dark-mode = false) {
+				background: ~"padding-box linear-gradient(var(--button-bg-hover), var(--button-bg-hover)), border-box linear-gradient(#ffffff14 90%, #00000066 100%), border-box var(--button-bg-hover)";
+			}
+		
+			& when (@config-dark-mode = true) {
+				background: ~"padding-box linear-gradient(var(--button-bg-hover), var(--button-bg-hover)), border-box linear-gradient(#ffffff14 90%, #00000023 100%), border-box var(--button-bg-hover)";
+			}	
+		}
+	
+		&:active {
+			background: var(--button-bg-active);
+		}
+		&.disabled, &:disabled {
+			& when (@config-dark-mode = false) {
+				background: ~"#00000037";
+				color: white;
+			}
+		
+			& when (@config-dark-mode = true) {
+				background: ~"#ffffff28";
+				color: ~"#ffffff87";
+			}
+		}
+	}
+	& when not (@accent) {
+		border: 1px solid transparent;
+		background: @button-color;
+		border-color: @button-border-color;
+		color: var(--text-color);
+
+		&:hover {
+			background: @button-hover-color;
+		}
+		
+		&:active {
+			background: @button-active-color;
+			box-shadow: none;
+			border-color: @button-active-border-color;
+		}
+		
+		&.disabled, &:disabled {
+			background: @button-active-color;
+			box-shadow: none;
+			color: var(--text-color);
+			border: 1px solid @button-active-border-color;
+			opacity: 1;
+		}
+	}
+}
+
+.fluent-layer() {
+	box-shadow: @shadow-outline-normal;
+	background-color: @LayerFillColorDefault;
+	border-radius: 8px;
+}
+
+.fluent-menu() {
+	.shadow16();
+	box-shadow: @low-elevation-ramp, @shadow-outline-normal;
+	border-radius: 8px;
+}
+
+.fluent-menu-item() {
+	margin: 4px;
+	border-radius: 4px;
+	&:hover {
+		background: @menu-item-hover;
+	}
+	&:active, &.active {
+		background: @menu-item-active;
+	}
+}
+
+.fluent-acrylic() {
+	background-color: @layer-2-color;
+	background-image: var(--noise-asset);
+	background-attachment: fixed;
+}
+
+.fluent-card() {
+	.shadow8();
+	box-shadow: @low-elevation-ramp, @shadow-outline-normal;
+	border-radius: 8px;
 }

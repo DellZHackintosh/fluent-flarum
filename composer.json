@@ -18,9 +18,9 @@
             "title": "Fluent",
             "category": "theme",
             "icon": {
-                "name": "fas fa-f",
+                "name": "fab fa-microsoft",
                 "backgroundColor": "#0078d4",
-                "color": "#FFF"
+                "color": "#fff"
             }
         }
     }
