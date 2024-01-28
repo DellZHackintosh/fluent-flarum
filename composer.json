@@ -11,7 +11,7 @@
         "source": "https://github.com/DellZHackintosh/fluent-flarum"
     },
     "require": {
-        "flarum/core": "*"
+        "flarum/core": "^1.0"
     },
     "extra": {
         "flarum-extension": {
