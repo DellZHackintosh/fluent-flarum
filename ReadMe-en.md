@@ -20,4 +20,4 @@ Please go to the [Demo Site](https://dellzhackintosh.github.io/fluent-flarum/).
 
 ### Custom Design
 
-The Fluent theme supports a series of customizations. Please go to the [Design Guide](./documents/design.md).
+The Fluent theme supports a series of customizations. Please go to the [Design Guide](./documents/design-en.md).
