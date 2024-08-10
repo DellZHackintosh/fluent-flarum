@@ -93,6 +93,7 @@
 
 :root {
 	accent-color: var(--primary-color);
+	scrollbar-width: thin;
 	--button-bg: @obj-color;
 	--button-bg-hover: fade(#999, 10%);
 	--fancybox-bg: @backdrop;
@@ -216,7 +217,9 @@ button.Button, select.FormControl, fieldset.Settings-notifications td, #header a
 }
 
 div.PostUser-bar--empty {
-	background: url("data:image/svg+xml,%3Csvg viewBox='0 0 0.26458335 0.79375005' version='1.1' id='svg5' xmlns='http://www.w3.org/2000/svg' xmlns:svg='http://www.w3.org/2000/svg'%3E%3Cdefs id='defs2'/%3E%3Cg id='layer1'%3E%3Crect style='fill:%238d8d8d;fill-opacity:1;stroke:none;stroke-width:0;stroke-miterlimit:10' id='rect31' width='0.26458335' height='0.26458335' x='0' y='0.26458335'/%3E%3C/g%3E%3C/svg%3E");
+	background: #8d8d8d;
+	transform: translateY(1px);
+	height: 1px;
 }
 
 .PostUser-bar {
@@ -461,6 +464,9 @@ textarea.FormControl,
     box-shadow: @shadow-outline-normal;
     border-radius: 4px;
     background-color: @CardBackgroundFillColorDefault;
+	--muted-color: @details-second-font-color;
+	--muted-more-color: @details-second-font-color;
+	--button-color: @details-second-font-color;
 	&:hover {
 		background-color: @button-hover-color;
 		& when (@config-dark-mode = false) {
@@ -476,9 +482,6 @@ textarea.FormControl,
 	}
 	.DiscussionList:not(.DiscussionList--searchResults) & .read .DiscussionListItem-title, .DiscussionList:not(.DiscussionList--searchResults) & .unread .DiscussionListItem-title {
 		color: @obj-title-color;
-	}
-	& .DiscussionListItem-info, & .DiscussionListItem-count, & .DiscussionListItem-info .item-excerpt {
-		color: @details-second-font-color;
 	}
 }
 
@@ -925,10 +928,24 @@ aside.DiscussionPage-list {
 			background-color: @LayerFillColorDefault;
 			margin-right: 0;
 			box-shadow: @shadow-outline-normal;
+			scrollbar-width: thin;
 		}
 
 		.sideNav:after {
 			display: none;
+		}
+
+		.item-nav>div>ul>li {
+			display: inline-flex !important;
+    		flex-direction: column-reverse;
+    		width: fit-content;
+    		align-items: center;
+			&.active::before {
+				width: ~"max(20%, 16px)";
+            	height: 4px;
+				float: right;
+            	margin: -4px 0 0 0;
+			}
 		}
 	}
 
@@ -1013,12 +1030,6 @@ aside.DiscussionPage-list {
 }
 
 @media @desktop-up {
-	.IndexPage-results.sideNavOffset,
-	.UserPage-content.sideNavOffset {
-		padding-left: 16px;
-		border-left: 1px solid @Fluent-border;
-	}
-
 	.Composer {
 		box-shadow: @high-elevation-ramp, @shadow-outline-window;
 	}
