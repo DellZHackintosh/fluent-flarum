@@ -1,0 +1,65 @@
+.define-variables(false) {
+	@layer-1-color: #e8e8e8;
+	@layer-2-color: #f9f9f9;
+	@layer-3-color: #fdfdfd;
+	@LayerFillColorDefault: ~"#ffffff80";
+	@CardBackgroundFillColorDefault: fade(white, 70%);
+	@ExpanderHeaderBackground: ~"#00000009";
+	@obj-title-color: #191a1a;
+	@Fluent-border: fade(black, 5.9%);
+	@details-second-font-color: #5e5e5e;
+	@titlebar-bg: @header-bg-light;
+	@button-border-color: ~"#0000000f #0000000f #00000029";
+	@button-active-border-color: ~"#0000000f";
+	@button-color: ~"padding-box linear-gradient(#ffffffb3, #ffffffb3)";
+	@button-hover-color: ~"#f9f9f980";
+	@button-active-color: ~"#f9f9f94d";
+	@menu-item-hover: ~"#00000009";
+	@menu-item-active: ~"#00000006";
+	@ControlFillColorDefault: ~"#FFFFFFB3";
+	@ControlFillColorInputActive: white;
+	@low-elevation-ramp: ~"0px calc(0.5 * var(--elevation-height)) calc(1 * var(--elevation-height)) 0px" fade(#000, 14%), ~"0px calc(0.5 * var(--elevation-height)) calc(1 * var(--elevation-height)) 0" fade(#000, 14%);
+	@high-elevation-ramp: ~"0px calc(0.5 * var(--elevation-height)) calc(1 * var(--elevation-height)) 0px" fade(#000, 24%), ~"0px 0px 8px 0px" fade(#000, 20%);
+	@Acrylic-bg: rgba(255, 255, 255, 0.6);
+	@Text-Input: padding-box linear-gradient(@ControlFillColorDefault, @ControlFillColorDefault), border-box linear-gradient(~"#0000000F" ~"calc(100% - 1px)", ~"#00000072" ~"calc(100% - 1px)", ~"#00000072");
+	@Text-Input-focus: padding-box linear-gradient(@ControlFillColorDefault, @ControlFillColorDefault), border-box linear-gradient(~"#0000000F" ~"calc(100% - 2px)", var(--primary-color) ~"calc(100% - 2px)", var(--primary-color)) !important;
+    @Acrylic-filter: contrast(45%) blur(30px) saturate(1.25) brightness(135%);
+}
+.define-variables(true) {
+	@layer-1-color: #202020;
+	@layer-2-color: #272727;
+	@layer-3-color: #323232;
+	@LayerFillColorDefault: ~"#3a3a3a4c";
+	@CardBackgroundFillColorDefault: fade(white, 5%);
+	@ExpanderHeaderBackground: ~"#ffffff0f";
+	@obj-title-color: white;
+	@Fluent-border: fade(black, 9.8%);
+	@details-second-font-color: #cfcfcf;
+	@titlebar-bg: @header-bg-dark;
+	@button-border-color: ~"#ffffff18 #ffffff12 #ffffff12";
+	@button-active-border-color: ~"#ffffff12";
+	@button-color: ~"padding-box linear-gradient(#ffffff0f, #ffffff0f)";
+	@button-hover-color: ~"#ffffff15";
+	@button-active-color: ~"#ffffff08";
+	@menu-item-hover: ~"#ffffff0f";
+	@menu-item-active: ~"#ffffff0a";
+	@ControlFillColorDefault: ~"#FFFFFF0F";
+	@ControlFillColorInputActive: ~"#1E1E1EB3";
+	@low-elevation-ramp: ~"0px calc(0.5 * var(--elevation-height)) calc(1 * var(--elevation-height)) 0px" fade(#000, 28%), ~"0px calc(0.5 * var(--elevation-height)) calc(1 * var(--elevation-height)) 0px" fade(#000, 14%);
+	@high-elevation-ramp: ~"0px calc(0.5 * var(--elevation-height)) calc(1 * var(--elevation-height)) 0px" fade(#000, 28%), ~"0px 0px 2px 0px" fade(#000, 20%);
+	@Acrylic-bg: transparent;
+	@Text-Input: padding-box linear-gradient(@ControlFillColorDefault, @ControlFillColorDefault), border-box linear-gradient(~"#FFFFFF12" ~"calc(100% - 1px)", ~"#FFFFFF8B" ~"calc(100% - 1px)", ~"#FFFFFF8B");
+	@Text-Input-focus: padding-box linear-gradient(@ControlFillColorInputActive, @ControlFillColorInputActive), border-box linear-gradient(~"#FFFFFF12" ~"calc(100% - 2px)", var(--primary-color) ~"calc(100% - 2px)", var(--primary-color)) !important;
+    @Acrylic-filter: saturate(125%) brightness(125%) blur(30px) contrast(75%) saturate(250%) brightness(60%) contrast(80%) brightness(60%);
+}
+
+.mica(@color, @isDark) {
+    & when (@isDark = false) {
+        @mica: lighten(average(average(fade(@color, 30%), white), @layer-2-color), 1%);
+        @micaAlt: saturate(average(average(fade(@color, 30%), white), @layer-1-color), 30%);
+    }
+    & when (@isDark = true) {
+        @mica: lighten(average(average(fade(@color, 30%), black), @layer-2-color), 2%);
+        @micaAlt: saturate(average(average(fade(@color, 30%), black), @layer-1-color), 30%);
+    }
+}

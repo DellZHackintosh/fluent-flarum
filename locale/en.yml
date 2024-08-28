@@ -1,0 +1,13 @@
+dalez-fluent-flarum:
+  admin:
+    can_use_feature: Allow to use this feature
+    beta: You're using Fluent Theme beta and previewing the changes early in the development cycle but they can be unstable.
+    enable_beta_label: Switch to Fluent Theme beta
+    enable_beta_help: Switch to Fluent Theme beta to preview the new features. If you ran into problems and want to go back, just simply disable this.
+    background_label: Background
+    solid: Solid
+    bing_red: Bing (red)
+    bing_green: Bing (green)
+    bing_blue: Bing (blue)
+    mica_accent: Mica, with your accent color
+    mica_colorful: Mica
