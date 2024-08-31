@@ -26,15 +26,15 @@ body {
         
         &::before when not(@dalez-fluent-flarum-background = solid) {
             opacity: 1;
-            & when (@dalez-fluent-flarum-background = mica_colorful) {
+            & when (@dalez-fluent-flarum-background = micacolorful) {
                 background: var(--mica-gradient), linear-gradient(@mica-blend, @mica-blend), transparent;
                 background-blend-mode: color, normal;
             }
-            & when (@dalez-fluent-flarum-background = mica_accent) {
+            & when (@dalez-fluent-flarum-background = micaaccent) {
                 background: linear-gradient(var(--primary-color), var(--primary-color)), var(--mica-gradient), linear-gradient(#0e0e0e, #0e0e0e), transparent;
                 background-blend-mode: hue, color, normal;
             }
-            & when (@dalez-fluent-flarum-background = bing_red) {
+            & when (@dalez-fluent-flarum-background = bingred) {
                 & when (@config-dark-mode = false) {
                     background: linear-gradient(90deg, #eeedf3 0%, 0.77381%, #efeff4 1.54762%, 6.72619%, #efeef3 11.9048%, 12.381%, #f0edf4 12.8571%, 27.9167%, #f2ecf4 42.9762%, 51.9048%, #efeef3 60.8333%, 61.9643%, #eeebf6 63.0952%, 66.7262%, #ebeaf9 70.3571%, 73.2738%, #e8e8f8 76.1905%, 77.1429%, #e6e7f8 78.0952%, 79.9405%, #e4e5f9 81.7857%, 84.1667%, #e3e4f8 86.5476%, 87.0238%, #e2e3f8 87.5%, 89.3452%, #e0e0fc 91.1905%, 95.5952%, #dceffc 100%) fixed;
                 }
@@ -42,7 +42,7 @@ body {
                     background: linear-gradient(90deg, #262327 0%, 0.77381%, #282529 1.54762%, 6.72619%, #272428 11.9048%, 12.381%, #292329 12.8571%, 27.9167%, #282226 42.9762%, 51.9048%, #272428 60.8333%, 61.9643%, #29222a 63.0952%, 66.7262%, #28212d 70.3571%, 73.2738%, #26202a 76.1905%, 77.1429%, #251f2a 78.0952%, 79.9405%, #251e2a 81.7857%, 84.1667%, #241e28 86.5476%, 87.0238%, #231d28 87.5%, 89.3452%, #241c2b 91.1905%, 95.5952%, #1a1b29 100%) fixed;
                 }
             }
-            & when (@dalez-fluent-flarum-background = bing_blue) {
+            & when (@dalez-fluent-flarum-background = bingblue) {
                 & when (@config-dark-mode = false) {
                     background: linear-gradient(90deg, #eff2f7 0%, 7.60286%, #edf0f9 15.2057%, 20.7513%, #ebf0f8 26.297%, 27.6386%, #ebf0f8 28.9803%, 38.2826%, #e7edf9 47.585%, 48.1216%, #e6ecfa 48.6583%, 53.1306%, #e4ecf9 57.6029%, 61.5385%, #e3eafa 65.4741%, 68.7835%, #deeafa 72.093%, 75.7603%, #dbe6f8 79.4275%, 82.8265%, #d8e5f8 86.2254%, 87.8354%, #d5e4f9 89.4454%, 91.8605%, #d2e2f9 94.2755%, 95.4383%, #d1e1f8 96.6011%, 98.3005%, #d0e0f7 100%) fixed;
                 }
@@ -50,7 +50,7 @@ body {
                     background: linear-gradient(90deg, #23272e 0%, 7.60286%, #202431 15.2057%, 20.7513%, #1f252f 26.297%, 27.6386%, #1f252f 28.9803%, 38.2826%, #1c222f 47.585%, 48.1216%, #1b2130 48.6583%, 53.1306%, #1a222e 57.6029%, 61.5385%, #19202f 65.4741%, 68.7835%, #17202c 72.093%, 75.7603%, #161d28 79.4275%, 82.8265%, #151c26 86.2254%, 87.8354%, #131b26 89.4454%, 91.8605%, #121924 94.2755%, 95.4383%, #121822 96.6011%, 98.3005%, #111820 100%) fixed;
                 }
             }
-            & when (@dalez-fluent-flarum-background = bing_green) {
+            & when (@dalez-fluent-flarum-background = binggreen) {
                 & when (@config-dark-mode = false) {
                     background: linear-gradient(90deg, #ecf2f5 0%, 1.3089%, #eaf3f5 2.6178%, 17.4084%, #e8f1f2 32.199%, 36.2565%, #e5f1f2 40.3141%, 45.0262%, #e3f0f2 49.7382%, 51.8325%, #e2eff5 53.9267%, 57.199%, #e0eff5 60.4712%, 62.9581%, #dcedf5 65.445%, 66.2304%, #dcedf5 67.0157%, 68.0628%, #daecf4 69.1099%, 75.1309%, #d6e9f0 81.1518%, 82.5916%, #d3e7f0 84.0314%, 84.4241%, #d4e7ef 84.8168%, 86.911%, #d2e6ef 89.0052%, 94.5026%, #cfe3ec 100%) fixed;
                 }
