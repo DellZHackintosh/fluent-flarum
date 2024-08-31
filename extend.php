@@ -6,7 +6,7 @@ use Flarum\Extend;
 use Flarum\Frontend\Document;
 use Flarum\Settings\SettingsRepositoryInterface;
 
-return $settings->get('dalez-fluent-flarum.disableBeta', false) ? [
+return resolve(SettingsRepositoryInterface::class)->get('dalez-fluent-flarum.disableBeta', false) ? [
     (new Extend\Frontend('admin'))
         ->js(__DIR__.'/js/dist/admin.js'),
 
