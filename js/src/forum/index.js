@@ -1,118 +1,60 @@
 import app from 'flarum/forum/app';
-import { extend, override } from 'flarum/common/extend';
-import standaloneLoginModal from './components/standaloneLoginModal';
-import DiscussionList from 'flarum/forum/components/DiscussionList';
-import HeaderSecondary from 'flarum/forum/components/HeaderSecondary';
-import Button from 'flarum/common/components/Button';
 
-/**
- * Hits the API endpoint by calling `app.store.find('')`, which will load
- * all initial data that the user should have set.
- */
-async function loadBaseApiData() {
-    await app.store.find('');
+function withID(more = "") {
+    return `dalez-fluent-flarum${more}`;
 }
 
-/**
- * Hides the provided modal, and calls the `loaded` method on that modal.
- */
-function closeModal(modalInstance) {
-    modalInstance.hide();
-    modalInstance.loaded?.call(modalInstance);
-}
-
-function trans(key) {
-    return app.translator.trans(`dalez-identityagent.forum.${key}`);
-}
-
-const userAgent = (() => {
-    let token, originalUser;
-    const requestOld = app.request;
-
-    function startActing(tokenString, userID) {
-        token = tokenString;
-        originalUser = userID;
-        app.request = (options) => {
-            let optionsWithToken = { ...options };
-            optionsWithToken.headers = optionsWithToken.headers || {};
-            optionsWithToken.headers.Authorization = `Token ${token}`;
-            return requestOld.call(window.app, optionsWithToken);
-        };
+function storageAvailable() {
+    var storage;
+    try {
+        storage = window["localStorage"];
+        var x = "__storage_test__";
+        storage.setItem(x, x);
+        storage.removeItem(x);
+        return true;
+    } catch (e) {
+        return (
+            e instanceof DOMException &&
+            // everything except Firefox
+            (e.code === 22 ||
+                // Firefox
+                e.code === 1014 ||
+                // test name field too, because code might not be present
+                // everything except Firefox
+                e.name === "QuotaExceededError" ||
+                // Firefox
+                e.name === "NS_ERROR_DOM_QUOTA_REACHED") &&
+            // acknowledge QuotaExceededError only if there's something already stored
+            storage &&
+            storage.length !== 0
+        );
     }
+}
 
-    async function stopActing() {
-        await loadBaseApiData();
-        app.session.user = originalUser;
-        app.request = requestOld.bind(window.app);
-        app.acting = false;
-        m.redraw();
-    }
+async function getNoiseAsset() {
+    return storageAvailable() && localStorage.noiseAsset && Math.random() < 0.01 ? localStorage.noiseAsset : await (async () => {
+        const canvas = document.createElement('canvas');
+        canvas.width = canvas.height = 256;
+        const context = canvas.getContext('2d');
+        const imageData = new ImageData(256, 256);
+        const data = imageData.data;
 
-    return {
-        startActing,
-        stopActing,
-    };
-})();
-
-app.initializers.add('dalez-identityagent', () => {
-    const userData = data.resources.find((element) => {
-        return element.type === 'users' && data.session.userId == element.id;
-    }).attributes;
-
-    extend(DiscussionList.prototype, 'view', function () {
-        if (app.newLogin) {
-            delete app.newLogin;
+        for (let i = 0; i < data.length; i += 4) {
+            let color = Math.floor(Math.random() * 255);
+            data[i] = color;
+            data[i + 1] = color;
+            data[i + 2] = color;
+            data[i + 3] = 10;
         }
-    });
 
-    extend(standaloneLoginModal.prototype, 'fields', async function (items) {
-        items.remove('remember');
-    });
+        context.putImageData(imageData, 0, 0);
+        return canvas.toDataURL();
+    })();
+}
 
-    override(standaloneLoginModal.prototype, 'onsubmit', async function (original, e) {
-        e.preventDefault();
 
-        this.loading = true;
-
-        const loginData = this.loginParams();
-
-        const response = await app.request({
-            method: 'POST',
-            url: `${app.forum.attribute('baseUrl')}/api/token`,
-            body: loginData,
-            errorHandler: this.onerror.bind(this),
-        });
-
-        if (!response) return;
-
-        const { token, userId } = response;
-
-        userAgent.startActing(token, app.session.user);
-
-        await loadBaseApiData();
-
-        app.session.user = app.store.getById('users', userId);
-        app.acting = true;
-
-        closeModal(this);
-    });
-
-    if (userData.canUseFeature)
-        extend(HeaderSecondary.prototype, 'items', function (items) {
-            items.add(
-                'nightmode',
-                <Button
-                    className="Button Button--flat"
-                    onclick={() => {
-                        if (app.acting === true) {
-                            if (window.confirm(trans('confirmation'))) userAgent.stopActing();
-                        } else app.modal.show(standaloneLoginModal);
-                    }}
-                    icon={app.acting === true ? 'fas fa-user-cog' : 'fas fa-user'}
-                >
-                    {trans('button_text')}
-                </Button>,
-                15
-            );
-        });
+app.initializers.add(withID(), () => {
+    (async () => {
+        document.documentElement.style.setProperty('--noise-asset', `url(${await getNoiseAsset()})`);
+    })();
 });

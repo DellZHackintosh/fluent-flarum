@@ -23,9 +23,9 @@ app.initializers.add(withID(), () => {
       );
     })
     .registerSetting({
-      setting: withID(".enableBeta"),
-      label: trans(withID(".admin.enable_beta_label")),
-      help: trans(withID(".admin.enable_beta_help")),
+      setting: withID(".disableBeta"),
+      label: trans(withID(".admin.disable_beta_label")),
+      help: trans(withID(".admin.disable_beta_help")),
       type: "boolean",
     })
     .registerSetting({
