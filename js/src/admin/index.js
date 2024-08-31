@@ -13,8 +13,8 @@ app.initializers.add(withID(), () => {
   app.extensionData
     .for(withID())
     .registerSetting(function () {
-      const enable = app.data.settings["dalez-fluent-flarum.enableBeta"];
-      if (enable === "0" || !enable) return;
+      const disable = app.data.settings["dalez-fluent-flarum.disableBeta"];
+      if (disable === "1" || disable) return;
 
       return (
         <div className="Form-group">
