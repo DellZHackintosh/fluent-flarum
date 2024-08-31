@@ -39,7 +39,7 @@ $old = [
                 });
             })();</script>';
         })
-        ->css(__DIR__.'/less/forum.less'),  
+        ->css(__DIR__.'/oldless/forum.less'),  
 
         new Extend\Locales(__DIR__.'/locale'),
     ];

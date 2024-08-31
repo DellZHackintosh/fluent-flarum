@@ -59,4 +59,5 @@ app.initializers.add(withID(), () => {
     })();
     document.body.classList.toggle('activated');
     window.addEventListener('blur', () => document.body.classList.toggle('activated'));
+    window.addEventListener('focus', () => document.body.classList.toggle('activated'));
 });
