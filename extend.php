@@ -81,7 +81,8 @@ return resolve(SettingsRepositoryInterface::class)->get('dalez-fluent-flarum.dis
             }
         })
         ->css(__DIR__.'/oldless/forum.less')
-        ->css(__DIR__.'/less/forum.less'),  
+        ->css(__DIR__.'/less/forum.less')
+        ->js(__DIR__.'/js/dist/forum.js'),  
 
         (new Extend\Settings())
             ->default('dalez-fluent-flarum.disableBeta', false)
