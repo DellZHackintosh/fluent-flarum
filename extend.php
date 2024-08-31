@@ -88,7 +88,7 @@ return resolve(SettingsRepositoryInterface::class)->get('dalez-fluent-flarum.dis
             ->default('dalez-fluent-flarum.disableBeta', false)
             ->default('dalez-fluent-flarum.background', 'solid')
             ->registerLessConfigVar('dalez-fluent-flarum-background', 'dalez-fluent-flarum.background', function ($value) {
-                return $value ?: 'solid';
+                return $value ? str_replace("_", "", $value) : 'solid';
             }),
 
         new Extend\Locales(__DIR__.'/locale'),
