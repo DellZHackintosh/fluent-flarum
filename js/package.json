@@ -1,0 +1,18 @@
+{
+  "private": true,
+  "name": "@dalez/fluent-flarum",
+  "dependencies": {
+    "flarum-webpack-config": "^2.0.2",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
+  },
+  "scripts": {
+    "dev": "webpack --mode development --watch",
+    "build": "webpack --mode production",
+    "format": "prettier --single-quote --trailing-comma es5 --print-width 150 --tab-width 4 --write src"
+  },
+  "devDependencies": {
+    "flarum-tsconfig": "^1.0.2",
+    "prettier": "^3.0.2"
+  }
+}
