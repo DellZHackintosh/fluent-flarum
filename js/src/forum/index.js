@@ -57,6 +57,6 @@ app.initializers.add(withID(), () => {
     (async () => {
         document.documentElement.style.setProperty('--noise-asset', `url(${await getNoiseAsset()})`);
     })();
-    document.body.classList.toggle('activate');
-    window.addEventListener('blur', () => document.body.classList.toggle('activate'));
+    document.body.classList.toggle('activated');
+    window.addEventListener('blur', () => document.body.classList.toggle('activated'));
 });

@@ -6,7 +6,7 @@ use Flarum\Extend;
 use Flarum\Frontend\Document;
 use Flarum\Settings\SettingsRepositoryInterface;
 
-return resolve(SettingsRepositoryInterface::class)->get('dalez-fluent-flarum.disableBeta', false) ? [
+$old = [
     (new Extend\Frontend('admin'))
         ->js(__DIR__.'/js/dist/admin.js'),
 
@@ -42,7 +42,9 @@ return resolve(SettingsRepositoryInterface::class)->get('dalez-fluent-flarum.dis
         ->css(__DIR__.'/less/forum.less'),  
 
         new Extend\Locales(__DIR__.'/locale'),
-] : [
+    ];
+
+$new = [
     (new Extend\Frontend('admin'))
         ->js(__DIR__.'/js/dist/admin.js'),
 
@@ -92,4 +94,6 @@ return resolve(SettingsRepositoryInterface::class)->get('dalez-fluent-flarum.dis
             }),
 
         new Extend\Locales(__DIR__.'/locale'),
-];
+    ];
+
+return resolve(SettingsRepositoryInterface::class)->get('dalez-fluent-flarum.disableBeta', false) ? $old : $new;
