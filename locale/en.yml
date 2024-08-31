@@ -2,8 +2,8 @@ dalez-fluent-flarum:
   admin:
     can_use_feature: Allow to use this feature
     beta: You're using Fluent Theme beta and previewing the changes early in the development cycle but they can be unstable.
-    enable_beta_label: Switch to Fluent Theme beta
-    enable_beta_help: Switch to Fluent Theme beta to preview the new features. If you ran into problems and want to go back, just simply disable this.
+    disable_beta_label: Back to Fluent Theme Stable
+    disable_beta_help: With Fluent Theme beta, you can preview the new features. However, if you ran into problems and want to go back, just simply enable this.
     background_label: Background
     solid: Solid
     bing_red: Bing (red)
