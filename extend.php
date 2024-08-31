@@ -43,28 +43,16 @@ return [
                 */
                 $document->head[] = '<script>(function(){function a(){var a=document.querySelector(`meta[name="theme-color"]`);a.content=b.getPropertyValue("--header-bg")}var b=getComputedStyle(document.querySelector(":root"));a(),new Promise(function(a){var b=setInterval(function(){flarum&&flarum.extensions&&(clearInterval(b),a())},500)}).then(function(){flarum.extensions["fof-nightmode"]&&document.addEventListener("fofnightmodechange",a)})})();</script>';
             }
-
-            switch ($settings->get('dalez-fluent-flarum.background', 'solid')) {
-                case 'solid':
-                    # code...
-                    break;
-
-                case 'mica_accent':
-                    # code...
-                    break;
-                
-                default:
-                    # code...
-                    break;
-            }
-
-            $document->foot[] = '<script>(() => {const parser = new DOMParser();const dom = parser.parseFromString(`<div id="fluent-background"><svg></svg><div></div><div></div></div>`, \'text/html\');document.body.prepend(dom.body.firstElementChild);})();</script>';
         })
-        ->css(__DIR__.'/oldless/forum.less'),  
+        ->css(__DIR__.'/oldless/forum.less')
+        ->css(__DIR__.'/less/forum.less'),  
 
         (new Extend\Settings())
             ->default('dalez-fluent-flarum.enableBeta', true)
-            ->default('dalez-fluent-flarum.background', 'solid'),
+            ->default('dalez-fluent-flarum.background', 'solid')
+            ->registerLessConfigVar('dalez-fluent-flarum-background', 'dalez-fluent-flarum.background', function ($value) {
+                return $value ?: 'solid';
+            }),
 
         new Extend\Locales(__DIR__.'/locale'),
 ];
